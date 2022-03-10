@@ -1,5 +1,5 @@
-CREATE DATABASE chinese_stolovaya;
-USE chinese_stolovaya;
+CREATE DATABASE ChineseCafeteria;
+USE ChineseCafeteria;
 
 CREATE TABLE products(
 	id SERIAL PRIMARY KEY,
