@@ -1,13 +1,18 @@
 package com.old.leopards.restaurant.ui.cart
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
 class CartViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is a shopping cart!"
+    /*
+    TODO
+      Использовать MutableStateFlow https://developer.android.com/kotlin/flow/stateflow-and-sharedflow
+      Для автоматической подгрузки товаров в корзине при скролле вниз
+    */
+    init {
+        viewModelScope.launch {
+            //TODO
+        }
     }
-    val text: LiveData<String> = _text
 }

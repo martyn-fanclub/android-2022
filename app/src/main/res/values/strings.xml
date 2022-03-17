@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">Restaurant</string>
     <string name="title_food">Food</string>
-    <string name="title_card">Shopping card</string>
+    <string name="title_cart">Shopping card</string>
     <string name="title_profile">Profile</string>
     <string name="title_notifications">Notifications</string>
+    <string name="description_food">This is a food section!</string>
+    <string name="description_cart">This is a shopping cart!</string>
+    <string name="description_profile">This is your profile!</string>
 </resources>

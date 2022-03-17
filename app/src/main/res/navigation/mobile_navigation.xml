@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/navigation_cart"
         android:name="com.old.leopards.restaurant.ui.cart.CartFragment"
-        android:label="@string/title_card"
+        android:label="@string/title_cart"
         tools:layout="@layout/fragment_cart" />
 
     <fragment

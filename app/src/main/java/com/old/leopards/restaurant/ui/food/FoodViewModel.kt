@@ -1,13 +1,18 @@
 package com.old.leopards.restaurant.ui.food
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
 class FoodViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is food section!"
+    /*
+    TODO
+      Использовать MutableStateFlow https://developer.android.com/kotlin/flow/stateflow-and-sharedflow
+      Для автоматической подгрузки блюд и категорий при скролле вниз
+    */
+    init {
+        viewModelScope.launch {
+            //TODO
+        }
     }
-    val text: LiveData<String> = _text
 }

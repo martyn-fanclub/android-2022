@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.old.leopards.restaurant.databinding.FragmentFoodBinding
+import com.old.leopards.restaurant.databinding.FragmentProfileBinding
+import com.old.leopards.restaurant.ui.profile.ProfileViewModel
 
 class FoodFragment : Fragment() {
 
@@ -17,22 +20,22 @@ class FoodFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private val profileViewModel: FoodViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this)[FoodViewModel::class.java]
-
         _binding = FragmentFoodBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
-        val textView: TextView = binding.textFood
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //TODO
+        binding.apply {
         }
-        return root
     }
 
     override fun onDestroyView() {
