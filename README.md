@@ -100,3 +100,8 @@
 ### Фронтенд:
 
 - Java/Kotlin
+
+# 5. Дизайн
+Прототип: https://www.figma.com/proto/CxBxQ3F4yAyOtyWzMxVAPf/budget-delivery?node-id=76%3A1043&scaling=scale-down&page-id=0%3A1&starting-point-node-id=76%3A1043&show-proto-sidebar=1
+
+Проект в фигме: https://www.figma.com/file/CxBxQ3F4yAyOtyWzMxVAPf/budget-delivery?node-id=76%3A1043
