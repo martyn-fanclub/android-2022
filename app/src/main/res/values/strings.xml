@@ -7,4 +7,9 @@
     <string name="description_food">This is a food section!</string>
     <string name="description_cart">This is a shopping cart!</string>
     <string name="description_profile">This is your profile!</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="minus" translatable="false">-</string>
+    <string name="pay_btn">pay</string>
+    <string name="change_address">change\naddress</string>
+    <string name="delete_all">remove\nall</string>
 </resources>
