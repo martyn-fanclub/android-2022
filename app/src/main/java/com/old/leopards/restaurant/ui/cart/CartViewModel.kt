@@ -43,5 +43,4 @@ class CartViewModel : ViewModel() {
         data class HasFood(val food: MutableList<Pair<Food, Int>>) : CartUiState()
     }
 
-
 }

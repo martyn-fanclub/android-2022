@@ -6,8 +6,12 @@
     <string name="title_profile">Профиль</string>
     <string name="title_notifications">Уведомления</string>
     <string name="description_cart">Это ваша корзина!</string>
-    <string name="description_profile">Это ваш профиль!</string>
+    <string name="profile_name">Абоба Абиба</string>
+    <string name="profile_email">собака@яндекс.ру</string>
     <string name="description_food">Это секция с едой!</string>
+    <string name="profile_change_button_name">Изменить</string>
+    <string name="profile_exit_button_name">Выйти</string>
+    <string name="profile_photo_description">Фотография профиля</string>
     <string name="pay_btn">оплатить</string>
     <string name="change_address">изменить адрес</string>
     <string name="delete_all">удалить все</string>
