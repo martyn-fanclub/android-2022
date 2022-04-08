@@ -4,13 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.old.leopards.restaurant.databinding.FragmentFoodBinding
-import com.old.leopards.restaurant.databinding.FragmentProfileBinding
-import com.old.leopards.restaurant.ui.profile.ProfileViewModel
+import kotlinx.coroutines.flow.collect
+import java.util.*
 
 class FoodFragment : Fragment() {
 
@@ -33,13 +34,38 @@ class FoodFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO
-        binding.apply {
+
+//
+//        val adapter = FoodAdapter(Collections.emptyList())
+//        binding.cartRv.layoutManager = LinearLayoutManager(context)
+//        binding.cartRv.adapter = adapter
+
+        binding.rvFoodList.layoutManager = GridLayoutManager(
+            context,
+            2,
+            RecyclerView.VERTICAL,
+            false
+        )
+
+        val adapter = FoodAdapter(Collections.emptyList())
+        binding.rvFoodList.adapter = adapter
+
+        lifecycleScope.launchWhenStarted {
+            profileViewModel.foodListState.collect {
+                adapter.foodList = it
+                // TODO
+                adapter.notifyDataSetChanged()
+            }
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance() = FoodFragment()
     }
 }

@@ -7,4 +7,5 @@
     <string name="description_food">This is a food section!</string>
     <string name="description_cart">This is a shopping cart!</string>
     <string name="description_profile">This is your profile!</string>
+    <string name="buttonPrice">Price error</string>
 </resources>

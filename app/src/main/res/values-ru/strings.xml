@@ -8,4 +8,5 @@
     <string name="description_cart">Это ваша корзина!</string>
     <string name="description_profile">Это ваш профиль!</string>
     <string name="description_food">Это секция с едой!</string>
+    <string name="buttonPrice">Ошибка загрузки</string>
 </resources>
