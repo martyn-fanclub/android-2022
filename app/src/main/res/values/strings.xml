@@ -11,4 +11,10 @@
     <string name="profile_change_button_name">Change</string>
     <string name="profile_exit_button_name">Exit</string>
     <string name="profile_photo_description">Profile photo</string>
+    <string name="description_profile">This is your profile!</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="minus" translatable="false">-</string>
+    <string name="pay_btn">pay</string>
+    <string name="change_address">change\naddress</string>
+    <string name="delete_all">remove\nall</string>
 </resources>
