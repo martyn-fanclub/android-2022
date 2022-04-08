@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Рестаран</string>
+    <string name="app_name">Ресторан</string>
     <string name="title_food">Еда</string>
     <string name="title_cart">Корзина</string>
     <string name="title_profile">Профиль</string>
@@ -8,4 +8,7 @@
     <string name="description_cart">Это ваша корзина!</string>
     <string name="description_profile">Это ваш профиль!</string>
     <string name="description_food">Это секция с едой!</string>
+    <string name="pay_btn">оплатить</string>
+    <string name="change_address">изменить адрес</string>
+    <string name="delete_all">удалить все</string>
 </resources>

@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.old.leopards.restaurant.databinding.FragmentCartBinding
-import com.old.leopards.restaurant.databinding.FragmentProfileBinding
-import com.old.leopards.restaurant.ui.profile.ProfileViewModel
+import kotlinx.coroutines.flow.collect
+import java.util.*
 
 class CartFragment : Fragment() {
 
@@ -33,6 +33,26 @@ class CartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val adapter = FoodAdapter(Collections.emptyList())
+        binding.cartRv.layoutManager = LinearLayoutManager(context)
+        binding.cartRv.adapter = adapter
+
+        lifecycleScope.launchWhenStarted {
+            cartViewModel.cartUiState.collect {
+                when (it) {
+                    is CartViewModel.CartUiState.Empty -> {
+                        adapter.food.clear()
+                    }
+                    is CartViewModel.CartUiState.HasFood -> {
+                        adapter.food = it.food
+                        adapter.notifyDataSetChanged()
+                    }
+                }
+            }
+        }
+
+
         //TODO
         binding.apply {
         }
