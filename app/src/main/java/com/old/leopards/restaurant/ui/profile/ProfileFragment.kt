@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
@@ -35,6 +36,13 @@ class ProfileFragment : Fragment() {
 
         //TODO
         binding.apply {
+            buttonChangeProfile.setOnClickListener {
+                // TODO
+            }
+
+            buttonExitProfile.setOnClickListener {
+                // TODO
+            }
         }
     }
 
