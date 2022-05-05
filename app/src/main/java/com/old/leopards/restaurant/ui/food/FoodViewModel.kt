@@ -11,11 +11,6 @@ import java.math.BigDecimal
 import java.util.concurrent.CopyOnWriteArrayList
 
 class FoodViewModel : ViewModel() {
-    /*
-    TODO
-      Использовать MutableStateFlow https://developer.android.com/kotlin/flow/stateflow-and-sharedflow
-      Для автоматической подгрузки блюд и категорий при скролле вниз
-    */
 
     // List is Immutable
     private val _foodListState = MutableStateFlow<List<Food>>(CopyOnWriteArrayList<Food>())

@@ -9,18 +9,18 @@
         android:id="@+id/cart_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/universe_primary"
         android:clipToPadding="false"
-        android:paddingTop="5dp"
         android:paddingBottom="115dp"
+        android:background="@color/universe_primary"
+        android:paddingTop="5dp"
         tools:listitem="@layout/cart_item" />
 
     <RelativeLayout
         android:id="@+id/cart_total"
         android:layout_width="match_parent"
         android:layout_height="110dp"
-        android:layout_gravity="bottom"
         android:background="@color/white"
+        android:layout_gravity="bottom"
         android:elevation="30dp"
         android:paddingHorizontal="9dp">
 
@@ -28,37 +28,37 @@
             android:id="@+id/total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:fontFamily="@font/merriweather"
             android:paddingTop="10dp"
             android:text="Итого"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
             android:fontFamily="@font/merriweather"
             android:paddingTop="10dp"
             android:text="150р"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
             android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/address"
+            android:fontFamily="@font/roboto_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/total"
-            android:fontFamily="@font/roboto_light"
             android:text="г. Санкт-Петербург ул. Харченко 16, к 232" />
 
         <LinearLayout
             android:id="@+id/row_buttons"
+            android:layout_below="@id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/address"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
@@ -69,37 +69,37 @@
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="7dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/universe_primary"
+                android:layout_marginLeft="7dp"
                 android:fontFamily="@font/roboto"
-                android:text="@string/delete_all"
                 android:textColor="@color/black"
+                android:backgroundTint="@color/universe_primary"
+                android:text="@string/delete_all"
                 android:textSize="12sp" />
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:layout_marginHorizontal="7dp"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:backgroundTint="@color/universe_primary"
-                android:fontFamily="@font/roboto"
+                android:layout_weight="1"
                 android:text="@string/change_address"
+                android:fontFamily="@font/roboto"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
             <Button
                 android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:layout_marginRight="7dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/secondary_container"
                 android:fontFamily="@font/roboto"
+                android:layout_width="match_parent"
                 android:text="@string/pay_btn"
-
+                android:layout_height="match_parent"
                 android:textColor="@color/black"
+                android:layout_weight="1"
+
+                android:backgroundTint="@color/secondary_container"
                 android:textSize="12sp" />
         </LinearLayout>
 
