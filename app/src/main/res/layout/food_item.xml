@@ -16,20 +16,17 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/iv_foodPicture"
+            android:id="@+id/iv_food_picture"
             android:layout_width="158dp"
-            android:layout_height="155.74dp"
-            android:scaleY="1.5"
-            android:viewportWidth="158"
-            android:viewportHeight="155.74"
-            app:srcCompat="@drawable/rizotto" />
+            android:layout_height="158dp"
+            android:contentDescription="TODO" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tv_foodName"
+                android:id="@+id/tv_food_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -40,28 +37,28 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_foodWeight"
+                android:id="@+id/tv_food_weight"
                 android:layout_width="158dp"
                 android:layout_height="21dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_foodName" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_food_name" />
 
             <Button
-                android:id="@+id/bt_foodPrice"
+                android:id="@+id/bt_food_price"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/buttonPrice"
+                android:text="@string/button_price_default"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_foodWeight" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_food_weight" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

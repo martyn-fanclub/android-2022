@@ -6,6 +6,16 @@
     <string name="title_notifications">Notifications</string>
     <string name="description_food">This is a food section!</string>
     <string name="description_cart">This is a shopping cart!</string>
+    <string name="profile_name">Aboba Abiba</string>
+    <string name="profile_email">sobaka@yandex.ru</string>
+    <string name="button_price_default">Price error</string>
+    <string name="profile_change_button_name">Change</string>
+    <string name="profile_exit_button_name">Exit</string>
+    <string name="profile_photo_description">Profile photo</string>
     <string name="description_profile">This is your profile!</string>
-    <string name="buttonPrice">Price error</string>
+    <string name="plus" translatable="false">+</string>
+    <string name="minus" translatable="false">-</string>
+    <string name="pay_btn">pay</string>
+    <string name="change_address">change\naddress</string>
+    <string name="delete_all">remove\nall</string>
 </resources>

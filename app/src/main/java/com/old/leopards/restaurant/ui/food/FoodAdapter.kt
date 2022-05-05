@@ -6,35 +6,66 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.models.Food
 
-class FoodAdapter(var foodList: List<Food>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
-    class FoodViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imageView: ImageView = itemView.findViewById(R.id.iv_foodPicture)
-        val foodName: TextView = itemView.findViewById(R.id.tv_foodName)
-        val foodWeight: TextView = itemView.findViewById(R.id.tv_foodWeight)
-        val buttonFoodPrice: Button = itemView.findViewById(R.id.bt_foodPrice)
-    }
+class FoodAdapter(private val onClick: (Food) -> Unit) :
+    ListAdapter<Food, FoodAdapter.FoodViewHolder>(FlowerDiffCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.food_item, parent, false)
-        return FoodViewHolder(view)
-    }
+    class FoodViewHolder(private val itemView: View, val onClick: (Food) -> Unit) :
+        RecyclerView.ViewHolder(itemView) {
+        private var imageView: ImageView = itemView.findViewById(R.id.iv_food_picture)
+        private val foodName: TextView = itemView.findViewById(R.id.tv_food_name)
+        private val foodWeight: TextView = itemView.findViewById(R.id.tv_food_weight)
+        private val buttonFoodPrice: Button = itemView.findViewById(R.id.bt_food_price)
 
-    override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
-        val foodItem = foodList[position]
-        holder.foodName.text = foodItem.title
-        //TODO
-        holder.imageView.setImageResource(foodItem.img)
-        holder.foodWeight.text = foodItem.weight.toString() + " гр."
-        holder.buttonFoodPrice.text = foodItem.price.toString() + " р."
+        private var currentFood: Food? = null
 
-        holder.buttonFoodPrice.setOnClickListener {
-            //TODO
+        init {
+            itemView.setOnClickListener {
+                currentFood?.let {
+                    onClick(it)
+                }
+            }
+        }
+
+        /* Bind food name and image. */
+        fun bind(foodItem: Food) {
+            currentFood = foodItem
+
+            foodName.text = foodItem.title
+            foodWeight.text = "${foodItem.weight} гр."
+            buttonFoodPrice.text = "${foodItem.price} р."
+            if (foodItem.img != null) {
+                imageView.setImageResource(foodItem.img)
+            } else {
+                // FIXME set default img
+                //imageView.setImageResource()
+            }
         }
     }
 
-    override fun getItemCount(): Int = foodList.size
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.food_item, parent, false)
+        return FoodViewHolder(view, onClick)
+    }
+
+    override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
+        val foodItem = getItem(position)
+        holder.bind(foodItem)
+    }
+
+    object FlowerDiffCallback : DiffUtil.ItemCallback<Food>() {
+        override fun areItemsTheSame(oldItem: Food, newItem: Food): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Food, newItem: Food): Boolean {
+            return oldItem == newItem
+        }
+    }
 }
