@@ -2,6 +2,7 @@ package com.old.leopards.restaurant.ui.cart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.models.Food
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -29,7 +30,8 @@ class CartViewModel : ViewModel() {
                             "Ризотто с вареными яйцами ",
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. \n",
                             100,
-                            BigDecimal.TEN
+                            BigDecimal.TEN,
+                            R.drawable.rizotto
                         ), i
                     )
                 )

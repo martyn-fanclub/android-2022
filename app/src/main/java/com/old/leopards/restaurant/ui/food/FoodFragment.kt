@@ -1,16 +1,18 @@
 package com.old.leopards.restaurant.ui.food
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.old.leopards.restaurant.databinding.FragmentFoodBinding
-import com.old.leopards.restaurant.databinding.FragmentProfileBinding
-import com.old.leopards.restaurant.ui.profile.ProfileViewModel
+import com.old.leopards.restaurant.models.Food
+import kotlinx.coroutines.flow.collect
 
 class FoodFragment : Fragment() {
 
@@ -20,7 +22,7 @@ class FoodFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val profileViewModel: FoodViewModel by viewModels()
+    private val profileViewModel: FoodViewModel by viewModels<FoodViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,9 +35,34 @@ class FoodFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //TODO
-        binding.apply {
+
+        binding.rvFoodList.layoutManager = GridLayoutManager(
+            context,
+            2,
+            RecyclerView.VERTICAL,
+            false
+        )
+
+        val adapter = FoodAdapter { foodItem -> adapterOnClickDescription(foodItem) }
+        binding.rvFoodList.adapter = adapter
+
+        lifecycleScope.launchWhenStarted {
+            profileViewModel.foodListState.collect {
+                adapter.submitList(it)
+            }
         }
+    }
+
+    private fun adapterOnClickDescription(foodItem: Food) {
+        Log.d("DEBUG", "Layout press")
+        /*
+        TODO open description.
+
+           Example with activity:
+            val intent = Intent(this, FoodDetailActivity()::class.java)
+            intent.putExtra("FOOD_ID", food.id)
+            startActivity(intent)
+         */
     }
 
     override fun onDestroyView() {
