@@ -15,7 +15,7 @@ import com.old.leopards.restaurant.models.Food
 class FoodAdapter(private val onClick: (Food) -> Unit) :
     ListAdapter<Food, FoodAdapter.FoodViewHolder>(FlowerDiffCallback) {
 
-    class FoodViewHolder(private val itemView: View, val onClick: (Food) -> Unit) :
+    class FoodViewHolder(itemView: View, val onClick: (Food) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
         private var imageView: ImageView = itemView.findViewById(R.id.iv_food_picture)
         private val foodName: TextView = itemView.findViewById(R.id.tv_food_name)
@@ -37,8 +37,12 @@ class FoodAdapter(private val onClick: (Food) -> Unit) :
             currentFood = foodItem
 
             foodName.text = foodItem.title
-            foodWeight.text = "${foodItem.weight} гр."
-            buttonFoodPrice.text = "${foodItem.price} р."
+            foodWeight.text = itemView.context.getString(
+                R.string.food_weight_template,
+                foodItem.weight.toString()
+            )
+            buttonFoodPrice.text =
+                itemView.context.getString(R.string.price_template, foodItem.price.toString())
             if (foodItem.img != null) {
                 imageView.setImageResource(foodItem.img)
             } else {

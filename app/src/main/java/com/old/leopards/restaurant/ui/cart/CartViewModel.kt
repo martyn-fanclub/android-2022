@@ -40,7 +40,7 @@ class CartViewModel : ViewModel() {
         }
     }
 
-    sealed class CartUiState() {
+    sealed class CartUiState {
         object Empty : CartUiState()
         data class HasFood(val food: MutableList<Pair<Food, Int>>) : CartUiState()
     }

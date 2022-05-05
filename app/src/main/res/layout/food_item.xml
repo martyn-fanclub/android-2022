@@ -19,7 +19,8 @@
             android:id="@+id/iv_food_picture"
             android:layout_width="158dp"
             android:layout_height="158dp"
-            android:contentDescription="TODO" />
+            android:contentDescription="TODO"
+            tools:ignore="HardcodedText" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -34,13 +35,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/tv_food_weight"
                 android:layout_width="158dp"
                 android:layout_height="21dp"
-                android:text="TextView"
+                android:text="@string/food_weight_template"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_food_name" />
@@ -53,7 +55,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="@string/button_price_default"
+                android:text="@string/price_template"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

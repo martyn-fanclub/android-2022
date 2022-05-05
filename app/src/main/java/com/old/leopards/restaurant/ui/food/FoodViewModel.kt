@@ -13,7 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 class FoodViewModel : ViewModel() {
 
     // List is Immutable
-    private val _foodListState = MutableStateFlow<List<Food>>(CopyOnWriteArrayList<Food>())
+    private val _foodListState = MutableStateFlow<List<Food>>(CopyOnWriteArrayList())
     val foodListState = _foodListState
 
     init {
