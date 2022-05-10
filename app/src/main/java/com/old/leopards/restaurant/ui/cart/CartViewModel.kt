@@ -40,7 +40,7 @@ class CartViewModel : ViewModel() {
                 .subscribe({ currency ->
                     Log.d("Текущий курс: ", currency.value.toString())
                 }, { error ->
-                    println("Пиздец: $error")
+                    println("Упс: $error")
                 })
         )
     }
