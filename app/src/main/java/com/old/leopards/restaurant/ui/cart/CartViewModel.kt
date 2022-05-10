@@ -1,11 +1,15 @@
 package com.old.leopards.restaurant.ui.cart
 
+import android.annotation.SuppressLint
+import android.icu.util.Currency
+import android.os.Build
 import android.util.Log
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.api.CurrencyApi
-import com.old.leopards.restaurant.api.CurrencyService
 import com.old.leopards.restaurant.models.Food
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -14,6 +18,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CartViewModel : ViewModel() {
     /*
@@ -32,15 +38,21 @@ class CartViewModel : ViewModel() {
         super.onCleared()
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun fetchCurrency(currencyApi: CurrencyApi) {
+        val locale: String = "RUB_" + Currency.getInstance(Locale.getDefault()).currencyCode
+        val price = 150 // В рубасах
         compositeDisposable.add(
-            currencyApi.getUSDCurrency()
+            currencyApi.getUSDCurrency(locale)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ currency ->
-                    Log.d("Текущий курс: ", currency.value.toString())
+                    val cur = currency.results[locale]
+                    if (cur != null) {
+                        Log.d("Текущая сумма", (cur.value * price).toString() +  " " + cur.to)
+                    }
                 }, { error ->
-                    println("Упс: $error")
+                    Log.e("Упс", error.localizedMessage!!)
                 })
         )
     }

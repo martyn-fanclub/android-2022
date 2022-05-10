@@ -1,13 +1,13 @@
 package com.old.leopards.restaurant.api
 
-import com.old.leopards.restaurant.api.models.CurrencyDTO
+import com.old.leopards.restaurant.api.models.CurrencyResponse
 import io.reactivex.Single
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.Query
 
 interface CurrencyApi {
-    @GET("convert?q=USD_RUB&compact=ultra")
+    @GET("convert")
     @Headers("Content-Type: application/json")
-    fun getUSDCurrency(): Single<CurrencyDTO>
+    fun getUSDCurrency(@Query("q") currency: String): Single<CurrencyResponse>
 }
