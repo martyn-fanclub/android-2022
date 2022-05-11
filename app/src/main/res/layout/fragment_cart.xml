@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.cart.CartFragment">
+    tools:context=".ui.cart.CartFragment"
+    android:background="@color/primary_variant">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cart_rv"
@@ -11,7 +12,6 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingBottom="115dp"
-        android:background="@color/primary_variant"
         android:paddingTop="5dp"
         tools:listitem="@layout/cart_item" />
 
