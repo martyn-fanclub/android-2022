@@ -3,7 +3,6 @@ package com.old.leopards.restaurant.ui.cart
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.api.CurrencyService
 import com.old.leopards.restaurant.api.models.CurrencyCount
 import com.old.leopards.restaurant.api.models.CurrencyResponse
@@ -63,7 +62,7 @@ class CartViewModel : ViewModel() {
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. \n",
                             100,
                             BigDecimal.TEN,
-                            R.drawable.rizotto
+                            null
                         ), i
                     )
                 )
@@ -72,7 +71,7 @@ class CartViewModel : ViewModel() {
         }
     }
 
-    sealed class CartUiState() {
+    sealed class CartUiState {
         object Empty : CartUiState()
         data class HasFood(val food: MutableList<Pair<Food, Int>>) : CartUiState()
     }
