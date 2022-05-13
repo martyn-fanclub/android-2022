@@ -2,7 +2,7 @@ package com.old.leopards.restaurant
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -21,7 +21,9 @@ class MainActivity : AppCompatActivity() {
 
         val navView = binding.navView
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val navController =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main)
+                ?.findNavController()!!
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
