@@ -1,25 +1,17 @@
 package com.old.leopards.restaurant.ui.cart
 
-import android.annotation.SuppressLint
-import android.icu.util.Currency
-import android.os.Build
 import android.util.Log
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.old.leopards.restaurant.R
-import com.old.leopards.restaurant.api.CurrencyApi
+import com.old.leopards.restaurant.api.CurrencyService
+import com.old.leopards.restaurant.api.models.CurrencyCount
+import com.old.leopards.restaurant.api.models.CurrencyResponse
 import com.old.leopards.restaurant.models.Food
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
-import java.util.*
-import kotlin.collections.ArrayList
 
 class CartViewModel : ViewModel() {
     /*
@@ -31,33 +23,35 @@ class CartViewModel : ViewModel() {
     private val _cartUiState = MutableStateFlow<CartUiState>(CartUiState.Empty)
     val cartUiState: StateFlow<CartUiState> = _cartUiState
 
-    private val compositeDisposable = CompositeDisposable()
-
-    override fun onCleared() {
-        compositeDisposable.dispose()
-        super.onCleared()
-    }
-
-    @RequiresApi(Build.VERSION_CODES.N)
-    fun fetchCurrency(currencyApi: CurrencyApi) {
-        val locale: String = "RUB_" + Currency.getInstance(Locale.getDefault()).currencyCode
-        val price = 150 // В рубасах
-        compositeDisposable.add(
-            currencyApi.getUSDCurrency(locale)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ currency ->
-                    val cur = currency.results[locale]
-                    if (cur != null) {
-                        Log.d("Текущая сумма", (cur.value * price).toString() +  " " + cur.to)
-                    }
-                }, { error ->
-                    Log.e("Упс", error.localizedMessage!!)
-                })
+    private val _currencyState = MutableStateFlow<CurrencyUiState>(
+        CurrencyUiState.Success(
+            CurrencyResponse(CurrencyCount(0), emptyMap())
         )
+    )
+    val currencyState: StateFlow<CurrencyUiState> = _currencyState
+    private val currencyService = CurrencyService()
+
+    private fun fetchCurrency() {
+        viewModelScope.launch {
+            val cur = "RUB_USD";
+            try {
+                _currencyState.value =
+                    CurrencyUiState.Success(currencyService.api.getUSDCurrency(cur))
+                when (currencyState.value) {
+                    is CurrencyUiState.Success -> {
+                        val currency = (currencyState.value as CurrencyUiState.Success).currency;
+                        Log.d("Success:", "Data was fetched: ${currency.results[cur]?.value} ${currency.results[cur]?.to}")
+                    }
+                    is CurrencyUiState.Error -> Log.e("Error", "${(currencyState.value as CurrencyUiState.Error).exception}")
+                }
+            } catch (e: Exception) {
+                Log.e("Error", "$e")
+            }
+        }
     }
 
     init {
+        fetchCurrency()
         viewModelScope.launch {
             val f: MutableList<Pair<Food, Int>> = ArrayList()
             for (i in 0..10) {
@@ -81,6 +75,11 @@ class CartViewModel : ViewModel() {
     sealed class CartUiState() {
         object Empty : CartUiState()
         data class HasFood(val food: MutableList<Pair<Food, Int>>) : CartUiState()
+    }
+
+    sealed class CurrencyUiState {
+        data class Success(val currency: CurrencyResponse) : CurrencyUiState()
+        data class Error(val exception: Throwable) : CurrencyUiState()
     }
 
 }

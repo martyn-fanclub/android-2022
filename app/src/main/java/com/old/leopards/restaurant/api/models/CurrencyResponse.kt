@@ -1,8 +1,12 @@
 package com.old.leopards.restaurant.api.models
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class CurrencyResponse(
-    @SerializedName("results")
+    val query: CurrencyCount,
     val results: Map<String, CurrencyItem>
 )
+
+@Serializable
+data class CurrencyCount(val count: Int)

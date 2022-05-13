@@ -23,15 +23,12 @@ class CartFragment : Fragment() {
 
     private val cartViewModel: CartViewModel by viewModels()
 
-    private val currencyService = CurrencyService()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCartBinding.inflate(inflater, container, false)
-        cartViewModel.fetchCurrency(currencyService.api)
         return binding.root
     }
 
