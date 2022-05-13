@@ -1,5 +1,3 @@
-@file:Suppress("unused")
-
 package com.old.leopards.restaurant.ui.profile
 
 import android.os.Bundle

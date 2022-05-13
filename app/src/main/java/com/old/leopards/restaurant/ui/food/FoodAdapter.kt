@@ -1,5 +1,6 @@
 package com.old.leopards.restaurant.ui.food
 
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.models.Food
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class FoodAdapter(private val onClick: (Food) -> Unit) :
     ListAdapter<Food, FoodAdapter.FoodViewHolder>(FlowerDiffCallback) {
@@ -44,7 +49,14 @@ class FoodAdapter(private val onClick: (Food) -> Unit) :
             buttonFoodPrice.text =
                 itemView.context.getString(R.string.price_template, foodItem.price.toString())
             if (foodItem.img != null) {
-                imageView.setImageResource(foodItem.img)
+                //imageView.setImageResource(foodItem.img)
+                GlobalScope.launch(Dispatchers.IO) {
+                    val `in` = java.net.URL(foodItem.img).openStream()
+                    val bitmap = BitmapFactory.decodeStream(`in`)
+                    withContext(Dispatchers.Main) {
+                        imageView.setImageBitmap(bitmap)
+                    }
+                }
             } else {
                 // FIXME set default img
                 //imageView.setImageResource()
