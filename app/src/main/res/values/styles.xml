@@ -1,25 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="HeadingTextMedium">
         <item name="fontFamily">@font/merriweather_medium</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
     </style>
+
     <style name="HeadingTextBlack">
         <item name="fontFamily">@font/merriweather_black</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
     </style>
+
     <style name="MainTextRegular">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="MainTextLight">
         <item name="android:fontFamily">@font/roboto_light</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="MainTextBlack">
         <item name="android:fontFamily">@font/roboto_black</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="RegistrationButton">
+        <item name="android:backgroundTint">@color/primary</item>
+        <item name="android:layout_marginLeft">35dp</item>
+        <item name="android:layout_marginRight">35dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">65dp</item>
+        <item name="fontFamily">@font/merriweather_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+        <item name="cornerRadius">15dp</item>
     </style>
 </resources>
