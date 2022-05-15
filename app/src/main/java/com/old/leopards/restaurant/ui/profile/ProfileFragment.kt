@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.databinding.FragmentProfileBinding
 
@@ -41,7 +42,7 @@ class ProfileFragment : Fragment() {
             }
 
             buttonExitProfile.setOnClickListener {
-                // TODO
+                findNavController().navigate(R.id.action_navigation_profile_to_startFragment)
             }
         }
     }

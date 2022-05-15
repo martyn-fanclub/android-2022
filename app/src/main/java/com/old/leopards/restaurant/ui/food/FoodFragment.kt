@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.databinding.FragmentFoodBinding
 import com.old.leopards.restaurant.models.Food
 import kotlinx.coroutines.flow.collect
@@ -29,6 +30,7 @@ class FoodFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
         _binding = FragmentFoodBinding.inflate(inflater, container, false)
         return binding.root
     }
