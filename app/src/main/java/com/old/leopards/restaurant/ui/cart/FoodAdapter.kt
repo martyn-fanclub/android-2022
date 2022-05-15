@@ -36,10 +36,11 @@ class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val minusButton: Button = itemView.findViewById(R.id.cart_item_minus)
 
     fun bind(foodEntry: Pair<Food, Int>) {
-        val food = foodEntry.first;
+        val food = foodEntry.first
         titleTextView.text = food.title
         descriptionTextView.text = food.description
-        priceTextView.text = "${foodEntry.second}*${food.price} ₽"
+        priceTextView.text =
+            itemView.context.getString(R.string.price_sum_template, foodEntry.second, food.price)
         weightTextView.text = food.title
 
         plusButton.setOnClickListener {

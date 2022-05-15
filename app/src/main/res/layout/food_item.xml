@@ -62,7 +62,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:backgroundTint="@color/secondary"
-                android:text="@string/button_price_default"
+                android:text="@string/price_template"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

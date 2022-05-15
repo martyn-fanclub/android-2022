@@ -23,7 +23,7 @@ class FoodFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val profileViewModel: FoodViewModel by viewModels<FoodViewModel>()
+    private val profileViewModel: FoodViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
