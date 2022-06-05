@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.authorization.RegistrationFragment">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/secondary"
+        android:scaleType="fitXY"
+        tools:layout_editor_absoluteX="-52dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
+
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/HeadingTextBlack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Имя"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="6dp"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/btn_default"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="10dp"
+                style="@style/MainTextLight"
+                android:textColor="@color/neutral"
+                android:text="Введите имя"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+        <TextView
+            android:id="@+id/textVie1w"
+            style="@style/HeadingTextBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Пароль"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="6dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextTextPerson1Name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/btn_default"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="10dp"
+            style="@style/MainTextLight"
+            android:textColor="@color/neutral"
+            android:text="Введите пароль"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/textVie1w2"
+            style="@style/HeadingTextBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Повтор пароля"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="6dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonNam3e"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/btn_default"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="10dp"
+            style="@style/MainTextLight"
+            android:textColor="@color/neutral"
+            android:text="Введите повтор пароля"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+        <TextView
+            android:id="@+id/te2xtView"
+            style="@style/HeadingTextBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Эл. Почта"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="6dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextTex2tPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/btn_default"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="10dp"
+            style="@style/MainTextLight"
+            android:textColor="@color/neutral"
+            android:text="Введите эл. почту"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_height="wrap_content"
+            android:text="добавить фото"
+            android:layout_marginTop="10dp"
+            android:layout_width="190dp"
+            android:backgroundTint="@color/primary_variant"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_marginTop="230dp"
+            android:id="@+id/btn_login"
+            style="@style/RegistrationButton"
+            android:text="зарегистрироваться" />
+
+
+
+
+    </LinearLayout>
+
+    </FrameLayout>
