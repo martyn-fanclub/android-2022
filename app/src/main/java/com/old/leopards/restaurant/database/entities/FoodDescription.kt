@@ -6,11 +6,23 @@ import androidx.room.ForeignKey
 import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "food_descriptions", foreignKeys = [
-    ForeignKey(entity = FoodItem::class, parentColumns = ["id"], childColumns = ["food_item_id"], onDelete = CASCADE),
-    ForeignKey(entity = Language::class, parentColumns = ["id"], childColumns = ["language_id"], onDelete = CASCADE)
-])
-data class FoodDescription (
+@Entity(
+    tableName = "food_descriptions", foreignKeys = [
+        ForeignKey(
+            entity = FoodItem::class,
+            parentColumns = ["id"],
+            childColumns = ["food_item_id"],
+            onDelete = CASCADE
+        ),
+        ForeignKey(
+            entity = Language::class,
+            parentColumns = ["id"],
+            childColumns = ["language_id"],
+            onDelete = CASCADE
+        )
+    ]
+)
+data class FoodDescription(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     @ColumnInfo(name = "language_id")
@@ -19,4 +31,4 @@ data class FoodDescription (
     val foodItemId: Int,
     val name: String,
     val description: String
-) {}
+)

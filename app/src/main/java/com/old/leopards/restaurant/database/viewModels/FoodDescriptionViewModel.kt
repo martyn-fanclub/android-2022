@@ -8,11 +8,12 @@ import com.old.leopards.restaurant.database.RestaurantDatabase
 import com.old.leopards.restaurant.database.entities.FoodDescription
 import com.old.leopards.restaurant.database.repositories.FoodDescriptionRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class FoodDescriptionViewModel(application: Application): AndroidViewModel(application) {
+class FoodDescriptionViewModel(application: Application) : AndroidViewModel(application) {
 
-    val getAllFoodDescriptions: LiveData<List<FoodDescription>>
+    val getAllFoodDescriptions: Flow<List<FoodDescription>>
     private val repository: FoodDescriptionRepository
 
     init {

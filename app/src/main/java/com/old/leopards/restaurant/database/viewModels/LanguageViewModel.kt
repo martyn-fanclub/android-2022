@@ -8,11 +8,12 @@ import com.old.leopards.restaurant.database.RestaurantDatabase
 import com.old.leopards.restaurant.database.entities.Language
 import com.old.leopards.restaurant.database.repositories.LanguageRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class LanguageViewModel(application: Application): AndroidViewModel(application) {
+class LanguageViewModel(application: Application) : AndroidViewModel(application) {
 
-    val getAllLanguages: LiveData<List<Language>>
+    val getAllLanguages: Flow<List<Language>>
     private val repository: LanguageRepository
 
     init {

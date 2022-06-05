@@ -1,11 +1,11 @@
 package com.old.leopards.restaurant.database.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.old.leopards.restaurant.database.entities.FoodDescription
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FoodDescriptionDao {
@@ -14,5 +14,5 @@ interface FoodDescriptionDao {
     suspend fun addFoodDescription(foodDescription: FoodDescription)
 
     @Query("SELECT * FROM food_descriptions ORDER BY id ASC")
-    fun getAllFoodDescriptions(): LiveData<List<FoodDescription>>
+    fun getAllFoodDescriptions(): Flow<List<FoodDescription>>
 }

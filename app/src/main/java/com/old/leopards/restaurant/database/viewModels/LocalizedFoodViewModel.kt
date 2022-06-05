@@ -4,20 +4,19 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.old.leopards.restaurant.database.RestaurantDatabase
-import com.old.leopards.restaurant.database.entities.FoodItem
 import com.old.leopards.restaurant.database.entities.LocalizedFood
-import com.old.leopards.restaurant.database.repositories.FoodItemRepository
 import com.old.leopards.restaurant.database.repositories.LocalizedFoodRepository
+import kotlinx.coroutines.flow.Flow
 import java.util.*
 
-class LocalizedFoodViewModel(application: Application): AndroidViewModel(application) {
+class LocalizedFoodViewModel(application: Application) : AndroidViewModel(application) {
 
-    val getLocalizedFoodByLanguageId: LiveData<List<LocalizedFood>>
+    val getLocalizedFoodByLanguageId: Flow<List<LocalizedFood>>
     private val repository: LocalizedFoodRepository
 
     init {
         val localizedFoodDao = RestaurantDatabase.getDatabase(application).localizedFoodDao()
-        val lang : Int
+        val lang: Int
         if (Locale.getDefault().language.equals("ru")) {
             lang = 0
         } else {
