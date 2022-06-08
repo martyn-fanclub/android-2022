@@ -105,7 +105,7 @@
             android:maxLines="1"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@id/cart_item_description"
-            app:layout_constraintEnd_toStartOf="@id/cart_item_plus"
+            app:layout_constraintEnd_toStartOf="@id/cart_item_minus"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toTopOf="@id/guideline_top"
@@ -128,13 +128,13 @@
             app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintLeft_toLeftOf="@id/guideline_left"
-            app:layout_constraintRight_toLeftOf="@id/cart_item_plus"
+            app:layout_constraintRight_toLeftOf="@id/cart_item_minus"
             app:layout_constraintTop_toBottomOf="@id/cart_item_weight"
             app:layout_constraintVertical_bias="1"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus." />
 
         <Button
-            android:id="@+id/cart_item_plus"
+            android:id="@+id/cart_item_minus"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_marginRight="8dp"
@@ -144,15 +144,15 @@
             android:insetBottom="0dp"
             android:padding="0dp"
             android:textColor="@color/black"
-            android:text="@string/plus"
+            android:text="@string/minus"
             app:layout_constraintBottom_toBottomOf="@id/guideline_bottom"
-            app:layout_constraintEnd_toStartOf="@id/cart_item_minus"
+            app:layout_constraintEnd_toStartOf="@id/cart_item_plus"
             app:layout_constraintLeft_toRightOf="@id/guideline_left"
             app:layout_constraintTop_toBottomOf="@id/cart_item_price"
             app:layout_constraintVertical_bias="1" />
 
         <Button
-            android:id="@+id/cart_item_minus"
+            android:id="@+id/cart_item_plus"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:backgroundTint="@color/secondary"
@@ -161,11 +161,11 @@
             android:insetBottom="0dp"
             android:textColor="@color/black"
             android:padding="0dp"
-            android:text="@string/minus"
+            android:text="@string/plus"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@id/guideline_bottom"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
-            app:layout_constraintLeft_toRightOf="@id/cart_item_plus"
+            app:layout_constraintLeft_toRightOf="@id/cart_item_minus"
             app:layout_constraintTop_toBottomOf="@id/cart_item_price"
             app:layout_constraintVertical_bias="1.0" />
 

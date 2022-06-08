@@ -1,5 +1,6 @@
 package com.old.leopards.restaurant.ui.cart
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,8 +33,8 @@ class FoodViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val descriptionTextView: TextView = itemView.findViewById(R.id.cart_item_description)
     private val priceTextView: TextView = itemView.findViewById(R.id.cart_item_price)
     private val weightTextView: TextView = itemView.findViewById(R.id.cart_item_weight)
-    private val plusButton: Button = itemView.findViewById(R.id.cart_item_plus)
     private val minusButton: Button = itemView.findViewById(R.id.cart_item_minus)
+    private val plusButton: Button = itemView.findViewById(R.id.cart_item_plus)
 
     fun bind(foodEntry: Pair<Food, Int>) {
         val food = foodEntry.first
