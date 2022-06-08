@@ -3,8 +3,11 @@ package com.old.leopards.restaurant.ui.authorization
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.old.leopards.restaurant.R
+import com.old.leopards.restaurant.database.RestaurantDatabase
+import com.old.leopards.restaurant.database.viewModels.UserViewModel
 import com.old.leopards.restaurant.databinding.FragmentLoginBinding
 
 /**
@@ -14,6 +17,7 @@ import com.old.leopards.restaurant.databinding.FragmentLoginBinding
  */
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
+    private lateinit var _UserViewModel: UserViewModel
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -36,9 +40,12 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = findNavController()
+        _UserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         // TODO
         binding.btnLogin.setOnClickListener {
+            var rd: RestaurantDatabase = RestaurantDatabase.getDatabase(null)
+            rd.
             navController.navigate(R.id.action_login_fragment_to_navigation_food)
         }
     }
