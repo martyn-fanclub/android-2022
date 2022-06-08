@@ -5,17 +5,39 @@
     <string name="title_cart">Корзина</string>
     <string name="title_profile">Профиль</string>
     <string name="title_notifications">Уведомления</string>
-    <string name="description_cart">Это ваша корзина!</string>
-    <string name="profile_name">Абоба Абиба</string>
-    <string name="profile_email">собака@яндекс.ру</string>
-    <string name="description_food">Это секция с едой!</string>
-    <string name="profile_change_button_name">Изменить</string>
-    <string name="profile_exit_button_name">Выйти</string>
-    <string name="profile_photo_description">Фотография профиля</string>
-    <string name="description_profile">Это ваш профиль!</string>
+
+    <!-- Food recources -->
+    <!-- <string name="description_food">Это секция с едой!</string> -->
+    <string name="total">Итого:</string>
+    <string name="food_weight_template">%1s гр.</string>
+
+    <!-- Cart recources -->
+    <!-- <string name="description_cart">Это ваша корзина!</string> -->
     <string name="pay_btn">оплатить</string>
     <string name="change_address">изменить адрес</string>
     <string name="delete_all">удалить все</string>
-    <string name="total">Итого:</string>
-    <string name="food_weight_template">%1s гр.</string>
+
+    <!-- Profile resources -->
+    <!-- <string name="description_profile">Это ваш профиль!</string> -->
+    <string name="profile_name">Абоба Абиба</string>
+    <string name="profile_email">собака@яндекс.ру</string>
+    <string name="profile_edit_btn">Изменить</string>
+    <string name="profile_exit_button">Выйти</string>
+    <string name="profile_photo_description">Фотография профиля</string>
+    <string name="profile_edit_name">Имя</string>
+    <string name="profile_input_name">Введите имя</string>
+    <string name="profile_edit_password">Пароль</string>
+    <string name="profile_input_password">Введите пароль</string>
+    <string name="profile_edit_password_again">Повтор пароля</string>
+    <string name="profile_input_password_again">Введите пароль снова</string>
+    <string name="profile_edit_email">Эл. почта</string>
+    <string name="profile_input_email">Введите эл. почту</string>
+    <string name="profile_add_photo">Добавить фото</string>
+    <string name="profile_signup">Зарегистрироваться</string>
+    <string name="profile_save_editing">Сохранить</string>
+    <string name="profile_cancel_editing">Отмена</string>
+    <string name="profile_signin">Войти</string>
+    <string name="profile_edit">Редактирование профиля</string>
+
+    <!-- Common -->
 </resources>

@@ -31,15 +31,16 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val navController = findNavController()
 
         //TODO
         binding.apply {
-            buttonChangeProfile.setOnClickListener {
-                // TODO
+            btnChangeProfile.setOnClickListener {
+                navController.navigate(R.id.action__navigation_profile__to__change_fragment)
             }
 
-            buttonExitProfile.setOnClickListener {
-                findNavController().navigate(R.id.action_navigation_profile_to_startFragment)
+            btnExitProfile.setOnClickListener {
+                navController.navigate(R.id.action__navigation_profile__to__start_fragment)
             }
         }
     }

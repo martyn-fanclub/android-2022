@@ -6,7 +6,7 @@
     tools:context=".ui.authorization.StartFragment">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/reg_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/background_auth"
@@ -23,11 +23,12 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogin"
                 style="@style/RegistrationButton"
-                android:text="войти" />
+                android:text="@string/profile_signin" />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnReg"
                 style="@style/RegistrationButton"
-                android:text="зарегистрироваться" />
+                android:text="@string/profile_signup" />
+
         </LinearLayout>
 
-    </FrameLayout>
+</FrameLayout>

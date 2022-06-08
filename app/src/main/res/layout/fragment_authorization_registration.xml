@@ -7,7 +7,7 @@
     tools:context=".ui.authorization.RegistrationFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/reg_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/secondary"
@@ -23,19 +23,18 @@
 
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/reg_name"
                 style="@style/HeadingTextBlack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Имя"
+                android:text="@string/profile_edit_name"
                 android:layout_marginTop="40dp"
                 android:layout_marginStart="6dp"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/reg_input_name"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="2dp"
@@ -44,104 +43,99 @@
                 android:paddingHorizontal="10dp"
                 style="@style/MainTextLight"
                 android:textColor="@color/neutral"
-                android:text="Введите имя"
+                android:hint="@string/profile_input_name"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
-
+                app:layout_constraintTop_toBottomOf="@+id/reg_person_name" />
 
         <TextView
-            android:id="@+id/textVie1w"
+            android:id="@+id/reg_password"
             style="@style/HeadingTextBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Пароль"
+            android:text="@string/profile_edit_password"
             android:layout_marginTop="10dp"
             android:layout_marginStart="6dp"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
         <EditText
-            android:id="@+id/editTextTextPerson1Name"
+            android:id="@+id/reg_input_password"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
             android:background="@drawable/btn_default"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:paddingHorizontal="10dp"
             style="@style/MainTextLight"
             android:textColor="@color/neutral"
-            android:text="Введите пароль"
+            android:hint="@string/profile_input_password"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/reg_password" />
+
         <TextView
-            android:id="@+id/textVie1w2"
+            android:id="@+id/reg_password_again"
             style="@style/HeadingTextBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Повтор пароля"
+            android:text="@string/profile_edit_password_again"
             android:layout_marginTop="10dp"
             android:layout_marginStart="6dp"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
         <EditText
-            android:id="@+id/editTextTextPersonNam3e"
+            android:id="@+id/reg_input_password_again"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
             android:background="@drawable/btn_default"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:paddingHorizontal="10dp"
             style="@style/MainTextLight"
             android:textColor="@color/neutral"
-            android:text="Введите повтор пароля"
+            android:hint="@string/profile_input_password_again"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/reg_password_again" />
+
         <TextView
-            android:id="@+id/te2xtView"
+            android:id="@+id/reg_email"
             style="@style/HeadingTextBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Эл. Почта"
+            android:text="@string/profile_edit_email"
             android:layout_marginTop="10dp"
             android:layout_marginStart="6dp"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
         <EditText
-            android:id="@+id/editTextTex2tPersonName"
+            android:id="@+id/reg_input_email"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
             android:background="@drawable/btn_default"
-            android:inputType="textPersonName"
+            android:inputType="textEmailAddress"
             android:paddingHorizontal="10dp"
             style="@style/MainTextLight"
             android:textColor="@color/neutral"
-            android:text="Введите эл. почту"
+            android:hint="@string/profile_input_email"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/reg_email" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/reg_add_photo_btn"
             android:layout_height="wrap_content"
-            android:text="добавить фото"
+            android:text="@string/profile_add_photo"
             android:layout_marginTop="10dp"
             android:layout_width="190dp"
             android:backgroundTint="@color/primary_variant"/>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_reg"
             android:layout_marginTop="230dp"
-            android:id="@+id/btn_login"
             style="@style/RegistrationButton"
-            android:text="зарегистрироваться" />
-
-
-
+            android:text="@string/profile_signup" />
 
     </LinearLayout>
 
-    </FrameLayout>
+</FrameLayout>

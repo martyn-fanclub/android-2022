@@ -41,10 +41,10 @@ class StartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val navController = findNavController()
         binding.btnLogin.setOnClickListener {
-            navController.navigate(R.id.action_startFragment_to_loginFragment2)
+            navController.navigate(R.id.action__start_fragment__to__login_fragment)
         }
         binding.btnReg.setOnClickListener {
-            navController.navigate(R.id.action_startFragment_to_registrationFragment2)
+            navController.navigate(R.id.action__start_fragment__to__registration_fragment)
         }
     }
 }

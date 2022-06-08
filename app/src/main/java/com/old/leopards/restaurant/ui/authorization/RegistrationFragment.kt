@@ -41,9 +41,9 @@ class RegistrationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = findNavController()
-        binding.btnLogin.setOnClickListener {
+        binding.btnReg.setOnClickListener {
             activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
-            navController.navigate(R.id.action_registrationFragment_to_navigation_food2)
+            navController.navigate(R.id.action__registration_fragment__to__navigation_food)
         }
     }
 }

@@ -4,21 +4,43 @@
     <string name="title_cart">Shopping card</string>
     <string name="title_profile">Profile</string>
     <string name="title_notifications">Notifications</string>
-    <string name="description_food">This is a food section!</string>
-    <string name="description_cart">This is a shopping cart!</string>
-    <string name="profile_name">Aboba Abiba</string>
-    <string name="profile_email">sobaka@yandex.ru</string>
-    <string name="profile_change_button_name">Change</string>
-    <string name="profile_exit_button_name">Exit</string>
-    <string name="profile_photo_description">Profile photo</string>
-    <string name="description_profile">This is your profile!</string>
-    <string name="plus" translatable="false">+</string>
-    <string name="minus" translatable="false">-</string>
-    <string name="pay_btn">pay</string>
-    <string name="change_address">change\naddress</string>
-    <string name="delete_all">remove\nall</string>
+
+    <!-- Food recources -->
+    <!-- <string name="description_food">This is a food section!</string> -->
     <string name="total">Total:</string>
     <string name="food_weight_template">%1$s g.</string>
     <string name="price_sum_template" translatable="false">%1$d * %2$s ₽</string>
     <string name="price_template" translatable="false">%1$s ₽</string>
+
+    <!-- Cart recources -->
+    <!-- <string name="description_cart">This is a shopping cart!</string> -->
+    <string name="pay_btn">pay</string>
+    <string name="change_address">change\naddress</string>
+    <string name="delete_all">remove\nall</string>
+
+    <!-- Profile resources -->
+    <!-- <string name="description_profile">This is your profile!</string> -->
+    <string name="profile_name">Aboba Abiba</string>
+    <string name="profile_email">sobaka@yandex.ru</string>
+    <string name="profile_edit_btn">Change</string>
+    <string name="profile_exit_button">Exit</string>
+    <string name="profile_photo_description">Profile photo</string>
+    <string name="profile_edit_name">Name</string>
+    <string name="profile_input_name">Input name</string>
+    <string name="profile_edit_password">Password</string>
+    <string name="profile_input_password">Input password</string>
+    <string name="profile_edit_password_again">Replay password</string>
+    <string name="profile_input_password_again">Input password again</string>
+    <string name="profile_edit_email">Email</string>
+    <string name="profile_input_email">Input email</string>
+    <string name="profile_add_photo">Add photo</string>
+    <string name="profile_signup">Signup</string>
+    <string name="profile_save_editing">Save</string>
+    <string name="profile_cancel_editing">Cancel</string>
+    <string name="profile_signin">Signin</string>
+    <string name="profile_edit">Edit profile</string>
+
+    <!-- Common -->
+    <string name="plus" translatable="false">+</string>
+    <string name="minus" translatable="false">-</string>
 </resources>
