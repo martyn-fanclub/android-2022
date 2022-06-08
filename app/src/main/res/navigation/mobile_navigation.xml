@@ -23,10 +23,10 @@
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action__navigation_profile__to__change_fragment"
+            android:id="@+id/action_navigation_profile_to_change_fragment"
             app:destination="@id/change_fragment" />
         <action
-            android:id="@+id/action__navigation_profile__to__start_fragment"
+            android:id="@+id/action_navigation_profile_to_start_fragment"
             app:destination="@id/start_fragment" />
     </fragment>
     <fragment
@@ -35,40 +35,40 @@
         android:label="fragment_change_profile"
         tools:layout="@layout/fragment_change_profile" >
         <action
-            android:id="@+id/action__change_fragment__to_save"
+            android:id="@+id/action_change_fragment_to_save"
             app:destination="@id/navigation_profile" />
         <action
-            android:id="@+id/action__change_fragment__to_cancel"
+            android:id="@+id/action_change_fragment_to_cancel"
             app:destination="@id/navigation_profile" />
     </fragment>
     <fragment
         android:id="@+id/start_fragment"
         android:name="com.old.leopards.restaurant.ui.authorization.StartFragment"
         android:label="fragment_authorization_start"
-        tools:layout="@layout/fragment_authorization_start" >
+        tools:layout="@layout/fragment_start" >
         <action
-            android:id="@+id/action__start_fragment__to__registration_fragment"
+            android:id="@+id/action_start_fragment_to_registration_fragment"
             app:destination="@id/registration_fragment" />
         <action
-            android:id="@+id/action__start_fragment__to__login_fragment"
+            android:id="@+id/action_start_fragment_to_login_fragment"
             app:destination="@id/login_fragment" />
     </fragment>
     <fragment
         android:id="@+id/login_fragment"
         android:name="com.old.leopards.restaurant.ui.authorization.LoginFragment"
         android:label="fragment_authorization_login"
-        tools:layout="@layout/fragment_authorization_login" >
+        tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action__login_fragment__to__navigation_food"
+            android:id="@+id/action_login_fragment_to_navigation_food"
             app:destination="@id/navigation_food" />
     </fragment>
     <fragment
         android:id="@+id/registration_fragment"
         android:name="com.old.leopards.restaurant.ui.authorization.RegistrationFragment"
         android:label="fragment_authorization_registration"
-        tools:layout="@layout/fragment_authorization_registration" >
+        tools:layout="@layout/fragment_registration" >
         <action
-            android:id="@+id/action__registration_fragment__to__navigation_food"
+            android:id="@+id/action_registration_fragment_to_navigation_food"
             app:destination="@id/navigation_food" />
     </fragment>
 

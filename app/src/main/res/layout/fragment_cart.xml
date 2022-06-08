@@ -33,7 +33,7 @@
             android:textColor="@color/black"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:text="Итого" />
+            android:text="@string/total" />
 
         <TextView
             android:id="@+id/price"
@@ -44,7 +44,7 @@
             android:fontFamily="@font/merriweather_medium"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:text="150р" />
+            android:text="150р" /> <!-- TODO -->
 
         <TextView
             android:id="@+id/address"
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/total"
-            android:text="г. Санкт-Петербург ул. Харченко 16, к 232" />
+            android:text="г. Санкт-Петербург ул. Харченко 16, к 232" /> <!-- TODO -->
 
         <LinearLayout
             android:id="@+id/row_buttons"

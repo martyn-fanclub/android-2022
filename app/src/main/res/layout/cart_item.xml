@@ -77,7 +77,7 @@
             app:layout_constraintStart_toStartOf="@id/guideline_left"
             app:layout_constraintTop_toTopOf="@id/guideline_top"
             app:layout_constraintVertical_bias="0"
-            tools:text="Ризотто с вареными яйцами " />
+            tools:text="Ризотто с вареными яйцами " /> <!-- TODO -->
 
         <TextView
             android:id="@+id/cart_item_price"

@@ -5,7 +5,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.old.leopards.restaurant.R
-import com.old.leopards.restaurant.databinding.FragmentAuthorizationLoginBinding
+import com.old.leopards.restaurant.databinding.FragmentLoginBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -13,7 +13,7 @@ import com.old.leopards.restaurant.databinding.FragmentAuthorizationLoginBinding
  * create an instance of this fragment.
  */
 class LoginFragment : Fragment() {
-    private var _binding: FragmentAuthorizationLoginBinding? = null
+    private var _binding: FragmentLoginBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -28,7 +28,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAuthorizationLoginBinding.inflate(inflater, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -36,8 +36,10 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = findNavController()
+
+        // TODO
         binding.btnLogin.setOnClickListener {
-            navController.navigate(R.id.action__login_fragment__to__navigation_food)
+            navController.navigate(R.id.action_login_fragment_to_navigation_food)
         }
     }
 }
