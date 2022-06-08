@@ -2,13 +2,10 @@ package com.old.leopards.restaurant.ui.authorization
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
-import androidx.core.view.marginBottom
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.adapter.FragmentViewHolder
 import com.old.leopards.restaurant.R
-import com.old.leopards.restaurant.databinding.FragmentAuthorizationStartBinding
+import com.old.leopards.restaurant.databinding.FragmentStartBinding
 
 /**
  * A simple [Fragment] subclass.
@@ -16,7 +13,7 @@ import com.old.leopards.restaurant.databinding.FragmentAuthorizationStartBinding
  * create an instance of this fragment.
  */
 class StartFragment : Fragment() {
-    private var _binding: com.old.leopards.restaurant.databinding.FragmentAuthorizationStartBinding? =
+    private var _binding: com.old.leopards.restaurant.databinding.FragmentStartBinding? =
         null
 
     // This property is only valid between onCreateView and
@@ -32,7 +29,7 @@ class StartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentAuthorizationStartBinding.inflate(inflater, container, false)
+        _binding = FragmentStartBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -40,11 +37,15 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val navController = findNavController()
-        binding.btnLogin.setOnClickListener {
-            navController.navigate(R.id.action__start_fragment__to__login_fragment)
-        }
-        binding.btnReg.setOnClickListener {
-            navController.navigate(R.id.action__start_fragment__to__registration_fragment)
+
+        binding.apply {
+            btnLogin.setOnClickListener {
+                navController.navigate(R.id.action_start_fragment_to_login_fragment)
+            }
+
+            btnReg.setOnClickListener {
+                navController.navigate(R.id.action_start_fragment_to_registration_fragment)
+            }
         }
     }
 }

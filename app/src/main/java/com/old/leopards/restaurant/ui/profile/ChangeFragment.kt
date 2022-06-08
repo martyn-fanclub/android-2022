@@ -41,10 +41,12 @@ class ChangeFragment : Fragment() {
         val navController = findNavController()
 
         binding.apply {
+            // TODO
             btnSaveProfile.setOnClickListener {
                 navController.navigate(R.id.navigation_profile)
             }
 
+            // TODO
             btnCancelProfile.setOnClickListener {
                 navController.navigate(R.id.navigation_profile)
             }

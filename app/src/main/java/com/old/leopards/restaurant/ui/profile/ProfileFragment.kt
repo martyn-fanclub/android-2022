@@ -36,11 +36,11 @@ class ProfileFragment : Fragment() {
         //TODO
         binding.apply {
             btnChangeProfile.setOnClickListener {
-                navController.navigate(R.id.action__navigation_profile__to__change_fragment)
+                navController.navigate(R.id.action_navigation_profile_to_change_fragment)
             }
 
             btnExitProfile.setOnClickListener {
-                navController.navigate(R.id.action__navigation_profile__to__start_fragment)
+                navController.navigate(R.id.action_navigation_profile_to_start_fragment)
             }
         }
     }
