@@ -30,7 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
-            android:id="@+id/login_person_name"
+            android:id="@+id/edit_name"
             style="@style/HeadingTextBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <EditText
-            android:id="@+id/login_input_person_name"
+            android:id="@+id/edit_name_input"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
@@ -52,10 +52,10 @@
             android:textColor="@color/black"
             android:hint="@string/profile_input_name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_person_name" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_name" />
 
         <TextView
-            android:id="@+id/textVie1w"
+            android:id="@+id/edit_password"
             style="@style/HeadingTextBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,21 +66,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <EditText
-            android:id="@+id/editTextTextPerson1Name"
+            android:id="@+id/edit_password_input"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
             android:background="@drawable/btn_change_profile_trait"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:paddingHorizontal="10dp"
             style="@style/MainTextLight"
             android:textColor="@color/black"
             android:hint="@string/profile_input_password"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_person_name" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_password" />
 
         <TextView
-            android:id="@+id/textVie1w2"
+            android:id="@+id/edit_password_again"
             style="@style/HeadingTextBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,21 +91,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <EditText
-            android:id="@+id/editTextTextPersonNam3e"
+            android:id="@+id/edit_password_again_input"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
             android:background="@drawable/btn_change_profile_trait"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:paddingHorizontal="10dp"
             style="@style/MainTextLight"
             android:textColor="@color/black"
             android:hint="@string/profile_input_password_again"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_person_name" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_password_again" />
 
         <TextView
-            android:id="@+id/te2xtView"
+            android:id="@+id/edit_email"
             style="@style/HeadingTextBlack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <EditText
-            android:id="@+id/editTextTex2tPersonName"
+            android:id="@+id/edit_email_input"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
@@ -127,7 +127,7 @@
             android:textColor="@color/black"
             android:hint="@string/profile_input_email"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_person_name" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_email" />
 
         <Button
             android:id="@+id/btn_add_photo"

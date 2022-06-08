@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Application recources -->
     <string name="app_name">Ресторан</string>
     <string name="title_food">Еда</string>
     <string name="title_cart">Корзина</string>
     <string name="title_profile">Профиль</string>
     <string name="title_notifications">Уведомления</string>
+
+    <!-- Authorization recources -->
+    <string name="profile_signin">Войти</string>
+    <string name="profile_signup">Зарегистрироваться</string>
 
     <!-- Food recources -->
     <!-- <string name="description_food">Это секция с едой!</string> -->
@@ -33,11 +38,11 @@
     <string name="profile_edit_email">Эл. почта</string>
     <string name="profile_input_email">Введите эл. почту</string>
     <string name="profile_add_photo">Добавить фото</string>
-    <string name="profile_signup">Зарегистрироваться</string>
     <string name="profile_save_editing">Сохранить</string>
     <string name="profile_cancel_editing">Отмена</string>
-    <string name="profile_signin">Войти</string>
     <string name="profile_edit">Редактирование профиля</string>
 
     <!-- Common -->
+    <string name="invalid_data">Некорректные или неполные данные!</string>
+    <string name="success">Успешно!</string>
 </resources>

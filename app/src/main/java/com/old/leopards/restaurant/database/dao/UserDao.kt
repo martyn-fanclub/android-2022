@@ -1,9 +1,6 @@
 package com.old.leopards.restaurant.database.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.old.leopards.restaurant.database.entities.User
 import kotlinx.coroutines.flow.Flow
 
@@ -11,8 +8,14 @@ import kotlinx.coroutines.flow.Flow
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addUser(user: User)
+    suspend fun createUser(user: User)
 
     @Query("SELECT * FROM users ORDER BY id ASC")
     fun getAllUsers(): Flow<List<User>>
+
+    @Query("SELECT * FROM users WHERE login = :name")
+    fun getUser(name: String): User
+
+    @Update(onConflict = OnConflictStrategy.IGNORE)
+    fun updateUser(user: User)
 }

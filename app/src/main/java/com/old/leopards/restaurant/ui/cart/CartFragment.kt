@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.old.leopards.restaurant.api.CurrencyService
 import com.old.leopards.restaurant.databinding.FragmentCartBinding
 import kotlinx.coroutines.flow.collect
 import java.util.*

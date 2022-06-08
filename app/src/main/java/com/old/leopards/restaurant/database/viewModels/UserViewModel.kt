@@ -2,7 +2,6 @@ package com.old.leopards.restaurant.database.viewModels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.old.leopards.restaurant.database.RestaurantDatabase
 import com.old.leopards.restaurant.database.entities.User
@@ -22,10 +21,17 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         getAllUsers = repository.getAllUsers
     }
 
-    fun addUser(user: User) {
+    fun createUser(user: User) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addUser(user)
+            repository.createUser(user)
         }
     }
 
+    fun getUser(name: String): User {
+        return repository.getUser(name)
+    }
+
+    fun updateUser(user: User) {
+        repository.updateUser(user)
+    }
 }

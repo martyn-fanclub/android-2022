@@ -11,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.old.leopards.restaurant.R
-import com.old.leopards.restaurant.database.RestaurantDatabase
 import com.old.leopards.restaurant.databinding.FragmentFoodBinding
 import com.old.leopards.restaurant.models.Food
 import kotlinx.coroutines.flow.collect
