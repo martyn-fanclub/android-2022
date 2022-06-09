@@ -8,10 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.old.leopards.restaurant.api.CurrencyService
 import com.old.leopards.restaurant.databinding.FragmentCartBinding
+import com.old.leopards.restaurant.models.Food
 import kotlinx.coroutines.flow.collect
-import java.util.*
 
 class CartFragment : Fragment() {
 
@@ -35,7 +34,7 @@ class CartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = FoodAdapter(Collections.emptyList())
+        val adapter = FoodAdapter { item -> onClick(item) }
         binding.cartRv.layoutManager = LinearLayoutManager(context)
         binding.cartRv.adapter = adapter
 
@@ -43,11 +42,10 @@ class CartFragment : Fragment() {
             cartViewModel.cartUiState.collect {
                 when (it) {
                     is CartViewModel.CartUiState.Empty -> {
-                        adapter.food.clear()
+                        adapter.currentList.clear()
                     }
                     is CartViewModel.CartUiState.HasFood -> {
-                        adapter.food = it.food
-                        adapter.notifyDataSetChanged()
+                        adapter.submitList(it.food)
                     }
                 }
             }
@@ -57,6 +55,10 @@ class CartFragment : Fragment() {
         //TODO
         binding.apply {
         }
+    }
+
+    fun onClick(foodEntry: Pair<Food, Int>) {
+
     }
 
     override fun onDestroyView() {
