@@ -39,9 +39,15 @@ class CartViewModel : ViewModel() {
                 when (currencyState.value) {
                     is CurrencyUiState.Success -> {
                         val currency = (currencyState.value as CurrencyUiState.Success).currency;
-                        Log.d("Success:", "Data was fetched: ${currency.results[cur]?.value} ${currency.results[cur]?.to}")
+                        Log.d(
+                            "Success:",
+                            "Data was fetched: ${currency.results[cur]?.value} ${currency.results[cur]?.to}"
+                        )
                     }
-                    is CurrencyUiState.Error -> Log.e("Error", "${(currencyState.value as CurrencyUiState.Error).exception}")
+                    is CurrencyUiState.Error -> Log.e(
+                        "Error",
+                        "${(currencyState.value as CurrencyUiState.Error).exception}"
+                    )
                 }
             } catch (e: Exception) {
                 Log.e("Error", "$e")

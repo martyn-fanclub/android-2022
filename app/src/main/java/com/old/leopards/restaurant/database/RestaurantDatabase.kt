@@ -4,14 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.Transaction
 import com.old.leopards.restaurant.database.dao.*
 import com.old.leopards.restaurant.database.entities.FoodDescription
 import com.old.leopards.restaurant.database.entities.FoodItem
 import com.old.leopards.restaurant.database.entities.Language
 import com.old.leopards.restaurant.database.entities.User
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.runBlocking
 
 @Database(
     entities = [User::class, FoodDescription::class,
@@ -39,7 +36,10 @@ abstract class RestaurantDatabase : RoomDatabase() {
                     context.applicationContext,
                     RestaurantDatabase::class.java,
                     "restaurant_database"
-                ).build()
+                )
+                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 return instance
             }
