@@ -34,10 +34,10 @@ class EditProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
-        binding.editNameInput.hint = Global.currentUser.login
-        binding.editEmailInput.hint = Global.currentUser.email
-        binding.editPasswordInput.hint = Global.currentUser.password
-        binding.editPasswordAgainInput.hint = Global.currentUser.password
+        binding.editNameInput.setText(Global.currentUser.login)
+        binding.editEmailInput.setText(Global.currentUser.email)
+        binding.editPasswordInput.setText(Global.currentUser.password)
+        binding.editPasswordAgainInput.setText(Global.currentUser.password)
         return binding.root
     }
 
@@ -57,29 +57,33 @@ class EditProfileFragment : Fragment() {
 
                 var newUser = Global.currentUser
 
-                if (name.isNotBlank()) {
+                if (name.isNotBlank() && name != Global.currentUser.login) {
                     val user = _UserViewModel.getUserByName(name)
                     if (user == null) {
                         newUser.login = name
                     } else {
                         showText(getString(R.string.name_conflict))
+                        return@setOnClickListener
                     }
                 }
 
-                if (password.isNotBlank()) {
+                if (password.isNotBlank()
+                    && (password != Global.currentUser.password || replyPassword != Global.currentUser.password)) {
                     if (password == replyPassword) {
                         newUser.password = password
                     } else {
                         showText(getString(R.string.password_mismatch))
+                        return@setOnClickListener
                     }
                 }
 
-                if (email.isNotBlank()) {
+                if (email.isNotBlank() && email != Global.currentUser.email) {
                     val user = _UserViewModel.getUserByEmail(email)
                     if (user == null) {
                         newUser.email = email
                     } else {
                         showText(getString(R.string.email_conflict))
+                        return@setOnClickListener
                     }
                 }
 
