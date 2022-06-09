@@ -2,7 +2,6 @@ package com.old.leopards.restaurant.database.viewModels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.old.leopards.restaurant.database.RestaurantDatabase
 import com.old.leopards.restaurant.database.entities.FoodDescription

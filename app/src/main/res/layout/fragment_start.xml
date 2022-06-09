@@ -21,11 +21,11 @@
             android:orientation="vertical">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnLogin"
+                android:id="@+id/btn_login"
                 style="@style/RegistrationButton"
                 android:text="@string/profile_signin" />
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnReg"
+                android:id="@+id/btn_reg"
                 style="@style/RegistrationButton"
                 android:text="@string/profile_signup" />
 

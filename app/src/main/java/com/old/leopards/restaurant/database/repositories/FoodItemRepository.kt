@@ -1,6 +1,5 @@
 package com.old.leopards.restaurant.database.repositories
 
-import androidx.lifecycle.LiveData
 import com.old.leopards.restaurant.database.dao.FoodItemDao
 import com.old.leopards.restaurant.database.entities.FoodItem
 import kotlinx.coroutines.flow.Flow
