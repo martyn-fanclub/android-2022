@@ -39,12 +39,12 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:paddingTop="10dp"
-            android:fontFamily="@font/merriweather_medium"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:text="150р" /> <!-- TODO -->
+            android:fontFamily="@font/merriweather_medium"
+            android:paddingTop="10dp"
+            android:text="150р"
+            android:textColor="@color/black" /> <!-- TODO -->
 
         <TextView
             android:id="@+id/address"

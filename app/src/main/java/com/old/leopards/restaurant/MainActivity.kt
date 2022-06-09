@@ -7,6 +7,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.old.leopards.restaurant.databinding.ActivityMainBinding
+import io.paperdb.Paper
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,5 +34,8 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // Initializing Paper db, which is used for cart view presentation
+        Paper.init(applicationContext)
     }
 }
