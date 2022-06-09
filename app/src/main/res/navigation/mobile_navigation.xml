@@ -23,22 +23,22 @@
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_navigation_profile_to_change_fragment"
-            app:destination="@id/change_fragment" />
+            android:id="@+id/action_navigation_profile_to_edit_profile_fragment"
+            app:destination="@id/edit_profile_fragment" />
         <action
             android:id="@+id/action_navigation_profile_to_start_fragment"
             app:destination="@id/start_fragment" />
     </fragment>
     <fragment
-        android:id="@+id/change_fragment"
-        android:name="com.old.leopards.restaurant.ui.profile.ChangeFragment"
+        android:id="@+id/edit_profile_fragment"
+        android:name="com.old.leopards.restaurant.ui.profile.EditProfileFragment"
         android:label="fragment_change_profile"
-        tools:layout="@layout/fragment_change_profile" >
+        tools:layout="@layout/fragment_edit_profile" >
         <action
-            android:id="@+id/action_change_fragment_to_save"
+            android:id="@+id/action_edit_profile_fragment_to_save"
             app:destination="@id/navigation_profile" />
         <action
-            android:id="@+id/action_change_fragment_to_cancel"
+            android:id="@+id/action_edit_profile_fragment_to_cancel"
             app:destination="@id/navigation_profile" />
     </fragment>
     <fragment

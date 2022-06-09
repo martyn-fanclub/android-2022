@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.ChangeFragment">
+    tools:context=".ui.profile.EditProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,8 +13,8 @@
         android:paddingHorizontal="20dp">
 
         <TextView
+            android:id="@+id/username"
             style="@style/HeadingTextMedium"
-            android:id="@+id/text_profile"
             android:layout_width="305dp"
             android:layout_height="70dp"
             android:layout_marginStart="8dp"
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
-            android:background="@drawable/btn_change_profile_trait"
+            android:background="@drawable/btn_edit_profile_trait"
             android:inputType="textPersonName"
             android:paddingHorizontal="10dp"
             style="@style/MainTextLight"
@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
-            android:background="@drawable/btn_change_profile_trait"
+            android:background="@drawable/btn_edit_profile_trait"
             android:inputType="textPassword"
             android:paddingHorizontal="10dp"
             style="@style/MainTextLight"
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
-            android:background="@drawable/btn_change_profile_trait"
+            android:background="@drawable/btn_edit_profile_trait"
             android:inputType="textPassword"
             android:paddingHorizontal="10dp"
             style="@style/MainTextLight"
@@ -120,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp"
-            android:background="@drawable/btn_change_profile_trait"
+            android:background="@drawable/btn_edit_profile_trait"
             android:inputType="textPersonName"
             android:paddingHorizontal="10dp"
             style="@style/MainTextLight"
@@ -144,7 +144,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="50dp"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/btn_change_profile"
+            android:background="@drawable/btn_edit_profile"
             android:text="@string/profile_edit_btn"
             android:textColor="@color/black" />
 

@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.database.entities.User
 import com.old.leopards.restaurant.database.viewModels.UserViewModel
-import com.old.leopards.restaurant.databinding.FragmentChangeProfileBinding
+import com.old.leopards.restaurant.databinding.FragmentEditProfileBinding
 import com.old.leopards.restaurant.ui.Global
 
 /**
@@ -17,8 +17,8 @@ import com.old.leopards.restaurant.ui.Global
  * Use the [RegistrationFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ChangeFragment : Fragment() {
-    private var _binding: FragmentChangeProfileBinding? =
+class EditProfileFragment : Fragment() {
+    private var _binding: FragmentEditProfileBinding? =
         null
     private lateinit var _UserViewModel: UserViewModel
 
@@ -34,7 +34,7 @@ class ChangeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentChangeProfileBinding.inflate(inflater, container, false)
+        _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 

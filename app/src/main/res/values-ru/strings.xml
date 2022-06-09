@@ -10,6 +10,7 @@
     <!-- Authorization recources -->
     <string name="profile_signin">Войти</string>
     <string name="profile_signup">Зарегистрироваться</string>
+    <string name="no_such_user">Нет такого пользователя!</string>
 
     <!-- Food recources -->
     <!-- <string name="description_food">Это секция с едой!</string> -->
@@ -44,5 +45,10 @@
 
     <!-- Common -->
     <string name="invalid_data">Некорректные или неполные данные!</string>
+    <string name="invalid_name">Некорректное имя пользователя!</string>
+    <string name="invalid_password">Некорректный пароль!</string>
+    <string name="password_mismatch">Пароли не совпадают!</string>
     <string name="success">Успешно!</string>
+    <string name="user_conflict">Такой пользователь уже существует!</string>
+    <string name="invalid_email">Некорректная эл. почта!</string>
 </resources>

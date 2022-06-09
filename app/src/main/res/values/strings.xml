@@ -9,6 +9,7 @@
     <!-- Authorization recources -->
     <string name="profile_signin">Signin</string>
     <string name="profile_signup">Signup</string>
+    <string name="no_such_user">No such user!</string>
 
     <!-- Food recources -->
     <!-- <string name="description_food">This is a food section!</string> -->
@@ -47,5 +48,10 @@
     <string name="plus" translatable="false">+</string>
     <string name="minus" translatable="false">-</string>
     <string name="invalid_data">Invalid or incomplete data!</string>
+    <string name="invalid_name">Invalid username!</string>
+    <string name="invalid_password">Invalid password!</string>
+    <string name="password_mismatch">Mismatch of passwords!</string>
     <string name="success">Success!</string>
+    <string name="user_conflict">Such user already exists!</string>
+    <string name="invalid_email">Invalid email!</string>
 </resources>

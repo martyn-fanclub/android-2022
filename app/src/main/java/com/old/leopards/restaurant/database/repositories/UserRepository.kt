@@ -12,11 +12,11 @@ class UserRepository(private val userDao: UserDao) {
         userDao.createUser(user)
     }
 
-    fun getUser(name: String): User {
+    fun getUser(name: String): User? {
         return userDao.getUser(name)
     }
 
-    fun updateUser(user: User) {
+    suspend fun updateUser(user: User) {
         userDao.updateUser(user)
     }
 }
