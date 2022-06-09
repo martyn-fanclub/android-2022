@@ -11,16 +11,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.old.leopards.restaurant.R
+import com.old.leopards.restaurant.models.Cart
 import com.old.leopards.restaurant.models.Food
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
-class FoodAdapter(private val onClick: (Food) -> Unit) :
+class FoodAdapter :
     ListAdapter<Food, FoodAdapter.FoodViewHolder>(FlowerDiffCallback) {
 
-    class FoodViewHolder(itemView: View, val onClick: (Food) -> Unit) :
+    class FoodViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         private var imageView: ImageView = itemView.findViewById(R.id.iv_food_picture)
         private val foodName: TextView = itemView.findViewById(R.id.tv_food_name)
@@ -29,15 +27,8 @@ class FoodAdapter(private val onClick: (Food) -> Unit) :
 
         private var currentFood: Food? = null
 
-        init {
-            itemView.setOnClickListener {
-                currentFood?.let {
-                    onClick(it)
-                }
-            }
-        }
-
         /* Bind food name and image. */
+        @OptIn(DelicateCoroutinesApi::class)
         fun bind(foodItem: Food) {
             currentFood = foodItem
 
@@ -61,13 +52,16 @@ class FoodAdapter(private val onClick: (Food) -> Unit) :
                 // FIXME set default img
                 //imageView.setImageResource()
             }
+            buttonFoodPrice.setOnClickListener {
+                Cart.addItem(foodItem)
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.food_item, parent, false)
-        return FoodViewHolder(view, onClick)
+        return FoodViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {

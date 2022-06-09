@@ -29,11 +29,11 @@ class FoodViewModel : ViewModel() {
             }
             _foodListState.update {
                 it + Food(
-                    0,
-                    "Ризотто с вареными яйцами",
+                    1,
+                    "Ризотто",
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. \n",
                     100,
-                    BigDecimal(100),
+                    BigDecimal(1000),
                     "https://vilkin.pro/wp-content/uploads/2019/11/rizotto-s-ovoshami.jpg"
                 )
             }

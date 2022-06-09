@@ -1,5 +1,6 @@
 package com.old.leopards.restaurant.ui.cart
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,27 +10,32 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.old.leopards.restaurant.R
-import com.old.leopards.restaurant.models.Food
+import com.old.leopards.restaurant.models.Cart
 
-class FoodAdapter(private val onClick: (Pair<Food, Int>) -> Unit) :
-    ListAdapter<Pair<Food, Int>, FoodViewHolder>(
+class FoodAdapter :
+    ListAdapter<Cart.CartItem, FoodViewHolder>(
         FlowerDiffCallback
     ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.cart_item, parent, false)
-        return FoodViewHolder(view, onClick)
+        return FoodViewHolder(view, this)
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         val food = getItem(position)
-        holder.bind(food)
+        holder.bind(food) { ->
+            val currentList = currentList.toMutableList()
+            currentList.removeAt(position)
+            submitList(currentList)
+            Log.d("hhh", "removed now: $currentList")
+        }
         holder.itemView.tag = food
     }
 }
 
 
-class FoodViewHolder(itemView: View, val onClick: (Pair<Food, Int>) -> Unit) :
+class FoodViewHolder(itemView: View, private val foodAdapter: FoodAdapter) :
     RecyclerView.ViewHolder(itemView) {
     private val titleTextView: TextView = itemView.findViewById(R.id.cart_item_title)
     private val descriptionTextView: TextView = itemView.findViewById(R.id.cart_item_description)
@@ -38,35 +44,50 @@ class FoodViewHolder(itemView: View, val onClick: (Pair<Food, Int>) -> Unit) :
     private val minusButton: Button = itemView.findViewById(R.id.cart_item_minus)
     private val plusButton: Button = itemView.findViewById(R.id.cart_item_plus)
 
-    fun bind(foodEntry: Pair<Food, Int>) {
-        val food = foodEntry.first
+    private fun updateCartDB() {
+        Cart.saveCart(foodAdapter.currentList)
+    }
+
+    fun bind(foodEntry: Cart.CartItem, removeHolder: () -> Unit) {
+        val food = foodEntry.food
         titleTextView.text = food.title
         descriptionTextView.text = food.description
         priceTextView.text =
-            itemView.context.getString(R.string.price_sum_template, foodEntry.second, food.price)
+            itemView.context.getString(R.string.price_sum_template, foodEntry.amount, food.price)
         weightTextView.text = food.title
 
         plusButton.setOnClickListener {
-            foodEntry.second.inc()
-            onClick(foodEntry)
+            val addedItem = Cart.addItem(food)
+            priceTextView.text =
+                itemView.context.getString(
+                    R.string.price_sum_template,
+                    addedItem.amount,
+                    addedItem.food.price
+                )
         }
 
         minusButton.setOnClickListener {
-            if (foodEntry.second == 1) {
-                //TODO
+            val addedItem = Cart.removeItem(food)
+            if (addedItem == null) {
+                removeHolder()
+            } else {
+                priceTextView.text =
+                    itemView.context.getString(
+                        R.string.price_sum_template,
+                        addedItem.amount,
+                        addedItem.food.price
+                    )
             }
-            foodEntry.second.dec()
-            onClick(foodEntry)
         }
     }
 }
 
-object FlowerDiffCallback : DiffUtil.ItemCallback<Pair<Food, Int>>() {
-    override fun areItemsTheSame(oldItem: Pair<Food, Int>, newItem: Pair<Food, Int>): Boolean {
-        return (oldItem.first.id == newItem.first.id) && (oldItem.second == newItem.second)
+object FlowerDiffCallback : DiffUtil.ItemCallback<Cart.CartItem>() {
+    override fun areItemsTheSame(oldItem: Cart.CartItem, newItem: Cart.CartItem): Boolean {
+        return (oldItem.food.id == newItem.food.id) && (oldItem.amount == newItem.amount)
     }
 
-    override fun areContentsTheSame(oldItem: Pair<Food, Int>, newItem: Pair<Food, Int>): Boolean {
+    override fun areContentsTheSame(oldItem: Cart.CartItem, newItem: Cart.CartItem): Boolean {
         return oldItem == newItem
     }
 }
