@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
 
             if (isValidLoginInput(name, password)) {
                 Global.currentUser = _UserViewModel.getUserByName(name)!!
-                findNavController().navigate(R.id.action_login_fragment_to_navigation_food)
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToNavigationFood())
                 activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
             }
         }
