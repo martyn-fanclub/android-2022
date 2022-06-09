@@ -7,8 +7,8 @@
     <string name="title_notifications">Notifications</string>
 
     <!-- Authorization recources -->
-    <string name="profile_signin">Signin</string>
-    <string name="profile_signup">Signup</string>
+    <string name="profile_signin">Sign in</string>
+    <string name="profile_signup">Sign up</string>
     <string name="no_such_user">No such user!</string>
 
     <!-- Food recources -->
