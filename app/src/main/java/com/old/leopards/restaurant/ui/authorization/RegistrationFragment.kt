@@ -58,7 +58,7 @@ class RegistrationFragment : Fragment() {
                 _UserViewModel.createUser(user)
                 // TODO _binding_profile?.avatar? = ?
                 Global.currentUser = user
-                findNavController().navigate(R.id.action_registration_fragment_to_navigation_profile)
+                findNavController().navigate(R.id.action_registration_fragment_to_navigation_food)
                 activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
             }
         }

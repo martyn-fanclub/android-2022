@@ -34,6 +34,10 @@ class EditProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
+        binding.editNameInput.hint = Global.currentUser.login
+        binding.editEmailInput.hint = Global.currentUser.email
+        binding.editPasswordInput.hint = Global.currentUser.password
+        binding.editPasswordAgainInput.hint = Global.currentUser.password
         return binding.root
     }
 

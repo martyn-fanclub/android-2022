@@ -56,8 +56,8 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_login_fragment_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
+            android:id="@+id/action_login_fragment_to_navigation_food"
+            app:destination="@id/navigation_food" />
     </fragment>
     <fragment
         android:id="@+id/registration_fragment"
@@ -65,8 +65,8 @@
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
-            android:id="@+id/action_registration_fragment_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
+            android:id="@+id/action_registration_fragment_to_navigation_food"
+            app:destination="@id/navigation_food" />
     </fragment>
 
 </navigation>
