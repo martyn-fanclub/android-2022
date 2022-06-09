@@ -8,10 +8,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.old.leopards.restaurant.databinding.ActivityMainBinding
 import io.paperdb.Paper
+import com.old.leopards.restaurant.databinding.FragmentProfileBinding
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var _binding_profile: FragmentProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
@@ -37,5 +39,22 @@ class MainActivity : AppCompatActivity() {
 
         // Initializing Paper db, which is used for cart view presentation
         Paper.init(applicationContext)
+    }
+
+
+    fun activate(fragmentProfileBinding: FragmentProfileBinding) {
+        this._binding_profile = fragmentProfileBinding
+    }
+
+    fun editProfileName(name: String) {
+        this.runOnUiThread {
+            _binding_profile.username.text = name
+        }
+    }
+
+    fun editProfileEmail(email: String) {
+        this.runOnUiThread {
+            _binding_profile.email.text = email
+        }
     }
 }

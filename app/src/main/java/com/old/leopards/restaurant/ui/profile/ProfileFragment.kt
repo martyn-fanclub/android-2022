@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.databinding.FragmentProfileBinding
+import com.old.leopards.restaurant.ui.Global
 
 class ProfileFragment : Fragment() {
 
@@ -18,14 +18,14 @@ class ProfileFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val profileViewModel: ProfileViewModel by viewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        binding.username.text = Global.currentUser.login
+        binding.email.text = Global.currentUser.email
         return binding.root
     }
 
@@ -33,13 +33,12 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val navController = findNavController()
 
-        //TODO
         binding.apply {
-            btnChangeProfile.setOnClickListener {
-                navController.navigate(R.id.action_navigation_profile_to_change_fragment)
+            btnEditProfile.setOnClickListener {
+                navController.navigate(R.id.action_navigation_profile_to_edit_profile_fragment)
             }
 
-            btnExitProfile.setOnClickListener {
+            btnExit.setOnClickListener {
                 navController.navigate(R.id.action_navigation_profile_to_start_fragment)
             }
         }

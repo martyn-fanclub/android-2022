@@ -1,9 +1,15 @@
 <resources>
+    <!-- Application recources -->
     <string name="app_name">Restaurant</string>
     <string name="title_food">Food</string>
     <string name="title_cart">Shopping card</string>
     <string name="title_profile">Profile</string>
     <string name="title_notifications">Notifications</string>
+
+    <!-- Authorization recources -->
+    <string name="profile_signin">Sign in</string>
+    <string name="profile_signup">Sign up</string>
+    <string name="no_such_user">No such user!</string>
 
     <!-- Food recources -->
     <!-- <string name="description_food">This is a food section!</string> -->
@@ -34,13 +40,19 @@
     <string name="profile_edit_email">Email</string>
     <string name="profile_input_email">Input email</string>
     <string name="profile_add_photo">Add photo</string>
-    <string name="profile_signup">Signup</string>
     <string name="profile_save_editing">Save</string>
     <string name="profile_cancel_editing">Cancel</string>
-    <string name="profile_signin">Signin</string>
     <string name="profile_edit">Edit profile</string>
 
     <!-- Common -->
     <string name="plus" translatable="false">+</string>
     <string name="minus" translatable="false">-</string>
+    <string name="invalid_data">Invalid or incomplete data!</string>
+    <string name="invalid_name">Invalid username!</string>
+    <string name="invalid_password">Invalid password!</string>
+    <string name="password_mismatch">Mismatch of passwords!</string>
+    <string name="success">Success!</string>
+    <string name="name_conflict">User with such username already exists!</string>
+    <string name="email_conflict">ПUser with such email already exists!</string>
+    <string name="invalid_email">Invalid email!</string>
 </resources>
