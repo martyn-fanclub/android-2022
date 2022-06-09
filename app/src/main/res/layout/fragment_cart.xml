@@ -40,12 +40,12 @@
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:paddingTop="10dp"
             android:fontFamily="@font/merriweather_medium"
+            android:paddingTop="10dp"
+            android:text="150р"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:text="150р" /> <!-- TODO -->
+            android:textColor="@color/black" /> <!-- TODO -->
 
         <TextView
             android:id="@+id/address"
@@ -67,7 +67,7 @@
 
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/remove_all"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -91,7 +91,7 @@
                 android:text="@string/change_address" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/pay"
                 android:textSize="12sp"
                 android:fontFamily="@font/roboto"
                 android:layout_width="match_parent"

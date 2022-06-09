@@ -1,7 +1,6 @@
 package com.old.leopards.restaurant.ui.food
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.databinding.FragmentFoodBinding
-import com.old.leopards.restaurant.models.Food
 import kotlinx.coroutines.flow.collect
 
 class FoodFragment : Fragment() {
@@ -45,7 +43,7 @@ class FoodFragment : Fragment() {
             false
         )
 
-        val adapter = FoodAdapter { foodItem -> adapterOnClickDescription(foodItem) }
+        val adapter = FoodAdapter()
         binding.rvFoodList.adapter = adapter
 
         lifecycleScope.launchWhenStarted {
@@ -53,18 +51,6 @@ class FoodFragment : Fragment() {
                 adapter.submitList(it)
             }
         }
-    }
-
-    private fun adapterOnClickDescription(foodItem: Food) {
-        Log.d("DEBUG", "Layout press")
-        /*
-        TODO open description.
-
-           Example with activity:
-            val intent = Intent(this, FoodDetailActivity()::class.java)
-            intent.putExtra("FOOD_ID", food.id)
-            startActivity(intent)
-         */
     }
 
     override fun onDestroyView() {
