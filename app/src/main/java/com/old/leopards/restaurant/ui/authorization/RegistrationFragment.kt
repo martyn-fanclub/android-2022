@@ -3,15 +3,12 @@ package com.old.leopards.restaurant.ui.authorization
 import android.content.Context
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.database.entities.User
 import com.old.leopards.restaurant.database.viewModels.UserViewModel
-import com.old.leopards.restaurant.databinding.FragmentProfileBinding
 import com.old.leopards.restaurant.databinding.FragmentRegistrationBinding
 import com.old.leopards.restaurant.ui.Global
 import com.old.leopards.restaurant.ui.Global.Companion.showText
@@ -25,7 +22,6 @@ import kotlinx.coroutines.*
  */
 class RegistrationFragment : Fragment() {
     private var _binding: FragmentRegistrationBinding? = null
-    private var _binding_profile: FragmentProfileBinding? = null
     private lateinit var _UserViewModel: UserViewModel
     private var _context: Context? = null
 
@@ -43,7 +39,6 @@ class RegistrationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentRegistrationBinding.inflate(inflater, container, false)
-        _binding_profile = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -52,8 +47,6 @@ class RegistrationFragment : Fragment() {
         _UserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         binding.btnReg.setOnClickListener {
-            activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
-
             val name = binding.regInputName.text.toString()
             val password = binding.regInputPassword.text.toString()
             val replyPassword = binding.regInputPasswordAgain.text.toString()
@@ -63,12 +56,10 @@ class RegistrationFragment : Fragment() {
             if (isValidRegInput(name, password, replyPassword, email)) {
                 val user = User(login=name, password=password, email=email, photoLink=photoLink)
                 _UserViewModel.createUser(user)
-                Global.userId = user.id
-                _binding_profile?.username?.text = name
-                _binding_profile?.email?.text = email
                 // TODO _binding_profile?.avatar? = ?
-                val bundle = bundleOf(Pair(name, email))
-                findNavController().navigate(R.id.action_registration_fragment_to_navigation_food, bundle)
+                Global.currentUser = user
+                findNavController().navigate(R.id.action_registration_fragment_to_navigation_profile)
+                activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
             }
         }
     }
@@ -79,7 +70,7 @@ class RegistrationFragment : Fragment() {
         replyPassword: String,
         email: String
     ): Boolean {
-        val user = _UserViewModel.getUser(name)
+        val user = _UserViewModel.getUserByName(name)
         var isValidRegInput = false
         if (user == null) {
             if (name.isNotBlank()) {
@@ -100,12 +91,12 @@ class RegistrationFragment : Fragment() {
                 showText(getString(R.string.invalid_name))
             }
         } else {
-            showText(getString(R.string.user_conflict))
+            showText(getString(R.string.name_conflict))
         }
         return isValidRegInput
     }
 
     fun showText(text: String) {
-        showText(this.context?.applicationContext, text)
+        showText(context, text)
     }
 }

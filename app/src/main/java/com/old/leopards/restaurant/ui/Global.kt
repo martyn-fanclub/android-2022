@@ -2,10 +2,11 @@ package com.old.leopards.restaurant.ui
 
 import android.content.Context
 import android.widget.Toast
+import com.old.leopards.restaurant.database.entities.User
 
 class Global {
     companion object {
-        var userId: Int = 0
+        var currentUser: User = User(0, "", "", "", "")
 
         fun showText(context: Context?, text: String) {
             Toast.makeText(

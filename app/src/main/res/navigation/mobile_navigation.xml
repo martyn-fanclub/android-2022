@@ -32,11 +32,8 @@
     <fragment
         android:id="@+id/edit_profile_fragment"
         android:name="com.old.leopards.restaurant.ui.profile.EditProfileFragment"
-        android:label="fragment_change_profile"
+        android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" >
-        <action
-            android:id="@+id/action_edit_profile_fragment_to_save"
-            app:destination="@id/navigation_profile" />
         <action
             android:id="@+id/action_edit_profile_fragment_to_cancel"
             app:destination="@id/navigation_profile" />
@@ -44,7 +41,7 @@
     <fragment
         android:id="@+id/start_fragment"
         android:name="com.old.leopards.restaurant.ui.authorization.StartFragment"
-        android:label="fragment_authorization_start"
+        android:label="fragment_start"
         tools:layout="@layout/fragment_start" >
         <action
             android:id="@+id/action_start_fragment_to_login_fragment"
@@ -56,20 +53,20 @@
     <fragment
         android:id="@+id/login_fragment"
         android:name="com.old.leopards.restaurant.ui.authorization.LoginFragment"
-        android:label="fragment_authorization_login"
+        android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_login_fragment_to_navigation_food"
-            app:destination="@id/navigation_food" />
+            android:id="@+id/action_login_fragment_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
     <fragment
         android:id="@+id/registration_fragment"
         android:name="com.old.leopards.restaurant.ui.authorization.RegistrationFragment"
-        android:label="fragment_authorization_registration"
+        android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
-            android:id="@+id/action_registration_fragment_to_navigation_food"
-            app:destination="@id/navigation_food" />
+            android:id="@+id/action_registration_fragment_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
     </fragment>
 
 </navigation>

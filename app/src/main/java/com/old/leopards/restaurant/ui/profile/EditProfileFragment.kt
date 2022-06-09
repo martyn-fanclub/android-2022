@@ -2,15 +2,14 @@ package com.old.leopards.restaurant.ui.profile
 
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.old.leopards.restaurant.R
-import com.old.leopards.restaurant.database.entities.User
 import com.old.leopards.restaurant.database.viewModels.UserViewModel
 import com.old.leopards.restaurant.databinding.FragmentEditProfileBinding
 import com.old.leopards.restaurant.ui.Global
+import com.old.leopards.restaurant.ui.Global.Companion.showText
 
 /**
  * A simple [Fragment] subclass.
@@ -52,21 +51,39 @@ class EditProfileFragment : Fragment() {
                 val email = binding.editEmailInput.text.toString()
                 val photoLink = null // TODO photoLink
 
-                if (isValidEditProfileInput(name, password, replyPassword, email)) {
-                    val user = User(Global.userId, name, password, email,photoLink)
-                    _UserViewModel.updateUser(user)
-                    Toast.makeText(
-                        appContext,
-                        getString(R.string.success),
-                        Toast.LENGTH_LONG
-                    ).show()
-                } else {
-                    Toast.makeText(
-                        appContext,
-                        getString(R.string.invalid_data),
-                        Toast.LENGTH_LONG
-                    ).show()
+                var newUser = Global.currentUser
+
+                if (name.isNotBlank()) {
+                    val user = _UserViewModel.getUserByName(name)
+                    if (user == null) {
+                        newUser.login = name
+                    } else {
+                        showText(getString(R.string.name_conflict))
+                    }
                 }
+
+                if (password.isNotBlank()) {
+                    if (password == replyPassword) {
+                        newUser.password = password
+                    } else {
+                        showText(getString(R.string.password_mismatch))
+                    }
+                }
+
+                if (email.isNotBlank()) {
+                    val user = _UserViewModel.getUserByEmail(email)
+                    if (user == null) {
+                        newUser.email = email
+                    } else {
+                        showText(getString(R.string.email_conflict))
+                    }
+                }
+
+                // TODO photoLink
+
+                _UserViewModel.updateUser(newUser)
+                Global.currentUser = newUser
+                showText(appContext, getString(R.string.success))
             }
 
             // Filled fields will be deleted by themselves
@@ -81,12 +98,7 @@ class EditProfileFragment : Fragment() {
         }
     }
 
-    private fun isValidEditProfileInput(
-        name: String,
-        password: String,
-        replyPassword: String,
-        email: String
-    ): Boolean {
-        return name.isNotBlank() && password.isNotBlank() && password == replyPassword && email.isNotBlank()
+    fun showText(text: String) {
+        showText(context, text)
     }
 }

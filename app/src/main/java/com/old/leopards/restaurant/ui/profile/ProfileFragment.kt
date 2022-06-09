@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.databinding.FragmentProfileBinding
+import com.old.leopards.restaurant.ui.Global
 
 class ProfileFragment : Fragment() {
 
@@ -23,7 +24,8 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        arguments.getЫекштп
+        binding.username.text = Global.currentUser.login
+        binding.email.text = Global.currentUser.email
         return binding.root
     }
 

@@ -27,8 +27,12 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun getUser(name: String): User? {
-        return repository.getUser(name)
+    fun getUserByName(name: String): User? {
+        return repository.getUserByName(name)
+    }
+
+    fun getUserByEmail(email: String): User? {
+        return repository.getUserByEmail(email)
     }
 
     fun updateUser(user: User) {
