@@ -40,7 +40,7 @@ class RegistrationFragment : Fragment() {
         // TODO
         binding.btnReg.setOnClickListener {
             activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
-            navController.navigate(R.id.action_registration_fragment_to_navigation_food)
+            navController.navigate(RegistrationFragmentDirections.actionRegistrationFragmentToNavigationFood())
         }
     }
 }

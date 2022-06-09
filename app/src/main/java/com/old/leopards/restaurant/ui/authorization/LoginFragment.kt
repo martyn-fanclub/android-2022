@@ -39,7 +39,8 @@ class LoginFragment : Fragment() {
 
         // TODO
         binding.btnLogin.setOnClickListener {
-            navController.navigate(R.id.action_login_fragment_to_navigation_food)
+            activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
+            navController.navigate(LoginFragmentDirections.actionLoginFragmentToNavigationFood())
         }
     }
 }
