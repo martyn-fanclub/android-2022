@@ -1,6 +1,5 @@
 package com.old.leopards.restaurant.ui.cart
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,9 +27,13 @@ class FoodAdapter :
             val currentList = currentList.toMutableList()
             currentList.removeAt(position)
             submitList(currentList)
-            Log.d("hhh", "removed now: $currentList")
         }
         holder.itemView.tag = food
+    }
+
+    fun clearCart() {
+        Cart.clearCart()
+        submitList(Cart.getCart())
     }
 }
 
@@ -43,10 +46,6 @@ class FoodViewHolder(itemView: View, private val foodAdapter: FoodAdapter) :
     private val weightTextView: TextView = itemView.findViewById(R.id.cart_item_weight)
     private val minusButton: Button = itemView.findViewById(R.id.cart_item_minus)
     private val plusButton: Button = itemView.findViewById(R.id.cart_item_plus)
-
-    private fun updateCartDB() {
-        Cart.saveCart(foodAdapter.currentList)
-    }
 
     fun bind(foodEntry: Cart.CartItem, removeHolder: () -> Unit) {
         val food = foodEntry.food

@@ -42,7 +42,7 @@ class Cart {
             }
         }
 
-        fun saveCart(cart: MutableList<CartItem>) {
+        private fun saveCart(cart: MutableList<CartItem>) {
             Paper.book().write("cart", cart)
         }
 

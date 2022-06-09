@@ -50,6 +50,15 @@ class CartFragment : Fragment() {
                 }
             }
         }
+
+        binding.removeAll.setOnClickListener {
+            adapter.clearCart()
+        }
+
+        binding.pay.setOnClickListener {
+            // TODO do some business logic
+            adapter.clearCart()
+        }
     }
 
     override fun onDestroyView() {
