@@ -14,12 +14,12 @@ class Preferences(private val context: Context) {
     companion object {
         private val Context.dataStore by preferencesDataStore(name = "setting")
         private val firstLaunch = booleanPreferencesKey("isFirstLaunch")
-        var userId = stringPreferencesKey("getUserId")
-        var userLogin = stringPreferencesKey("getUserLogin")
-        var userPassowrd = stringPreferencesKey("getUserPassword")
-        var userEmail = stringPreferencesKey("getUserEmail")
-        var userPhotoLink = stringPreferencesKey("getUserPhotoLink")
-        var userAddress = stringPreferencesKey("getUserAddress")
+        var userId = PreferencesKey<String>("getUserId")
+        var userLogin = PreferencesKey<String>("getUserLogin")
+        var userPassowrd = PreferencesKey<String>("getUserPassword")
+        var userEmail = PreferencesKey<String>("getUserEmail")
+        var userPhotoLink = PreferencesKey<String>("getUserPhotoLink")
+        var userAddress = PreferencesKey<String>("getUserAddress")
     }
 
     val isFirstLaunch: Flow<Boolean>
