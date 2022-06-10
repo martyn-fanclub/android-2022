@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun initFood() {
+    private fun initFood() {
         runBlocking {
             val f1 = _foodItemViewModel.addFoodItem(
                 FoodItem(
