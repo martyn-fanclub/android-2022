@@ -53,7 +53,7 @@ class CartFragment : Fragment() {
                     when (it) {
                         is CartViewModel.CurrencyUiState.Error -> {
                             binding.dollarPrice.text =
-                                getString(R.string.total_dollars_price_template, BigDecimal.ZERO)
+                                getString(R.string.total_dollars_price_template, BigDecimal.ZERO.setScale(2, BigDecimal.ROUND_HALF_EVEN))
                         }
                         is CartViewModel.CurrencyUiState.Success -> {
                             val dollars = rubles.multiply(BigDecimal(it.currency.rates["USD"]!!))
@@ -88,7 +88,7 @@ class CartFragment : Fragment() {
                 when (it) {
                     is CartViewModel.CurrencyUiState.Error -> {
                         binding.dollarPrice.text =
-                            getString(R.string.total_dollars_price_template, BigDecimal.ZERO)
+                            getString(R.string.total_dollars_price_template, BigDecimal.ZERO.setScale(2, BigDecimal.ROUND_HALF_EVEN))
                     }
                     is CartViewModel.CurrencyUiState.Success -> {
                         val dollars =
