@@ -9,8 +9,8 @@ class FoodDescriptionRepository(private val foodDescriptionDao: FoodDescriptionD
     val getAllFoodDescriptions: Flow<List<FoodDescription>> =
         foodDescriptionDao.getAllFoodDescriptions()
 
-    suspend fun addFoodDescription(foodDescription: FoodDescription) {
-        foodDescriptionDao.addFoodDescription(foodDescription)
+    fun addFoodDescription(foodDescription: FoodDescription): Long {
+        return foodDescriptionDao.addFoodDescription(foodDescription)
     }
 
 }

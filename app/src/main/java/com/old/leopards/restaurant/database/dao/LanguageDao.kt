@@ -10,8 +10,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface LanguageDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun addLanguage(language: Language)
+
+    @Insert
+    fun addAllLanguages(vararg languages: Language): List<Long>
 
     @Query("SELECT * FROM languages ORDER BY id ASC")
     fun getAllLanguages(): Flow<List<Language>>

@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.old.leopards.restaurant.database.RestaurantDatabase
 import com.old.leopards.restaurant.database.entities.Language
 import com.old.leopards.restaurant.database.repositories.LanguageRepository
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
@@ -21,8 +21,12 @@ class LanguageViewModel(application: Application) : AndroidViewModel(application
         getAllLanguages = repository.getAllLanguages
     }
 
-    fun addLanguage(language: Language) {
-        viewModelScope.launch(Dispatchers.IO) {
+    fun addAllLanguages(vararg languages: Language): List<Long> {
+        return repository.addAllLanguages(*languages)
+    }
+
+    fun addLanguage(language: Language): Job {
+        return viewModelScope.launch {
             repository.addLanguage(language)
         }
     }

@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 interface FoodDescriptionDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addFoodDescription(foodDescription: FoodDescription)
+    fun addFoodDescription(foodDescription: FoodDescription): Long
 
     @Query("SELECT * FROM food_descriptions ORDER BY id ASC")
     fun getAllFoodDescriptions(): Flow<List<FoodDescription>>

@@ -2,13 +2,10 @@ package com.old.leopards.restaurant.database.viewModels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
 import com.old.leopards.restaurant.database.RestaurantDatabase
 import com.old.leopards.restaurant.database.entities.FoodItem
 import com.old.leopards.restaurant.database.repositories.FoodItemRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.launch
 
 class FoodItemViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -21,10 +18,8 @@ class FoodItemViewModel(application: Application) : AndroidViewModel(application
         getAllFoodItems = repository.getAllFoodItems
     }
 
-    fun addFoodItem(foodItem: FoodItem) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.addFoodItem(foodItem)
-        }
+    fun addFoodItem(foodItem: FoodItem): Long {
+        return repository.addFoodItem(foodItem)
     }
 
 }
