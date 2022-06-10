@@ -1,5 +1,6 @@
 package com.old.leopards.restaurant.ui.food
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -42,9 +43,16 @@ class FoodFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val columns: Int
+        if (requireActivity().resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            columns = 2
+        } else {
+            columns = 4
+        }
+
         binding.rvFoodList.layoutManager = GridLayoutManager(
             context,
-            2,
+            columns,
             RecyclerView.VERTICAL,
             false
         )
