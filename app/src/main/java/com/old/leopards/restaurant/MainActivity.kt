@@ -79,7 +79,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initLanguage() {
         runBlocking {
-            _languageViewModel.addAllLanguages(Language(0, "Русский"), Language(0, "English"))
+            _languageViewModel.addAllLanguages(
+                Language(name = "Русский"),
+                Language(name = "English")
+            )
         }
     }
 
@@ -87,82 +90,73 @@ class MainActivity : AppCompatActivity() {
         runBlocking {
             val f1 = _foodItemViewModel.addFoodItem(
                 FoodItem(
-                    0,
-                    10,
-                    15,
-                    "https://vilkin.pro/wp-content/uploads/2019/11/rizotto-s-ovoshami.jpg"
+                    portionSize = 10,
+                    price = 15,
+                    photoLink = "https://vilkin.pro/wp-content/uploads/2019/11/rizotto-s-ovoshami.jpg"
                 )
             )
             val f2 = _foodItemViewModel.addFoodItem(
                 FoodItem(
-                    0,
-                    15,
-                    20,
-                    "https://vilkin.pro/wp-content/uploads/2019/11/rizotto-s-ovoshami.jpg"
+                    portionSize = 15,
+                    price = 20,
+                    photoLink = "https://vilkin.pro/wp-content/uploads/2019/11/rizotto-s-ovoshami.jpg"
                 )
             )
             val f3 = _foodItemViewModel.addFoodItem(
                 FoodItem(
-                    0,
-                    20,
-                    30,
-                    "https://vilkin.pro/wp-content/uploads/2019/11/rizotto-s-ovoshami.jpg"
+                    portionSize = 20,
+                    price = 30,
+                    photoLink = "https://vilkin.pro/wp-content/uploads/2019/11/rizotto-s-ovoshami.jpg"
                 )
             )
             _foodDescriptionViewModel.addFoodDescription(
                 FoodDescription(
-                    0,
-                    1,
-                    f1.toInt(),
-                    "Продукт1",
-                    "Описание1"
+                    languageId = 1,
+                    foodItemId = f1.toInt(),
+                    name = "Продукт1",
+                    description = "Описание1"
                 )
             )
             _foodDescriptionViewModel.addFoodDescription(
                 FoodDescription(
-                    0,
-                    2,
-                    f1.toInt(),
-                    "Food1",
-                    "Description1"
+                    languageId = 2,
+                    foodItemId = f1.toInt(),
+                    name = "Food1",
+                    description = "Description1"
                 )
             )
 
             _foodDescriptionViewModel.addFoodDescription(
                 FoodDescription(
-                    0,
-                    1,
-                    f2.toInt(),
-                    "Продукт2",
-                    "Описание2"
+                    languageId = 1,
+                    foodItemId = f2.toInt(),
+                    name = "Продукт2",
+                    description = "Описание2"
                 )
             )
             _foodDescriptionViewModel.addFoodDescription(
                 FoodDescription(
-                    0,
-                    2,
-                    f2.toInt(),
-                    "Food2",
-                    "Description2"
+                    languageId = 2,
+                    foodItemId = f2.toInt(),
+                    name = "Food2",
+                    description = "Description2"
                 )
             )
 
             _foodDescriptionViewModel.addFoodDescription(
                 FoodDescription(
-                    0,
-                    1,
-                    f3.toInt(),
-                    "Продукт3",
-                    "Описание3"
+                    languageId = 1,
+                    foodItemId = f3.toInt(),
+                    name = "Продукт3",
+                    description = "Описание3"
                 )
             )
             _foodDescriptionViewModel.addFoodDescription(
                 FoodDescription(
-                    0,
-                    2,
-                    f3.toInt(),
-                    "Food3",
-                    "Description3"
+                    languageId = 2,
+                    foodItemId = f3.toInt(),
+                    name = "Food3",
+                    description = "Description3"
                 )
             )
 

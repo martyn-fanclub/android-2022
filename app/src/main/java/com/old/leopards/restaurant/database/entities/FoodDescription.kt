@@ -24,7 +24,7 @@ import androidx.room.PrimaryKey
 )
 data class FoodDescription(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int = 0,
     @ColumnInfo(name = "language_id")
     val languageId: Int,
     @ColumnInfo(name = "food_item_id")
