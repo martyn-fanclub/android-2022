@@ -11,6 +11,9 @@ import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.data.Preferences
 import com.old.leopards.restaurant.database.entities.User
 import com.old.leopards.restaurant.databinding.FragmentProfileBinding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
 
@@ -30,7 +33,9 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         pref = Preferences(requireContext())
-        currentUser = pref!!.getCurrentUser()
+        GlobalScope.launch {
+            currentUser = pref!!.getCurrentUser.first()
+        }
         binding.username.text = currentUser!!.login
         binding.email.text = currentUser!!.email
         val uri = currentUser!!.photoLink?.toUri()

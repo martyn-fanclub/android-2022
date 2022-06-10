@@ -16,8 +16,10 @@ import com.old.leopards.restaurant.data.Preferences
 import com.old.leopards.restaurant.databinding.FragmentCartBinding
 import com.old.leopards.restaurant.ui.Global
 import com.old.leopards.restaurant.ui.Global.Companion.showText
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import java.math.BigDecimal
 
 
@@ -45,7 +47,9 @@ class CartFragment : Fragment() {
     ): View {
         _binding = FragmentCartBinding.inflate(inflater, container, false)
         pref = Preferences(requireContext())
-        binding.address.setText(pref!!.getUserAddress.first())
+        GlobalScope.launch {
+            binding.address.setText(pref!!.getUserAddress.first())
+        }
         return binding.root
     }
 

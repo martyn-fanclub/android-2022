@@ -14,9 +14,11 @@ class Preferences(private val context: Context) {
     companion object {
         private val Context.dataStore by preferencesDataStore(name = "setting")
         private val firstLaunch = booleanPreferencesKey("isFirstLaunch")
-
-        private val initUser: User = User(0, "", "", "", "")
-        private var currentUser: User = initUser
+        var userId = stringPreferencesKey("getUserId")
+        var userLogin = stringPreferencesKey("getUserLogin")
+        var userPassowrd = stringPreferencesKey("getUserPassword")
+        var userEmail = stringPreferencesKey("getUserEmail")
+        var userPhotoLink = stringPreferencesKey("getUserPhotoLink")
         var userAddress = stringPreferencesKey("getUserAddress")
     }
 
@@ -29,21 +31,28 @@ class Preferences(private val context: Context) {
         context.dataStore.edit { it[firstLaunch] = value }
     }
 
-    fun isNotFirstAuthorizedLaunch(): Boolean {
-        return currentUser != initUser
-    }
+    val isNotFirstAuthorizedLaunch: Flow<Boolean>
+        get() =  context.dataStore.data.map {
+            it[userLogin] != ""
+        }
 
-    fun getCurrentUser(): User {
-        return currentUser
-    }
+    val getCurrentUser: Flow<User>
+        get() = context.dataStore.data.map {
+            User(it[userId], it[userLogin], it[userPassowrd], it[userEmail], it[userPhotoLink])
+        }
 
     fun setCurrentUser(user: User) {
-        currentUser = user
+        context.dataStore.edit {
+            it[userId] = user.id
+            it[userLogin] = user.login
+            it[userPassowrd] = user.password
+            it[userEmail] = user.email
+            it[userPhotoLink] = user.photoLink
+        }
     }
 
     fun setUserAddress(address: String) {
         context.dataStore.edit { it[userAddress] = address }
-        userAddress = address
     }
 
     val getUserAddress: Flow<String>
@@ -52,7 +61,13 @@ class Preferences(private val context: Context) {
         }
 
     fun resetUser() {
-        currentUser = initUser
-        userAddress = ""
+        context.dataStore.edit {
+            it[userId] = 0
+            it[userLogin] = ""
+            it[userPassowrd] = ""
+            it[userEmail] = ""
+            it[userPhotoLink] = ""
+            it[userAddress] = ""
+        }
     }
 }
