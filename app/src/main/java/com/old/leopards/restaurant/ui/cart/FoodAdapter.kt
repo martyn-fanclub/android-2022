@@ -3,6 +3,7 @@ package com.old.leopards.restaurant.ui.cart
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
@@ -10,11 +11,23 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.models.Cart
+import java.math.BigDecimal
 
 class FoodAdapter :
     ListAdapter<Cart.CartItem, FoodViewHolder>(
         FlowerDiffCallback
     ) {
+
+    fun interface OnItemsClickListener {
+        fun onItemClick(price: BigDecimal)
+    }
+
+    var listener: OnItemsClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemsClickListener?) {
+        this.listener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.cart_item, parent, false)
@@ -23,6 +36,7 @@ class FoodAdapter :
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         val food = getItem(position)
+
         holder.bind(food) { ->
             val currentList = currentList.toMutableList()
             currentList.removeAt(position)
@@ -35,8 +49,18 @@ class FoodAdapter :
         Cart.clearCart()
         submitList(Cart.getCart())
     }
-}
 
+    fun getTotal(): BigDecimal {
+        return Cart.getTotal()
+    }
+
+    fun pay(): BigDecimal {
+        // TODO do some business logic
+        val total = getTotal()
+        clearCart()
+        return total
+    }
+}
 
 class FoodViewHolder(itemView: View, private val foodAdapter: FoodAdapter) :
     RecyclerView.ViewHolder(itemView) {
@@ -63,6 +87,7 @@ class FoodViewHolder(itemView: View, private val foodAdapter: FoodAdapter) :
                     addedItem.amount,
                     addedItem.food.price
                 )
+            foodAdapter.listener?.onItemClick(foodAdapter.getTotal())
         }
 
         minusButton.setOnClickListener {
@@ -77,6 +102,7 @@ class FoodViewHolder(itemView: View, private val foodAdapter: FoodAdapter) :
                         addedItem.food.price
                     )
             }
+            foodAdapter.listener?.onItemClick(foodAdapter.getTotal())
         }
     }
 }
