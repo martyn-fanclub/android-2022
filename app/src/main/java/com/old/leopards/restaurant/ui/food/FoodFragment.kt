@@ -47,7 +47,7 @@ class FoodFragment : Fragment() {
         if (requireActivity().resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
             columns = 2
         } else {
-            columns = 3
+            columns = 4
         }
 
         binding.rvFoodList.layoutManager = GridLayoutManager(
