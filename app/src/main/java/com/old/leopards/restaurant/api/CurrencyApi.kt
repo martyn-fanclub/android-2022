@@ -6,7 +6,7 @@ import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface CurrencyApi {
-    @GET("convert")
+    @GET("latest.js")
     @Headers("Content-Type: application/json")
-    suspend fun getUSDCurrency(@Query("q") currency: String): CurrencyResponse
+    suspend fun getUSDCurrency(): CurrencyResponse
 }

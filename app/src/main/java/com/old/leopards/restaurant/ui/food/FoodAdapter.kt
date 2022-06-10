@@ -54,6 +54,7 @@ class FoodAdapter :
             }
             buttonFoodPrice.setOnClickListener {
                 Cart.addItem(foodItem)
+
             }
         }
     }

@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.old.leopards.restaurant.api.CurrencyService
-import com.old.leopards.restaurant.api.models.CurrencyCount
 import com.old.leopards.restaurant.api.models.CurrencyResponse
 import com.old.leopards.restaurant.models.Cart
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,37 +22,12 @@ class CartViewModel : ViewModel() {
     val cartUiState: StateFlow<CartUiState> = _cartUiState
 
     private val _currencyState = MutableStateFlow<CurrencyUiState>(
-        CurrencyUiState.Success(
-            CurrencyResponse(CurrencyCount(0), emptyMap())
+        CurrencyUiState.Error(
+            CurrencyResponse(emptyMap())
         )
     )
     val currencyState: StateFlow<CurrencyUiState> = _currencyState
     private val currencyService = CurrencyService()
-
-    private fun fetchCurrency() {
-        viewModelScope.launch {
-            val cur = "RUB_USD"
-            try {
-                _currencyState.value =
-                    CurrencyUiState.Success(currencyService.api.getUSDCurrency(cur))
-                when (currencyState.value) {
-                    is CurrencyUiState.Success -> {
-                        val currency = (currencyState.value as CurrencyUiState.Success).currency
-                        Log.d(
-                            "Success:",
-                            "Data was fetched: ${currency.results[cur]?.value} ${currency.results[cur]?.to}"
-                        )
-                    }
-                    is CurrencyUiState.Error -> Log.e(
-                        "Error",
-                        "${(currencyState.value as CurrencyUiState.Error).exception}"
-                    )
-                }
-            } catch (e: Exception) {
-                Log.e("Error", "$e")
-            }
-        }
-    }
 
     fun loadFromBD() {
         viewModelScope.launch {
@@ -61,8 +35,10 @@ class CartViewModel : ViewModel() {
         }
     }
 
-    init {
-        fetchCurrency()
+    fun fetchCurrency() {
+        viewModelScope.launch {
+            _currencyState.update { CurrencyUiState.Success(currencyService.api.getUSDCurrency()) }
+        }
     }
 
     sealed class CartUiState {
@@ -72,7 +48,7 @@ class CartViewModel : ViewModel() {
 
     sealed class CurrencyUiState {
         data class Success(val currency: CurrencyResponse) : CurrencyUiState()
-        data class Error(val exception: Throwable) : CurrencyUiState()
+        data class Error(val currency: CurrencyResponse) : CurrencyUiState()
     }
 
 }
