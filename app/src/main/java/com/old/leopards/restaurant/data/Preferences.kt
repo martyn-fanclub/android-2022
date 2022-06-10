@@ -14,9 +14,10 @@ class Preferences(private val context: Context) {
     companion object {
         private val Context.dataStore by preferencesDataStore(name = "setting")
         private val firstLaunch = booleanPreferencesKey("isFirstLaunch")
+
         private val initUser: User = User(0, "", "", "", "")
         private var currentUser: User = initUser
-        var userAddress = ""
+        var userAddress = stringPreferencesKey("getUserAddress")
     }
 
     val isFirstLaunch: Flow<Boolean>
@@ -41,12 +42,14 @@ class Preferences(private val context: Context) {
     }
 
     fun setUserAddress(address: String) {
+        context.dataStore.edit { it[userAddress] = address }
         userAddress = address
     }
 
-    fun getUserAddress(): String {
-        return userAddress
-    }
+    val getUserAddress: Flow<String>
+        get() = context.dataStore.data.map {
+            it[userAddress]
+        }
 
     fun resetUser() {
         currentUser = initUser
