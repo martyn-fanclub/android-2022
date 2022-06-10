@@ -8,8 +8,8 @@ class FoodItemRepository(private val foodItemDao: FoodItemDao) {
 
     val getAllFoodItems: Flow<List<FoodItem>> = foodItemDao.getAllFoodItems()
 
-    suspend fun addFoodItem(foodItem: FoodItem) {
-        foodItemDao.addFoodItem(foodItem)
+    fun addFoodItem(foodItem: FoodItem): Long {
+        return foodItemDao.addFoodItem(foodItem)
     }
 
 }

@@ -17,9 +17,9 @@ class LocalizedFoodViewModel(application: Application) : AndroidViewModel(applic
         val localizedFoodDao = RestaurantDatabase.getDatabase(application).localizedFoodDao()
         val lang: Int
         if (Locale.getDefault().language.equals("ru")) {
-            lang = 0
-        } else {
             lang = 1
+        } else {
+            lang = 2
         }
         repository = LocalizedFoodRepository(localizedFoodDao, lang)
         getLocalizedFoodByLanguageId = repository.getLocalizedFoodsByLanguage

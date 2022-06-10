@@ -12,4 +12,8 @@ class LanguageRepository(private val languageDao: LanguageDao) {
         languageDao.addLanguage(language)
     }
 
+    fun addAllLanguages(vararg language: Language): List<Long> {
+        return languageDao.addAllLanguages(*language)
+    }
+
 }

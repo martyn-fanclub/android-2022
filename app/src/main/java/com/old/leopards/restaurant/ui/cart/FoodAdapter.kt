@@ -3,7 +3,6 @@ package com.old.leopards.restaurant.ui.cart
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
@@ -77,7 +76,7 @@ class FoodViewHolder(itemView: View, private val foodAdapter: FoodAdapter) :
         descriptionTextView.text = food.description
         priceTextView.text =
             itemView.context.getString(R.string.price_sum_template, foodEntry.amount, food.price)
-        weightTextView.text = food.title
+        weightTextView.text = food.weight.toString() + " г"
 
         plusButton.setOnClickListener {
             val addedItem = Cart.addItem(food)

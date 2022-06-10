@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "food_items")
 data class FoodItem(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int = 0,
     val portionSize: Int,
     val price: Int,
     val photoLink: String
