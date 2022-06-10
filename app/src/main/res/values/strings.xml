@@ -53,6 +53,6 @@
     <string name="password_mismatch">Mismatch of passwords!</string>
     <string name="success">Success!</string>
     <string name="name_conflict">User with such username already exists!</string>
-    <string name="email_conflict">ПUser with such email already exists!</string>
+    <string name="email_conflict">User with such email already exists!</string>
     <string name="invalid_email">Invalid email!</string>
 </resources>
