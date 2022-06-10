@@ -88,6 +88,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFood() {
         runBlocking {
+            val desciption =
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. \n"
             val f1 = _foodItemViewModel.addFoodItem(
                 FoodItem(
                     portionSize = 10,
@@ -113,16 +115,16 @@ class MainActivity : AppCompatActivity() {
                 FoodDescription(
                     languageId = 1,
                     foodItemId = f1.toInt(),
-                    name = "Продукт1",
-                    description = "Описание1"
+                    name = "Ризотто с вареными яйцами",
+                    description = desciption
                 )
             )
             _foodDescriptionViewModel.addFoodDescription(
                 FoodDescription(
                     languageId = 2,
                     foodItemId = f1.toInt(),
-                    name = "Food1",
-                    description = "Description1"
+                    name = "Risotto with boiled eggs",
+                    description = desciption
                 )
             )
 
@@ -130,16 +132,16 @@ class MainActivity : AppCompatActivity() {
                 FoodDescription(
                     languageId = 1,
                     foodItemId = f2.toInt(),
-                    name = "Продукт2",
-                    description = "Описание2"
+                    name = "Пицца",
+                    description = desciption
                 )
             )
             _foodDescriptionViewModel.addFoodDescription(
                 FoodDescription(
                     languageId = 2,
                     foodItemId = f2.toInt(),
-                    name = "Food2",
-                    description = "Description2"
+                    name = "Pizza",
+                    description = desciption
                 )
             )
 
@@ -147,19 +149,18 @@ class MainActivity : AppCompatActivity() {
                 FoodDescription(
                     languageId = 1,
                     foodItemId = f3.toInt(),
-                    name = "Продукт3",
-                    description = "Описание3"
+                    name = "Рис",
+                    description = desciption
                 )
             )
             _foodDescriptionViewModel.addFoodDescription(
                 FoodDescription(
                     languageId = 2,
                     foodItemId = f3.toInt(),
-                    name = "Food3",
-                    description = "Description3"
+                    name = "Rice",
+                    description = desciption
                 )
             )
-
         }
 
     }
