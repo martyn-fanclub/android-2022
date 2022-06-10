@@ -31,7 +31,9 @@ class FoodAdapter :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.cart_item, parent, false)
-        return FoodViewHolder(view, this)
+        val cartView =
+            LayoutInflater.from(parent.context).inflate(R.layout.fragment_cart, parent, false)
+        return FoodViewHolder(view, view, cartView)
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
@@ -62,10 +64,11 @@ class FoodAdapter :
     }
 }
 
-class FoodViewHolder(itemView: View, private val foodAdapter: FoodAdapter) :
+class FoodViewHolder(itemView: View, cartView: View, private val foodAdapter: View) :
     RecyclerView.ViewHolder(itemView) {
     private val titleTextView: TextView = itemView.findViewById(R.id.cart_item_title)
     private val descriptionTextView: TextView = itemView.findViewById(R.id.cart_item_description)
+    private val total: TextView = cartView.findViewById(R.id.price)
     private val priceTextView: TextView = itemView.findViewById(R.id.cart_item_price)
     private val weightTextView: TextView = itemView.findViewById(R.id.cart_item_weight)
     private val minusButton: Button = itemView.findViewById(R.id.cart_item_minus)
@@ -81,6 +84,7 @@ class FoodViewHolder(itemView: View, private val foodAdapter: FoodAdapter) :
 
         plusButton.setOnClickListener {
             val addedItem = Cart.addItem(food)
+
             priceTextView.text =
                 itemView.context.getString(
                     R.string.price_sum_template,

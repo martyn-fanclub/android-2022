@@ -1,6 +1,12 @@
 package com.old.leopards.restaurant.ui.profile
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -9,7 +15,11 @@ import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.database.viewModels.UserViewModel
 import com.old.leopards.restaurant.databinding.FragmentEditProfileBinding
 import com.old.leopards.restaurant.ui.Global
+import com.old.leopards.restaurant.ui.Global.Companion.REQUEST_CODE
 import com.old.leopards.restaurant.ui.Global.Companion.showText
+import java.io.File
+import java.io.FileOutputStream
+
 
 /**
  * A simple [Fragment] subclass.
@@ -77,7 +87,7 @@ class EditProfileFragment : Fragment() {
                     }
                 }
 
-                if (email.isNotBlank() && email != Global.currentUser.email) {
+                if (email.isNotBlank() && email != Global.currentUser.email  && Global.emailPattern.matches(email)) {
                     val user = _UserViewModel.getUserByEmail(email)
                     if (user == null) {
                         newUser.email = email
@@ -101,12 +111,26 @@ class EditProfileFragment : Fragment() {
 
             // TODO
             btnAddPhoto.setOnClickListener {
-
+                openGalleryForImage()
             }
         }
     }
 
     fun showText(text: String) {
         showText(context, text)
+    }
+
+    private fun openGalleryForImage() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
+            Global.currentUser.photoLink = data?.data.toString()
+            _UserViewModel.updateUser(Global.currentUser)
+        }
     }
 }

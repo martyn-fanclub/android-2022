@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar"
             android:layout_width="109dp"
             android:layout_height="123dp"
@@ -34,7 +34,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="-5dp"
-            android:text="@string/profile_name"
             android:textAlignment="center"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +50,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="200dp"
-            android:text="@string/profile_email"
             android:textAlignment="center"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -1,5 +1,6 @@
 package com.old.leopards.restaurant.models
 
+import android.view.View
 import io.paperdb.Paper
 import java.math.BigDecimal
 
