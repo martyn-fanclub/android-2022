@@ -101,14 +101,14 @@ class MainActivity : AppCompatActivity() {
                 FoodItem(
                     portionSize = 15,
                     price = 20,
-                    photoLink = "https://vilkin.pro/wp-content/uploads/2019/11/rizotto-s-ovoshami.jpg"
+                    photoLink = "https://i.pinimg.com/originals/58/1a/28/581a288ae9ad427627108404d79b56fd.jpg"
                 )
             )
             val f3 = _foodItemViewModel.addFoodItem(
                 FoodItem(
                     portionSize = 20,
                     price = 30,
-                    photoLink = "https://vilkin.pro/wp-content/uploads/2019/11/rizotto-s-ovoshami.jpg"
+                    photoLink = "https://avatars.mds.yandex.net/get-zen_doc/40274/pub_59828b67b2d0090abe598ece_59828bac1410c371db766837/scale_1200"
                 )
             )
             _foodDescriptionViewModel.addFoodDescription(
