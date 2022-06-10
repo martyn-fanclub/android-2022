@@ -25,8 +25,6 @@ class CurrencyService {
         return httpClient.build()
     }
 
-    private val json = Json { ignoreUnknownKeys = true }
-
     private fun createRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)

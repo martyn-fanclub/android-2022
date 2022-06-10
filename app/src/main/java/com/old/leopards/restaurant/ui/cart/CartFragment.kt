@@ -107,6 +107,8 @@ class CartFragment : Fragment() {
 
         binding.removeAll.setOnClickListener {
             adapter.clearCart()
+            binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
+            adapter.listener!!.onItemClick(adapter.getTotal())
         }
 
         binding.pay.setOnClickListener {
