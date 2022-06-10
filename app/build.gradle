@@ -76,4 +76,6 @@ dependencies {
     implementation "androidx.room:room-ktx:2.4.2"
     androidTestImplementation "androidx.room:room-testing:2.4.2"
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.6.21"
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

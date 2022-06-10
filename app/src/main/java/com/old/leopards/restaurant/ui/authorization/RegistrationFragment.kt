@@ -1,6 +1,8 @@
 package com.old.leopards.restaurant.ui.authorization
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -24,6 +26,7 @@ class RegistrationFragment : Fragment() {
     private var _binding: FragmentRegistrationBinding? = null
     private lateinit var _UserViewModel: UserViewModel
     private var _context: Context? = null
+    private var _avatarUri: String? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -46,20 +49,25 @@ class RegistrationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _UserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        binding.btnReg.setOnClickListener {
-            val name = binding.regInputName.text.toString()
-            val password = binding.regInputPassword.text.toString()
-            val replyPassword = binding.regInputPasswordAgain.text.toString()
-            val email = binding.regInputEmail.text.toString()
-            val photoLink = null // TODO photoLink
+        binding.apply {
+            regAddPhotoBtn.setOnClickListener {
+                openGalleryForImage()
+            }
 
-            if (isValidRegInput(name, password, replyPassword, email)) {
-                val user = User(login=name, password=password, email=email, photoLink=photoLink)
-                _UserViewModel.createUser(user)
-                // TODO _binding_profile?.avatar? = ?
-                Global.currentUser = user
-                findNavController().navigate(RegistrationFragmentDirections.actionRegistrationFragmentToNavigationFood())
-                activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
+            btnReg.setOnClickListener {
+                val name = binding.regInputName.text.toString()
+                val password = binding.regInputPassword.text.toString()
+                val replyPassword = binding.regInputPasswordAgain.text.toString()
+                val email = binding.regInputEmail.text.toString()
+                val photoLink = _avatarUri
+
+                if (isValidRegInput(name, password, replyPassword, email)) {
+                    val user = User(login=name, password=password, email=email, photoLink=photoLink)
+                    _UserViewModel.createUser(user)
+                    Global.currentUser = user
+                    findNavController().navigate(RegistrationFragmentDirections.actionRegistrationFragmentToNavigationFood())
+                    activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
+                }
             }
         }
     }
@@ -76,7 +84,7 @@ class RegistrationFragment : Fragment() {
             if (name.isNotBlank()) {
                 if (password.isNotBlank()) {
                     if (password == replyPassword) {
-                        if (email.isNotBlank()) {
+                        if (email.isNotBlank() && Global.emailPattern.matches(email)) {
                             isValidRegInput = true
                         } else {
                             showText(getString(R.string.invalid_email))
@@ -98,5 +106,18 @@ class RegistrationFragment : Fragment() {
 
     fun showText(text: String) {
         showText(context, text)
+    }
+
+    private fun openGalleryForImage() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, Global.REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == Global.REQUEST_CODE) {
+            _avatarUri = data?.data.toString()
+        }
     }
 }
