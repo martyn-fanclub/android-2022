@@ -18,7 +18,7 @@
     <RelativeLayout
         android:id="@+id/cart_total"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="140dp"
         android:elevation="30dp"
         android:layout_gravity="bottom"
         android:paddingHorizontal="9dp"
@@ -58,15 +58,24 @@
             android:fontFamily="@font/merriweather_medium"
             android:paddingTop="10dp"
             android:text="0₽"
-            android:textColor="@color/black" /> <!-- TODO -->
+            android:textColor="@color/black" />
 
-        <TextView
+<!--        <TextView-->
+<!--            android:id="@+id/address"-->
+<!--            android:fontFamily="@font/roboto_light"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/total"-->
+<!--            android:text="г. Санкт-Петербург ул. Харченко 16, к 232" /> &lt;!&ndash; TODO &ndash;&gt;-->
+
+        <EditText
             android:id="@+id/address"
-            android:fontFamily="@font/roboto_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:inputType="textNoSuggestions"
             android:layout_below="@id/total"
-            android:text="г. Санкт-Петербург ул. Харченко 16, к 232" /> <!-- TODO -->
+            android:text="г. Санкт-Петербург ул. Харченко 16, к 232" />
 
         <LinearLayout
             android:id="@+id/row_buttons"
