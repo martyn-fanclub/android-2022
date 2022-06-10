@@ -20,10 +20,6 @@ class StartFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        activity?.findViewById<View>(R.id.nav_view)?.visibility = View.INVISIBLE
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +32,8 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        activity?.findViewById<View>(R.id.nav_view)?.visibility = View.INVISIBLE
         val navController = findNavController()
-
         binding.apply {
             btnLogin.setOnClickListener {
                 navController.navigate(R.id.action_start_fragment_to_login_fragment)
@@ -47,5 +43,11 @@ class StartFragment : Fragment() {
                 navController.navigate(R.id.action_start_fragment_to_registration_fragment)
             }
         }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        activity?.findViewById<View>(R.id.nav_view)?.visibility = View.INVISIBLE
     }
 }

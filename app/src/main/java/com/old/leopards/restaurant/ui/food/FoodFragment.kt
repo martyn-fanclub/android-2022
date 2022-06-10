@@ -35,14 +35,13 @@ class FoodFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
         _binding = FragmentFoodBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
         val columns: Int
         if (requireActivity().resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
             columns = 2

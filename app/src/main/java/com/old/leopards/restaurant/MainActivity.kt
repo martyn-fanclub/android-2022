@@ -1,6 +1,8 @@
 package com.old.leopards.restaurant
 
+import android.R.attr.data
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -62,8 +64,6 @@ class MainActivity : AppCompatActivity() {
 
         // Initializing Paper db, which is used for cart view presentation
         Paper.init(applicationContext)
-
-
     }
 
     private fun initData() {
