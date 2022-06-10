@@ -2,20 +2,26 @@ package com.old.leopards.restaurant.ui.cart
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.old.leopards.restaurant.R
+import com.old.leopards.restaurant.data.Preferences
 import com.old.leopards.restaurant.databinding.FragmentCartBinding
+import com.old.leopards.restaurant.ui.Global
 import com.old.leopards.restaurant.ui.Global.Companion.showText
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 import java.math.BigDecimal
+
 
 class CartFragment : Fragment() {
 
@@ -39,6 +45,7 @@ class CartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCartBinding.inflate(inflater, container, false)
+        binding.address.setText(Global.userAddress)
         return binding.root
     }
 
@@ -46,6 +53,8 @@ class CartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = FoodAdapter()
+
+        binding.address.addTextChangedListener(AddressInputValidator())
 
         adapter.setOnItemClickListener { rubles ->
             binding.price.text = getString(R.string.total_price_template, rubles)
@@ -125,5 +134,22 @@ class CartFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private inner class AddressInputValidator : TextWatcher {
+
+        override fun afterTextChanged(s: Editable) {
+            Global.userAddress = s.toString()
+        }
+
+        override fun beforeTextChanged(
+            s: CharSequence, start: Int, count: Int,
+            after: Int
+        ) {}
+
+        override fun onTextChanged(
+            s: CharSequence, start: Int, before: Int,
+            count: Int
+        ) {}
     }
 }

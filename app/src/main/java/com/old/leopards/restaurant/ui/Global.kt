@@ -9,6 +9,7 @@ class Global {
         var currentUser: User = User(0, "", "", "", "")
         val emailPattern = "([a-zA-Z0-9]+\\.*[a-zA-Z0-9]+)+@([a-zA-Z0-9]+\\.*[a-zA-Z0-9]+)+".toRegex()
         val REQUEST_CODE = 100
+        var userAddress = ""
 
         fun showText(context: Context?, text: String) {
             Toast.makeText(
