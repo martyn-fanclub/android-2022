@@ -3,6 +3,7 @@ package com.old.leopards.restaurant.ui.cart
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
@@ -10,19 +11,34 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.models.Cart
+import java.math.BigDecimal
 
 class FoodAdapter :
     ListAdapter<Cart.CartItem, FoodViewHolder>(
         FlowerDiffCallback
     ) {
+
+    fun interface OnItemsClickListener {
+        fun onItemClick(price: BigDecimal)
+    }
+
+    var listener: OnItemsClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemsClickListener?) {
+        this.listener = listener
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.cart_item, parent, false)
-        return FoodViewHolder(view, this)
+        val cartView =
+            LayoutInflater.from(parent.context).inflate(R.layout.fragment_cart, parent, false)
+        return FoodViewHolder(view, view, cartView)
     }
 
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         val food = getItem(position)
+
         holder.bind(food) { ->
             val currentList = currentList.toMutableList()
             currentList.removeAt(position)
@@ -35,13 +51,24 @@ class FoodAdapter :
         Cart.clearCart()
         submitList(Cart.getCart())
     }
+
+    fun getTotal(): BigDecimal {
+        return Cart.getTotal()
+    }
+
+    fun pay(): BigDecimal {
+        // TODO do some business logic
+        val total = getTotal()
+        clearCart()
+        return total
+    }
 }
 
-
-class FoodViewHolder(itemView: View, private val foodAdapter: FoodAdapter) :
+class FoodViewHolder(itemView: View, cartView: View, private val foodAdapter: View) :
     RecyclerView.ViewHolder(itemView) {
     private val titleTextView: TextView = itemView.findViewById(R.id.cart_item_title)
     private val descriptionTextView: TextView = itemView.findViewById(R.id.cart_item_description)
+    private val total: TextView = cartView.findViewById(R.id.price)
     private val priceTextView: TextView = itemView.findViewById(R.id.cart_item_price)
     private val weightTextView: TextView = itemView.findViewById(R.id.cart_item_weight)
     private val minusButton: Button = itemView.findViewById(R.id.cart_item_minus)
@@ -57,12 +84,14 @@ class FoodViewHolder(itemView: View, private val foodAdapter: FoodAdapter) :
 
         plusButton.setOnClickListener {
             val addedItem = Cart.addItem(food)
+
             priceTextView.text =
                 itemView.context.getString(
                     R.string.price_sum_template,
                     addedItem.amount,
                     addedItem.food.price
                 )
+            foodAdapter.listener?.onItemClick(foodAdapter.getTotal())
         }
 
         minusButton.setOnClickListener {
@@ -77,6 +106,7 @@ class FoodViewHolder(itemView: View, private val foodAdapter: FoodAdapter) :
                         addedItem.food.price
                     )
             }
+            foodAdapter.listener?.onItemClick(foodAdapter.getTotal())
         }
     }
 }

@@ -49,11 +49,12 @@ class FoodAdapter :
                     }
                 }
             } else {
-                // FIXME set default img
+                // FIXME set default img | for what? it is an error, need to rerun an app
                 //imageView.setImageResource()
             }
             buttonFoodPrice.setOnClickListener {
                 Cart.addItem(foodItem)
+
             }
         }
     }

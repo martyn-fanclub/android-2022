@@ -21,6 +21,8 @@
     <!-- Cart recources -->
     <!-- <string name="description_cart">This is a shopping cart!</string> -->
     <string name="pay_btn">pay</string>
+    <string name="total_price_template" translatable="false">%1$s ₽</string>
+    <string name="total_dollars_price_template" translatable="false">%1$s $</string>
     <string name="change_address">change\naddress</string>
     <string name="delete_all">remove\nall</string>
 
@@ -53,6 +55,6 @@
     <string name="password_mismatch">Mismatch of passwords!</string>
     <string name="success">Success!</string>
     <string name="name_conflict">User with such username already exists!</string>
-    <string name="email_conflict">ПUser with such email already exists!</string>
+    <string name="email_conflict">User with such email already exists!</string>
     <string name="invalid_email">Invalid email!</string>
 </resources>

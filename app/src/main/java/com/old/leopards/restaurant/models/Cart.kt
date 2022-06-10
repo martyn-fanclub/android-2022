@@ -1,6 +1,8 @@
 package com.old.leopards.restaurant.models
 
+import android.view.View
 import io.paperdb.Paper
+import java.math.BigDecimal
 
 class Cart {
     companion object {
@@ -57,6 +59,14 @@ class Cart {
             }
 
             return cartSize
+        }
+
+        fun getTotal(): BigDecimal {
+            var total: BigDecimal = BigDecimal.ZERO;
+            getCart().forEach {
+                total = total.add(it.food.price.multiply(it.amount.toBigDecimal()))
+            }
+            return total
         }
 
         fun clearCart() {

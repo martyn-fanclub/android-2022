@@ -60,12 +60,8 @@ class LoginFragment : Fragment() {
         var isValidLoginInput = false
         if (user != null) {
             if (name.isNotBlank()) {
-                if (user.password.isNotBlank()) {
-                    if (user.password == password) {
-                        isValidLoginInput = true
-                    } else {
-                        showText(getString(R.string.invalid_password))
-                    }
+                if (user.password.isNotBlank() || user.password == password) {
+                    isValidLoginInput = true
                 } else {
                     showText(getString(R.string.invalid_password))
                 }
