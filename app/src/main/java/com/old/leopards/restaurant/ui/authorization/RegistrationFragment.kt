@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.old.leopards.restaurant.R
+import com.old.leopards.restaurant.data.Preferences
 import com.old.leopards.restaurant.database.entities.User
 import com.old.leopards.restaurant.database.viewModels.UserViewModel
 import com.old.leopards.restaurant.databinding.FragmentRegistrationBinding
@@ -64,7 +65,8 @@ class RegistrationFragment : Fragment() {
                 if (isValidRegInput(name, password, replyPassword, email)) {
                     val user = User(login=name, password=password, email=email, photoLink=photoLink)
                     _UserViewModel.createUser(user)
-                    Global.currentUser = user
+                    Preferences(requireContext()).setCurrentUser(user)
+
                     findNavController().navigate(RegistrationFragmentDirections.actionRegistrationFragmentToNavigationFood())
                     activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
                 }

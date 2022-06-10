@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.old.leopards.restaurant.R
+import com.old.leopards.restaurant.data.Preferences
 import com.old.leopards.restaurant.database.viewModels.UserViewModel
 import com.old.leopards.restaurant.databinding.FragmentLoginBinding
 import com.old.leopards.restaurant.ui.Global
@@ -41,6 +42,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         _UserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         binding.btnVerifyLogin.setOnClickListener {
@@ -48,7 +50,9 @@ class LoginFragment : Fragment() {
             val password = binding.loginInputPassword.text.toString()
 
             if (isValidLoginInput(name, password)) {
-                Global.currentUser = _UserViewModel.getUserByName(name)!!
+                val user = _UserViewModel.getUserByName(name)!!
+                Preferences(requireContext()).setCurrentUser(user)
+
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToNavigationFood())
                 activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
             }

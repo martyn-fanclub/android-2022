@@ -6,7 +6,6 @@ import com.old.leopards.restaurant.database.entities.User
 
 class Global {
     companion object {
-        var currentUser: User = User(0, "", "", "", "")
         val emailPattern = "([a-zA-Z0-9]+\\.*[a-zA-Z0-9]+)+@([a-zA-Z0-9]+\\.*[a-zA-Z0-9]+)+".toRegex()
         val REQUEST_CODE = 100
 

@@ -60,14 +60,6 @@
             android:text="0₽"
             android:textColor="@color/black" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/address"-->
-<!--            android:fontFamily="@font/roboto_light"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/total"-->
-<!--            android:text="г. Санкт-Петербург ул. Харченко 16, к 232" /> &lt;!&ndash; TODO &ndash;&gt;-->
-
         <EditText
             android:id="@+id/address"
             android:layout_width="wrap_content"

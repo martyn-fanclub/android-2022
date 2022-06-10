@@ -12,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.old.leopards.restaurant.R
+import com.old.leopards.restaurant.data.Preferences
+import com.old.leopards.restaurant.database.entities.User
 import com.old.leopards.restaurant.database.viewModels.UserViewModel
 import com.old.leopards.restaurant.databinding.FragmentEditProfileBinding
 import com.old.leopards.restaurant.ui.Global
@@ -30,6 +32,8 @@ class EditProfileFragment : Fragment() {
     private var _binding: FragmentEditProfileBinding? =
         null
     private lateinit var _UserViewModel: UserViewModel
+    private var pref: Preferences? = null
+    private var currentUser: User? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -44,10 +48,13 @@ class EditProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
-        binding.editNameInput.setText(Global.currentUser.login)
-        binding.editEmailInput.setText(Global.currentUser.email)
-        binding.editPasswordInput.setText(Global.currentUser.password)
-        binding.editPasswordAgainInput.setText(Global.currentUser.password)
+
+        pref = Preferences(requireContext())
+        currentUser = pref!!.getCurrentUser()
+        binding.editNameInput.setText(currentUser!!.login)
+        binding.editEmailInput.setText(currentUser!!.email)
+        binding.editPasswordInput.setText(currentUser!!.password)
+        binding.editPasswordAgainInput.setText(currentUser!!.password)
         return binding.root
     }
 
@@ -65,12 +72,12 @@ class EditProfileFragment : Fragment() {
                 val email = binding.editEmailInput.text.toString()
                 val photoLink = null // TODO photoLink
 
-                val newUser = Global.currentUser
+                val newUser = currentUser
 
-                if (name.isNotBlank() && name != Global.currentUser.login) {
+                if (name.isNotBlank() && name != currentUser!!.login) {
                     val user = _UserViewModel.getUserByName(name)
                     if (user == null) {
-                        newUser.login = name
+                        newUser!!.login = name
                     } else {
                         showText(getString(R.string.name_conflict))
                         return@setOnClickListener
@@ -78,19 +85,19 @@ class EditProfileFragment : Fragment() {
                 }
 
                 if (password.isNotBlank()
-                    && (password != Global.currentUser.password || replyPassword != Global.currentUser.password)) {
+                    && (password != currentUser!!.password || replyPassword != currentUser!!.password)) {
                     if (password == replyPassword) {
-                        newUser.password = password
+                        newUser!!.password = password
                     } else {
                         showText(getString(R.string.password_mismatch))
                         return@setOnClickListener
                     }
                 }
 
-                if (email.isNotBlank() && email != Global.currentUser.email  && Global.emailPattern.matches(email)) {
+                if (email.isNotBlank() && email != currentUser!!.email  && Global.emailPattern.matches(email)) {
                     val user = _UserViewModel.getUserByEmail(email)
                     if (user == null) {
-                        newUser.email = email
+                        newUser!!.email = email
                     } else {
                         showText(getString(R.string.email_conflict))
                         return@setOnClickListener
@@ -99,8 +106,8 @@ class EditProfileFragment : Fragment() {
 
                 // TODO photoLink
 
-                _UserViewModel.updateUser(newUser)
-                Global.currentUser = newUser
+                _UserViewModel.updateUser(newUser!!)
+                pref!!.setCurrentUser(newUser)
                 showText(appContext, getString(R.string.success))
             }
 
@@ -129,8 +136,8 @@ class EditProfileFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
-            Global.currentUser.photoLink = data?.data.toString()
-            _UserViewModel.updateUser(Global.currentUser)
+            currentUser!!.photoLink = data?.data.toString()
+            _UserViewModel.updateUser(currentUser!!)
         }
     }
 }
