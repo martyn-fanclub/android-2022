@@ -65,7 +65,7 @@ class EditProfileFragment : Fragment() {
                 val email = binding.editEmailInput.text.toString()
                 val photoLink = null // TODO photoLink
 
-                var newUser = Global.currentUser
+                val newUser = Global.currentUser
 
                 if (name.isNotBlank() && name != Global.currentUser.login) {
                     val user = _UserViewModel.getUserByName(name)

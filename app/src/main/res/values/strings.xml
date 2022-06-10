@@ -14,7 +14,7 @@
     <!-- Food recources -->
     <!-- <string name="description_food">This is a food section!</string> -->
     <string name="total">Total:</string>
-    <string name="food_weight_template">%1$s g.</string>
+    <string name="food_weight_template">%1$s g</string>
     <string name="price_sum_template" translatable="false"> %1$d * %2$s ₽</string>
     <string name="price_template" translatable="false">%1$s ₽</string>
 
@@ -23,6 +23,7 @@
     <string name="pay_btn">pay</string>
     <string name="total_price_template" translatable="false">%1$s ₽</string>
     <string name="total_dollars_price_template" translatable="false">%1$s $</string>
+    <string name="on_buy_toast_template">"Bought for sum: %1$s $</string>
     <string name="change_address">change\naddress</string>
     <string name="delete_all">remove\nall</string>
 

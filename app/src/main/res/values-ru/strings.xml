@@ -15,13 +15,14 @@
     <!-- Food recources -->
     <!-- <string name="description_food">Это секция с едой!</string> -->
     <string name="total">Итого:</string>
-    <string name="food_weight_template">%1s гр.</string>
+    <string name="food_weight_template">%1s г</string>
 
     <!-- Cart recources -->
     <!-- <string name="description_cart">Это ваша корзина!</string> -->
     <string name="pay_btn">оплатить</string>
     <string name="change_address">изменить адрес</string>
     <string name="delete_all">удалить все</string>
+    <string name="on_buy_toast_template">"Куплено на сумму: %1$s ₽</string>
 
     <!-- Profile resources -->
     <!-- <string name="description_profile">Это ваш профиль!</string> -->
@@ -52,4 +53,5 @@
     <string name="name_conflict">Пользователь с таким именем уже существует!</string>
     <string name="email_conflict">Пользователь с такой эл. почтой уже существует!</string>
     <string name="invalid_email">Некорректная эл. почта!</string>
+    <string name="gram">г</string>
 </resources>

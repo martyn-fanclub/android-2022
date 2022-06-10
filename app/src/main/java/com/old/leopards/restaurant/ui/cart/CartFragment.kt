@@ -13,6 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.databinding.FragmentCartBinding
+import com.old.leopards.restaurant.ui.Global.Companion.showText
 import kotlinx.coroutines.flow.collect
 import java.math.BigDecimal
 
@@ -113,11 +114,7 @@ class CartFragment : Fragment() {
 
         binding.pay.setOnClickListener {
             val price = adapter.pay()
-            Toast.makeText(
-                context,
-                "Куплено на сумму: $price",
-                Toast.LENGTH_LONG
-            ).show()
+            showText(context, getString(R.string.on_buy_toast_template, price))
             binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
             adapter.listener!!.onItemClick(adapter.getTotal())
         }

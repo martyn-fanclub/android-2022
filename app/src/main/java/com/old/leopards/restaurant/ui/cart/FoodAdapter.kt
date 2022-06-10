@@ -76,7 +76,7 @@ class FoodViewHolder(itemView: View, private val foodAdapter: FoodAdapter) :
         descriptionTextView.text = food.description
         priceTextView.text =
             itemView.context.getString(R.string.price_sum_template, foodEntry.amount, food.price)
-        weightTextView.text = food.weight.toString() + " г"
+        weightTextView.text = itemView.context.getString(R.string.food_weight_template, food.weight.toString())
 
         plusButton.setOnClickListener {
             val addedItem = Cart.addItem(food)
