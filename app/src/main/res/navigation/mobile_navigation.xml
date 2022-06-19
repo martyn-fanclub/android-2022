@@ -9,13 +9,28 @@
         android:id="@+id/navigation_food"
         android:name="com.old.leopards.restaurant.ui.food.FoodFragment"
         android:label="@string/title_food"
-        tools:layout="@layout/fragment_food" />
+        tools:layout="@layout/fragment_food">
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_cart"
         android:name="com.old.leopards.restaurant.ui.cart.CartFragment"
         android:label="@string/title_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_navigation_cart_to_payment_fragment"
+            app:destination="@id/fragment_payment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_payment"
+        android:name="com.old.leopards.restaurant.ui.cart.PaymentFragment"
+        android:label="@string/title_payment"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_payment_fragment_to_navigation_cart"
+            app:destination="@id/navigation_cart" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"

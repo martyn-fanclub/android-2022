@@ -58,4 +58,15 @@
     <string name="name_conflict">User with such username already exists!</string>
     <string name="email_conflict">User with such email already exists!</string>
     <string name="invalid_email">Invalid email!</string>
+    <string name="payment">payment</string>
+    <string name="payment_card_name">card number</string>
+    <string name="payment_card_example">XXXX XXXX XXXX XXXX</string>
+    <string name="profile_card_holder_name">card holder</string>
+    <string name="card_holder_example">John Doe</string>
+    <string name="edit_expire_date">Expires in</string>
+    <string name="edit_expire_date_example">2024</string>
+    <string name="profile_edit_cvv">CVV</string>
+    <string name="edit_cvv_example">420</string>
+    <string name="profile_cancel_payment">cancel</string>
+    <string name="title_payment">payment</string>
 </resources>

@@ -54,4 +54,15 @@
     <string name="email_conflict">Пользователь с такой эл. почтой уже существует!</string>
     <string name="invalid_email">Некорректная эл. почта!</string>
     <string name="gram">г</string>
+    <string name="payment">оплата</string>
+    <string name="payment_card_name">номер карты</string>
+    <string name="payment_card_example">XXXX XXXX XXXX XXXX</string>
+    <string name="profile_card_holder_name">владелец карты</string>
+    <string name="card_holder_example">John Doe</string>
+    <string name="edit_expire_date">Дата окончания</string>
+    <string name="edit_expire_date_example">2024</string>
+    <string name="profile_edit_cvv">CVV</string>
+    <string name="edit_cvv_example">420</string>
+    <string name="profile_cancel_payment">отмена</string>
+    <string name="title_payment">оплата</string>
 </resources>

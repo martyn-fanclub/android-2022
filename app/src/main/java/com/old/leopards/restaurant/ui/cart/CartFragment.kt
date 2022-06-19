@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.data.Preferences
@@ -122,10 +123,11 @@ class CartFragment : Fragment() {
         }
 
         binding.pay.setOnClickListener {
-            val price = adapter.pay()
-            showText(context, getString(R.string.on_buy_toast_template, price))
-            binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
-            adapter.listener!!.onItemClick(adapter.getTotal())
+//            val price = adapter.pay()
+//            showText(context, getString(R.string.on_buy_toast_template, price))
+//            binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
+//            adapter.listener!!.onItemClick(adapter.getTotal())
+            findNavController().navigate(R.id.action_navigation_cart_to_payment_fragment)
         }
 
         binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
