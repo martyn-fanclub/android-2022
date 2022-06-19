@@ -13,24 +13,21 @@
     <string name="very_short_password">Very short password!</string>
 
     <!-- Food recources -->
-    <!-- <string name="description_food">This is a food section!</string> -->
     <string name="total">Total:</string>
     <string name="food_weight_template">%1$s g</string>
     <string name="price_sum_template" translatable="false"> %1$d * %2$s ₽</string>
     <string name="price_template" translatable="false">%1$s ₽</string>
 
     <!-- Cart recources -->
-    <!-- <string name="description_cart">This is a shopping cart!</string> -->
     <string name="pay_btn">pay</string>
     <string name="total_price_template" translatable="false">%1$s ₽</string>
     <string name="total_dollars_price_template" translatable="false">%1$s $</string>
     <string name="on_buy_toast_template">Bought for sum: %1$s ₽</string>
     <string name="on_empty_cart_toast">Empty cart</string>
-    <string name="change_address">change\naddress</string>
+    <string name="edit_address">change\naddress</string>
     <string name="delete_all">remove\nall</string>
 
     <!-- Profile resources -->
-    <!-- <string name="description_profile">This is your profile!</string> -->
     <string name="profile_name">Aboba Abiba</string>
     <string name="profile_email">sobaka@yandex.ru</string>
     <string name="profile_edit_btn">Change</string>

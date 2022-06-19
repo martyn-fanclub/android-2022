@@ -60,7 +60,10 @@ class CartFragment : Fragment() {
                     when (it) {
                         is CartViewModel.CurrencyUiState.Error -> {
                             binding.dollarPrice.text =
-                                getString(R.string.total_dollars_price_template, BigDecimal.ZERO.setScale(2, BigDecimal.ROUND_HALF_EVEN))
+                                getString(
+                                    R.string.total_dollars_price_template,
+                                    BigDecimal.ZERO.setScale(2, BigDecimal.ROUND_HALF_EVEN)
+                                )
                         }
                         is CartViewModel.CurrencyUiState.Success -> {
                             val dollars = rubles.multiply(BigDecimal(it.currency.rates["USD"]!!))
@@ -95,7 +98,10 @@ class CartFragment : Fragment() {
                 when (it) {
                     is CartViewModel.CurrencyUiState.Error -> {
                         binding.dollarPrice.text =
-                            getString(R.string.total_dollars_price_template, BigDecimal.ZERO.setScale(2, BigDecimal.ROUND_HALF_EVEN))
+                            getString(
+                                R.string.total_dollars_price_template,
+                                BigDecimal.ZERO.setScale(2, BigDecimal.ROUND_HALF_EVEN)
+                            )
                     }
                     is CartViewModel.CurrencyUiState.Success -> {
                         val dollars =
@@ -129,23 +135,28 @@ class CartFragment : Fragment() {
                     imm.showSoftInput(binding.address, InputMethodManager.SHOW_FORCED)
                 } else {
                     binding.address.clearFocus()
-                    imm.hideSoftInputFromWindow(binding.address.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+                    imm.hideSoftInputFromWindow(
+                        binding.address.windowToken,
+                        InputMethodManager.HIDE_NOT_ALWAYS
+                    )
                 }
             }
 
 
-        pay.setOnClickListener {
-            if (!adapter.isEmpty()) {
-                val price = adapter.pay()
-                showText(context, getString(R.string.on_buy_toast_template, price))
-                binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
-                adapter.listener!!.onItemClick(adapter.getTotal())
-            } else {
-                showText(context, getString(R.string.on_empty_cart_toast))
+            pay.setOnClickListener {
+                if (!adapter.isEmpty()) {
+                    val price = adapter.pay()
+                    showText(context, getString(R.string.on_buy_toast_template, price))
+                    binding.price.text =
+                        getString(R.string.total_price_template, adapter.getTotal())
+                    adapter.listener!!.onItemClick(adapter.getTotal())
+                } else {
+                    showText(context, getString(R.string.on_empty_cart_toast))
+                }
             }
-        }
 
-        binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
+            binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
+        }
     }
 
     override fun onDestroyView() {
