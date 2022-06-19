@@ -16,6 +16,18 @@ class FoodViewModel(private val localizedFoodViewModel: LocalizedFoodViewModel) 
     private val _foodListState = MutableStateFlow<List<Food>>(CopyOnWriteArrayList())
     val foodListState = _foodListState
 
+    private val _pageState = MutableStateFlow<Int>(0)
+    val pageState = _pageState
+
+    private val foodPerPage = 10
+
+
+    fun nextPage() {
+        val expect = _pageState.value
+        val update = expect + 1
+        _pageState.compareAndSet(expect, update)
+
+    }
 
     init {
         viewModelScope.launch {
@@ -30,7 +42,7 @@ class FoodViewModel(private val localizedFoodViewModel: LocalizedFoodViewModel) 
                         it.photoLink
                     )
                 }
-                foodListState.emit(food)
+                foodListState.emit(food.take(foodPerPage))
             }
         }
     }
