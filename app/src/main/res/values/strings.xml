@@ -10,6 +10,7 @@
     <string name="profile_signin">Sign in</string>
     <string name="profile_signup">Sign up</string>
     <string name="no_such_user">No such user!</string>
+    <string name="very_short_password">Very short password!</string>
 
     <!-- Food recources -->
     <!-- <string name="description_food">This is a food section!</string> -->
@@ -23,8 +24,8 @@
     <string name="pay_btn">pay</string>
     <string name="total_price_template" translatable="false">%1$s ₽</string>
     <string name="total_dollars_price_template" translatable="false">%1$s $</string>
-    <string name="on_buy_toast_template">"Bought for sum: %1$s ₽</string>
-    <string name="on_empty_cart_toast">"Empty cart</string>
+    <string name="on_buy_toast_template">Bought for sum: %1$s ₽</string>
+    <string name="on_empty_cart_toast">Empty cart</string>
     <string name="change_address">change\naddress</string>
     <string name="delete_all">remove\nall</string>
 
