@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.databinding.FragmentCartBinding
@@ -155,7 +156,11 @@ class CartFragment : Fragment() {
                 }
             }
 
-            binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
+            pay.setOnClickListener {
+                findNavController().navigate(R.id.action_navigation_cart_to_payment_fragment)
+            }
+            
+            price.text = getString(R.string.total_price_template, adapter.getTotal())
         }
     }
 
