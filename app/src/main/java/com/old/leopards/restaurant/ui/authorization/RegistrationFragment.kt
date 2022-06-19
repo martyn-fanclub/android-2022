@@ -146,7 +146,8 @@ class RegistrationFragment : Fragment() {
             s: CharSequence, start: Int, before: Int,
             count: Int
         ) {
-            if (binding.regInputPassword.text.toString() != binding.regInputPasswordAgain.text.toString()) {
+            if (binding.regInputPassword.text.toString() != binding.regInputPasswordAgain.text.toString()
+                || binding.regInputPassword.text.length < 4) {
                 binding.regInputPassword.setBackgroundResource(R.drawable.btn_default_warning)
                 binding.regInputPasswordAgain.setBackgroundResource(R.drawable.btn_default_warning)
             } else {
