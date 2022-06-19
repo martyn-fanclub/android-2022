@@ -122,10 +122,14 @@ class CartFragment : Fragment() {
         }
 
         binding.pay.setOnClickListener {
-            val price = adapter.pay()
-            showText(context, getString(R.string.on_buy_toast_template, price))
-            binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
-            adapter.listener!!.onItemClick(adapter.getTotal())
+            if (!adapter.isEmpty()) {
+                val price = adapter.pay()
+                showText(context, getString(R.string.on_buy_toast_template, price))
+                binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
+                adapter.listener!!.onItemClick(adapter.getTotal())
+            } else {
+                showText(context, getString(R.string.on_empty_cart_toast))
+            }
         }
 
         binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
