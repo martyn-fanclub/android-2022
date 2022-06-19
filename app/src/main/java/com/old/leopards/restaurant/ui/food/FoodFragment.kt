@@ -2,6 +2,7 @@ package com.old.leopards.restaurant.ui.food
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.database.viewModels.LocalizedFoodViewModel
 import com.old.leopards.restaurant.databinding.FragmentFoodBinding
 import kotlinx.coroutines.flow.collect
+import kotlin.math.abs
 
 class FoodFragment : Fragment() {
 
@@ -59,9 +61,34 @@ class FoodFragment : Fragment() {
         val adapter = FoodAdapter()
         binding.rvFoodList.adapter = adapter
 
+        binding.btnNextFoodPage.setOnClickListener {
+            profileViewModel.nextPage()
+        }
+
+        binding.btnPrevFoodPage.setOnClickListener {
+            profileViewModel.prevPage()
+        }
+
         lifecycleScope.launchWhenStarted {
             profileViewModel.foodListState.collect {
-                adapter.submitList(it)
+                Log.d("asd", it.first.toString())
+                var page = it.first
+                if (page == 0) {
+                    binding.btnPrevFoodPage.visibility = View.INVISIBLE
+                } else {
+                    binding.btnPrevFoodPage.visibility = View.VISIBLE
+                }
+
+                if (page < 0) {
+                    binding.btnNextFoodPage.visibility = View.INVISIBLE
+                    page = abs(page)
+                } else {
+                    binding.btnNextFoodPage.visibility = View.VISIBLE
+                }
+                val perPage = profileViewModel.foodPerPage
+                val food = it.second.drop(page * perPage).take(perPage)
+                Log.d("asd", food.size.toString())
+                adapter.submitList(food)
             }
         }
     }

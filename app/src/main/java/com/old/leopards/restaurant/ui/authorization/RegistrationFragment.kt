@@ -3,8 +3,12 @@ package com.old.leopards.restaurant.ui.authorization
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.*
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -50,6 +54,9 @@ class RegistrationFragment : Fragment() {
         _UserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         binding.apply {
+            regInputPassword.addTextChangedListener(PasswordInputValidator())
+            regInputPasswordAgain.addTextChangedListener(PasswordInputValidator())
+
             regAddPhotoBtn.setOnClickListener {
                 openGalleryForImage()
             }
@@ -83,14 +90,18 @@ class RegistrationFragment : Fragment() {
         if (user == null) {
             if (name.isNotBlank()) {
                 if (password.isNotBlank()) {
-                    if (password == replyPassword) {
-                        if (email.isNotBlank() && Global.emailPattern.matches(email)) {
-                            isValidRegInput = true
+                    if (password.length >= 4) {
+                        if (password == replyPassword) {
+                            if (email.isNotBlank() && Global.emailPattern.matches(email)) {
+                                isValidRegInput = true
+                            } else {
+                                showText(getString(R.string.invalid_email))
+                            }
                         } else {
-                            showText(getString(R.string.invalid_email))
+                            showText(getString(R.string.password_mismatch))
                         }
                     } else {
-                        showText(getString(R.string.password_mismatch))
+                        showText(getString(R.string.very_short_password))
                     }
                 } else {
                     showText(getString(R.string.invalid_password))
@@ -118,6 +129,30 @@ class RegistrationFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == Global.REQUEST_CODE) {
             _avatarUri = data?.data.toString()
+        }
+    }
+
+    private inner class PasswordInputValidator : TextWatcher {
+
+        override fun afterTextChanged(s: Editable) {
+        }
+
+        override fun beforeTextChanged(
+            s: CharSequence, start: Int, count: Int,
+            after: Int
+        ) {}
+
+        override fun onTextChanged(
+            s: CharSequence, start: Int, before: Int,
+            count: Int
+        ) {
+            if (binding.regInputPassword.text.toString() != binding.regInputPasswordAgain.text.toString()) {
+                binding.regInputPassword.setBackgroundResource(R.drawable.btn_default_warning)
+                binding.regInputPasswordAgain.setBackgroundResource(R.drawable.btn_default_warning)
+            } else {
+                binding.regInputPassword.setBackgroundResource(R.drawable.btn_default)
+                binding.regInputPasswordAgain.setBackgroundResource(R.drawable.btn_default)
+            }
         }
     }
 }

@@ -36,8 +36,6 @@
             android:layout_alignParentTop="true"
             android:text="@string/total" />
 
-        <!-- TODO -->
-
         <TextView
             android:id="@+id/dollarPrice"
             android:layout_width="wrap_content"
@@ -60,14 +58,6 @@
             android:text="0₽"
             android:textColor="@color/black" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/address"-->
-<!--            android:fontFamily="@font/roboto_light"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/total"-->
-<!--            android:text="г. Санкт-Петербург ул. Харченко 16, к 232" /> &lt;!&ndash; TODO &ndash;&gt;-->
-
         <EditText
             android:id="@+id/address"
             android:layout_width="wrap_content"
@@ -75,7 +65,7 @@
             android:fontFamily="@font/roboto_light"
             android:inputType="textNoSuggestions"
             android:layout_below="@id/total"
-            android:text="г. Санкт-Петербург ул. Харченко 16, к 232" />
+            android:enabled="false" />
 
         <LinearLayout
             android:id="@+id/row_buttons"
@@ -101,7 +91,7 @@
                 android:text="@string/delete_all" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/edit_address"
                 android:layout_width="match_parent"
                 android:textSize="12sp"
                 android:layout_height="match_parent"
@@ -110,7 +100,7 @@
                 android:layout_marginHorizontal="7dp"
                 android:fontFamily="@font/roboto"
                 android:backgroundTint="@color/primary_variant"
-                android:text="@string/change_address" />
+                android:text="@string/edit_address" />
 
             <Button
                 android:id="@+id/pay"
@@ -121,7 +111,6 @@
                 android:layout_height="match_parent"
                 android:textColor="@color/black"
                 android:layout_weight="1"
-
                 android:backgroundTint="@color/secondary"
                 android:text="@string/pay_btn" />
         </LinearLayout>

@@ -1,8 +1,6 @@
 package com.old.leopards.restaurant
 
-import android.R.attr.data
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -111,6 +109,32 @@ class MainActivity : AppCompatActivity() {
                     photoLink = "https://avatars.mds.yandex.net/get-zen_doc/40274/pub_59828b67b2d0090abe598ece_59828bac1410c371db766837/scale_1200"
                 )
             )
+
+            for (i in 0..20) {
+                val f = _foodItemViewModel.addFoodItem(
+                    FoodItem(
+                        portionSize = 20,
+                        price = 30,
+                        photoLink = "https://avatars.mds.yandex.net/get-zen_doc/40274/pub_59828b67b2d0090abe598ece_59828bac1410c371db766837/scale_1200"
+                    )
+                )
+                _foodDescriptionViewModel.addFoodDescription(
+                    FoodDescription(
+                        languageId = 1,
+                        foodItemId = f.toInt(),
+                        name = "Ризотто с вареными яйцами",
+                        description = desciption
+                    )
+                )
+                _foodDescriptionViewModel.addFoodDescription(
+                    FoodDescription(
+                        languageId = 2,
+                        foodItemId = f.toInt(),
+                        name = "Risotto with boiled eggs",
+                        description = desciption
+                    )
+                )
+            }
             _foodDescriptionViewModel.addFoodDescription(
                 FoodDescription(
                     languageId = 1,

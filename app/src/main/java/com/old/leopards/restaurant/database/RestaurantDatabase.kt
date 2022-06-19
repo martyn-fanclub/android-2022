@@ -5,14 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.old.leopards.restaurant.database.dao.*
-import com.old.leopards.restaurant.database.entities.FoodDescription
-import com.old.leopards.restaurant.database.entities.FoodItem
-import com.old.leopards.restaurant.database.entities.Language
-import com.old.leopards.restaurant.database.entities.User
+import com.old.leopards.restaurant.database.entities.*
 
 @Database(
     entities = [User::class, FoodDescription::class,
-        FoodItem::class, Language::class], version = 1, exportSchema = true
+        FoodItem::class, Language::class, Order::class], version = 1, exportSchema = true
 )
 abstract class RestaurantDatabase : RoomDatabase() {
 
@@ -21,6 +18,7 @@ abstract class RestaurantDatabase : RoomDatabase() {
     abstract fun foodDescriptionDao(): FoodDescriptionDao
     abstract fun languageDao(): LanguageDao
     abstract fun localizedFoodDao(): LocalizedFoodDao
+    abstract fun orderDao(): OrderDao
 
     companion object {
         @Volatile

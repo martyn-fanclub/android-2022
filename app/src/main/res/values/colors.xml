@@ -6,4 +6,5 @@
     <color name="secondary">#FEBB01</color>
     <color name="neutral">#AD9DB1</color>
     <color name="primary_variant">#DDDDDD</color>
+    <color name="primary_red">#f44336</color>
 </resources>

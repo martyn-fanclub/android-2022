@@ -1,5 +1,6 @@
 package com.old.leopards.restaurant.ui.food
 
+import android.content.Context
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.models.Cart
 import com.old.leopards.restaurant.models.Food
+import com.old.leopards.restaurant.ui.Global.Companion.showText
 import kotlinx.coroutines.*
 
 class FoodAdapter :
@@ -54,7 +56,7 @@ class FoodAdapter :
             }
             buttonFoodPrice.setOnClickListener {
                 Cart.addItem(foodItem)
-
+                showText(itemView.context, itemView.context.getString(R.string.add_food_to_cart_template, foodItem.title, Cart.getItemCount(foodItem.title)));
             }
         }
     }
