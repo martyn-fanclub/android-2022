@@ -1,6 +1,7 @@
 package com.old.leopards.restaurant.models
 
 import android.view.View
+import com.old.leopards.restaurant.database.entities.FoodItem
 import io.paperdb.Paper
 import java.math.BigDecimal
 
@@ -59,6 +60,15 @@ class Cart {
             }
 
             return cartSize
+        }
+
+        fun getItemCount(name: String): Int {
+            for (it in getCart()) {
+                if (it.food.title == name) {
+                    return it.amount
+                }
+            }
+            return 0
         }
 
         fun getTotal(): BigDecimal {
