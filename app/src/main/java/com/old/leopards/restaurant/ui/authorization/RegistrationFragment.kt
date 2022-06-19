@@ -149,7 +149,6 @@ class RegistrationFragment : Fragment() {
             if (binding.regInputPassword.text.toString() != binding.regInputPasswordAgain.text.toString()) {
                 binding.regInputPassword.setBackgroundResource(R.drawable.btn_default_warning)
                 binding.regInputPasswordAgain.setBackgroundResource(R.drawable.btn_default_warning)
-                showText(getString(R.string.password_mismatch))
             } else {
                 binding.regInputPassword.setBackgroundResource(R.drawable.btn_default)
                 binding.regInputPasswordAgain.setBackgroundResource(R.drawable.btn_default)
