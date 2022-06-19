@@ -1,12 +1,14 @@
 package com.old.leopards.restaurant.ui.cart
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -54,7 +56,7 @@ class CartFragment : Fragment() {
 
         val adapter = FoodAdapter()
 
-        binding.address.addTextChangedListener(AddressInputValidator())
+        //binding.address.addTextChangedListener(AddressInputValidator())
 
         adapter.setOnItemClickListener { rubles ->
             binding.price.text = getString(R.string.total_price_template, rubles)
@@ -114,18 +116,23 @@ class CartFragment : Fragment() {
             }
         }
 
+        binding.apply {
+            removeAll.setOnClickListener {
+                adapter.clearCart()
+                binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
+                adapter.listener!!.onItemClick(adapter.getTotal())
+            }
 
-        binding.removeAll.setOnClickListener {
-            adapter.clearCart()
-            binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
-            adapter.listener!!.onItemClick(adapter.getTotal())
-        }
+            editAddress.setOnClickListener {
+                address.addTextChangedListener(AddressInputValidator())
+            }
 
-        binding.pay.setOnClickListener {
-            val price = adapter.pay()
-            showText(context, getString(R.string.on_buy_toast_template, price))
-            binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
-            adapter.listener!!.onItemClick(adapter.getTotal())
+            pay.setOnClickListener {
+                val price = adapter.pay()
+                showText(context, getString(R.string.on_buy_toast_template, price))
+                binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
+                adapter.listener!!.onItemClick(adapter.getTotal())
+            }
         }
 
         binding.price.text = getString(R.string.total_price_template, adapter.getTotal())
@@ -138,14 +145,22 @@ class CartFragment : Fragment() {
 
     private inner class AddressInputValidator : TextWatcher {
 
-        override fun afterTextChanged(s: Editable) {
-            Global.userAddress = s.toString()
-        }
-
         override fun beforeTextChanged(
             s: CharSequence, start: Int, count: Int,
             after: Int
-        ) {}
+        ) {
+            //binding.address.isEnabled = true
+            binding.address.setSelection(Global.userAddress.length)
+            binding.address.isCursorVisible = true
+            binding.address.requestFocus()
+            val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+        }
+
+        override fun afterTextChanged(s: Editable) {
+            Global.userAddress = s.toString()
+            //binding.address.isEnabled = false
+        }
 
         override fun onTextChanged(
             s: CharSequence, start: Int, before: Int,
