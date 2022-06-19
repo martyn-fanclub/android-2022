@@ -1,7 +1,6 @@
 package com.old.leopards.restaurant.ui.cart
 
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,14 +13,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.old.leopards.restaurant.R
-import com.old.leopards.restaurant.data.Preferences
 import com.old.leopards.restaurant.databinding.FragmentCartBinding
 import com.old.leopards.restaurant.ui.Global
 import com.old.leopards.restaurant.ui.Global.Companion.showText
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import java.math.BigDecimal
 
 
@@ -125,6 +120,10 @@ class CartFragment : Fragment() {
 
             editAddress.setOnClickListener {
                 address.addTextChangedListener(AddressInputValidator())
+                binding.address.requestFocus()
+                val imm =
+                    context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(binding.address, InputMethodManager.SHOW_FORCED)
             }
 
             pay.setOnClickListener {
@@ -152,9 +151,7 @@ class CartFragment : Fragment() {
             //binding.address.isEnabled = true
             binding.address.setSelection(Global.userAddress.length)
             binding.address.isCursorVisible = true
-            binding.address.requestFocus()
-            val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+
         }
 
         override fun afterTextChanged(s: Editable) {
