@@ -18,6 +18,7 @@ import com.old.leopards.restaurant.databinding.FragmentCartBinding
 import com.old.leopards.restaurant.ui.Global
 import com.old.leopards.restaurant.ui.Global.Companion.showText
 import kotlinx.coroutines.flow.collect
+import java.lang.Integer.max
 import java.math.BigDecimal
 
 
@@ -129,15 +130,16 @@ class CartFragment : Fragment() {
                 context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
             editAddress.setOnClickListener {
-                binding.address.isEnabled = !binding.address.isEnabled
-                if (binding.address.isEnabled) {
+                address.isEnabled = !address.isEnabled
+                if (address.isEnabled) {
+                    address.setSelection(Global.userAddress.length)
                     address.addTextChangedListener(AddressInputValidator())
-                    binding.address.requestFocus()
-                    imm.showSoftInput(binding.address, InputMethodManager.SHOW_FORCED)
+                    address.requestFocus()
+                    imm.showSoftInput(address, InputMethodManager.SHOW_FORCED)
                 } else {
-                    binding.address.clearFocus()
+                    address.clearFocus()
                     imm.hideSoftInputFromWindow(
-                        binding.address.windowToken,
+                        address.windowToken,
                         InputMethodManager.HIDE_NOT_ALWAYS
                     )
                 }
@@ -145,10 +147,18 @@ class CartFragment : Fragment() {
 
             pay.setOnClickListener {
                 if (!adapter.isEmpty()) {
-                    findNavController().navigate(R.id.action_navigation_cart_to_payment_fragment)
+                    val price = adapter.pay()
+                    showText(context, getString(R.string.on_buy_toast_template, price))
+                    binding.price.text =
+                        getString(R.string.total_price_template, adapter.getTotal())
+                    adapter.listener!!.onItemClick(adapter.getTotal())
                 } else {
                     showText(context, getString(R.string.on_empty_cart_toast))
                 }
+            }
+
+            pay.setOnClickListener {
+                findNavController().navigate(R.id.action_navigation_cart_to_payment_fragment)
             }
             
             price.text = getString(R.string.total_price_template, adapter.getTotal())
@@ -165,10 +175,7 @@ class CartFragment : Fragment() {
         override fun beforeTextChanged(
             s: CharSequence, start: Int, count: Int,
             after: Int
-        ) {
-            binding.address.setSelection(Global.userAddress.length)
-            binding.address.isCursorVisible = true
-        }
+        ) {}
 
         override fun afterTextChanged(s: Editable) {
             Global.userAddress = s.toString()
