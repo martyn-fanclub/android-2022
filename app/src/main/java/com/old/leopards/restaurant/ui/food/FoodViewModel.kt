@@ -9,24 +9,41 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.math.BigDecimal
 import java.util.concurrent.CopyOnWriteArrayList
+import kotlin.math.abs
 
 class FoodViewModel(private val localizedFoodViewModel: LocalizedFoodViewModel) : ViewModel() {
 
     // List is Immutable
-    private val _foodListState = MutableStateFlow<List<Food>>(CopyOnWriteArrayList())
+    private val _foodListState =
+        MutableStateFlow<Pair<Int, List<Food>>>(Pair(0, CopyOnWriteArrayList()))
     val foodListState = _foodListState
 
-    private val _pageState = MutableStateFlow<Int>(0)
+    private val _pageState = MutableStateFlow(0)
     val pageState = _pageState
 
-    private val foodPerPage = 10
+    val foodPerPage = 10
 
 
     fun nextPage() {
-        val expect = _pageState.value
-        val update = expect + 1
-        _pageState.compareAndSet(expect, update)
+        viewModelScope.launch {
+            var update = abs(_foodListState.value.first) + 1
+            val list = _foodListState.value.second
+            if (list.drop((update + 1) * foodPerPage).take(foodPerPage).isEmpty()) {
+                update = -update
+            }
+            _foodListState.emit(Pair(update, list))
+        }
+    }
 
+    fun prevPage() {
+        viewModelScope.launch {
+            var update = abs(_foodListState.value.first)
+            if (update != 0) {
+                update -= 1
+            }
+            val list = _foodListState.value.second
+            _foodListState.emit(Pair(update, list))
+        }
     }
 
     init {
@@ -42,7 +59,7 @@ class FoodViewModel(private val localizedFoodViewModel: LocalizedFoodViewModel) 
                         it.photoLink
                     )
                 }
-                foodListState.emit(food.take(foodPerPage))
+                foodListState.emit(Pair(0, food))
             }
         }
     }
