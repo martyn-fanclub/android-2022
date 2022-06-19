@@ -51,6 +51,7 @@ class PaymentFragment : Fragment() {
         binding.apply {
             btnPay.setOnClickListener {
                 FoodAdapter().pay()
+                showText(context, getString(R.string.success))
                 findNavController().navigate(R.id.action_payment_fragment_to_navigation_cart)
             }
             btnCancelPayment.setOnClickListener {
