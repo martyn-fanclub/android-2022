@@ -17,6 +17,7 @@
     <!-- <string name="description_food">Это секция с едой!</string> -->
     <string name="total">Итого:</string>
     <string name="food_weight_template">%1s г</string>
+    <string name="add_food_to_cart_template">%1$s добавлено в корзину\n%2$s шт.</string>
 
     <!-- Cart recources -->
     <!-- <string name="description_cart">Это ваша корзина!</string> -->

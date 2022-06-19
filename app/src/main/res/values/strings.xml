@@ -17,6 +17,7 @@
     <string name="food_weight_template">%1$s g</string>
     <string name="price_sum_template" translatable="false"> %1$d * %2$s ₽</string>
     <string name="price_template" translatable="false">%1$s ₽</string>
+    <string name="add_food_to_cart_template">%1$s was added to your cart\n%2$s units</string>
 
     <!-- Cart recources -->
     <string name="pay_btn">pay</string>
