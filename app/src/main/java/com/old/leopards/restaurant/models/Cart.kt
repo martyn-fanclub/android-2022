@@ -72,6 +72,10 @@ class Cart {
         fun clearCart() {
             saveCart(mutableListOf())
         }
+
+        fun isEmpty(): Boolean {
+            return getCart().isEmpty();
+        }
     }
 
     data class CartItem(

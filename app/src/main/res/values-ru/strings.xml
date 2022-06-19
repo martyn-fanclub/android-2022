@@ -24,6 +24,7 @@
     <string name="edit_address">изменить адрес</string>
     <string name="delete_all">удалить все</string>
     <string name="on_buy_toast_template">"Куплено на сумму: %1$s ₽</string>
+    <string name="on_empty_cart_toast">Корзина пуста</string>
 
     <!-- Profile resources -->
     <!-- <string name="description_profile">Это ваш профиль!</string> -->
