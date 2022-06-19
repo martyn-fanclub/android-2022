@@ -64,7 +64,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_light"
             android:inputType="textNoSuggestions"
-            android:layout_below="@id/total" />
+            android:layout_below="@id/total"
+            android:enabled="false" />
 
         <LinearLayout
             android:id="@+id/row_buttons"

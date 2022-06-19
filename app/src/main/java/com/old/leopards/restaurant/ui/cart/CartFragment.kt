@@ -118,12 +118,19 @@ class CartFragment : Fragment() {
                 adapter.listener!!.onItemClick(adapter.getTotal())
             }
 
+            val imm =
+                context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+
             editAddress.setOnClickListener {
-                address.addTextChangedListener(AddressInputValidator())
-                binding.address.requestFocus()
-                val imm =
-                    context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.showSoftInput(binding.address, InputMethodManager.SHOW_FORCED)
+                binding.address.isEnabled = !binding.address.isEnabled
+                if (binding.address.isEnabled) {
+                    address.addTextChangedListener(AddressInputValidator())
+                    binding.address.requestFocus()
+                    imm.showSoftInput(binding.address, InputMethodManager.SHOW_FORCED)
+                } else {
+                    binding.address.clearFocus()
+                    imm.hideSoftInputFromWindow(binding.address.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+                }
             }
 
             pay.setOnClickListener {
@@ -148,15 +155,12 @@ class CartFragment : Fragment() {
             s: CharSequence, start: Int, count: Int,
             after: Int
         ) {
-            //binding.address.isEnabled = true
             binding.address.setSelection(Global.userAddress.length)
             binding.address.isCursorVisible = true
-
         }
 
         override fun afterTextChanged(s: Editable) {
             Global.userAddress = s.toString()
-            //binding.address.isEnabled = false
         }
 
         override fun onTextChanged(
