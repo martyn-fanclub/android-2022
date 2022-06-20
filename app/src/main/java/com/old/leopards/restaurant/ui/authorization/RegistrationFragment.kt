@@ -71,7 +71,8 @@ class RegistrationFragment : Fragment() {
                 if (isValidRegInput(name, password, replyPassword, email)) {
                     val user = User(login=name, password=password, email=email, photoLink=photoLink)
                     _UserViewModel.createUser(user)
-                    Global.currentUser = user
+                    val u = _UserViewModel.getUserByName(name)
+                    Global.currentUser = _UserViewModel.getUserByName(name)!!
                     findNavController().navigate(RegistrationFragmentDirections.actionRegistrationFragmentToNavigationFood())
                     activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
                 }
@@ -92,8 +93,14 @@ class RegistrationFragment : Fragment() {
                 if (password.isNotBlank()) {
                     if (password.length >= 4) {
                         if (password == replyPassword) {
-                            if (email.isNotBlank() && Global.emailPattern.matches(email)) {
-                                isValidRegInput = true
+                            if (email.isNotBlank()
+                                && Global.emailPattern.matches(email)) {
+                                val user = _UserViewModel.getUserByEmail(email)
+                                if (user == null) {
+                                    isValidRegInput = true
+                                } else {
+                                    showText(getString(R.string.email_conflict))
+                                }
                             } else {
                                 showText(getString(R.string.invalid_email))
                             }
