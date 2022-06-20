@@ -57,11 +57,16 @@
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_edit_profile"
             android:layout_width="230dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/btn_edit_profile"
             android:text="@string/profile_edit_btn"
             android:textColor="@color/black" />
@@ -70,9 +75,12 @@
             android:id="@+id/btn_exit"
             android:layout_width="230dp"
             android:layout_height="50dp"
+            android:layout_marginStart="100dp"
             android:background="@drawable/btn_exit"
             android:text="@string/profile_exit_button"
             android:textColor="@color/secondary" />
+
     </LinearLayout>
+       </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

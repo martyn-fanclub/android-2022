@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:elevation="30dp"
+        android:layout_marginBottom="52dp"
         android:layout_gravity="bottom"
         android:paddingHorizontal="9dp"
         android:background="@color/primary">

@@ -30,6 +30,7 @@ class StartFragment : Fragment() {
     }
 
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.findViewById<View>(R.id.nav_view)?.visibility = View.INVISIBLE

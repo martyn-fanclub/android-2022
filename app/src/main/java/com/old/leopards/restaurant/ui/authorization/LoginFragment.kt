@@ -73,6 +73,11 @@ class LoginFragment : Fragment() {
         return true
     }
 
+    override fun onStart() {
+        super.onStart()
+        activity?.findViewById<View>(R.id.nav_view)?.visibility = View.INVISIBLE
+    }
+
     fun showText(text: String) {
         showText(context, text)
     }

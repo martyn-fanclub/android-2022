@@ -142,6 +142,11 @@ class RegistrationFragment : Fragment() {
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        activity?.findViewById<View>(R.id.nav_view)?.visibility = View.INVISIBLE
+    }
+
     private inner class PasswordInputValidator : TextWatcher {
 
         override fun afterTextChanged(s: Editable) {
