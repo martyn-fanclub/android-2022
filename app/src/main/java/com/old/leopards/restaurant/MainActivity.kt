@@ -88,6 +88,14 @@ class MainActivity : AppCompatActivity() {
         runBlocking {
             val desciption =
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. \n"
+
+            val f0 = _foodItemViewModel.addFoodItem(
+                FoodItem(
+                    portionSize = 10,
+                    price = 15,
+                    photoLink = "https://vilkin.pro/wp-content/uploads/2019/11/rizotto-s-ovoshami.jpg"
+                )
+            )
             val f1 = _foodItemViewModel.addFoodItem(
                 FoodItem(
                     portionSize = 10,
@@ -247,6 +255,23 @@ class MainActivity : AppCompatActivity() {
                     portionSize = 40,
                     price = 20,
                     photoLink = "https://bestvietnam.ru/wp-content/uploads/2020/03/%D0%B1%D1%83%D1%80%D1%80%D0%B8%D1%82%D0%BE.jpg"
+                )
+            )
+
+            _foodDescriptionViewModel.addFoodDescription(
+                FoodDescription(
+                    languageId = 1,
+                    foodItemId = f0.toInt(),
+                    name = "ПельмениПельмениПельмениПельмениПельмениПельмениПельмениПельмениПельмени",
+                    description = desciption
+                )
+            )
+            _foodDescriptionViewModel.addFoodDescription(
+                FoodDescription(
+                    languageId = 2,
+                    foodItemId = f0.toInt(),
+                    name = "ПельмениПельмениПельмениПельмениПельмениПельмениПельмениПельмениПельмени",
+                    description = desciption
                 )
             )
 
