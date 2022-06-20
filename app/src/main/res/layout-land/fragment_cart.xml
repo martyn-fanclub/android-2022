@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.cart.CartFragment"
+    android:background="@color/primary_variant">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cart_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="115dp"
+        android:paddingTop="5dp"
+        tools:listitem="@layout/cart_item" />
+
+    <RelativeLayout
+        android:id="@+id/cart_total"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:elevation="30dp"
+        android:layout_gravity="bottom"
+        android:paddingHorizontal="9dp"
+        android:background="@color/primary">
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:fontFamily="@font/merriweather_medium"
+            android:textColor="@color/black"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/total" />
+
+        <TextView
+            android:id="@+id/dollarPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="17dp"
+            android:layout_toStartOf="@+id/price"
+            android:fontFamily="@font/merriweather_medium"
+            android:paddingTop="10dp"
+            android:text="0.00$"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/merriweather_medium"
+            android:paddingTop="10dp"
+            android:text="0₽"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:inputType="textNoSuggestions"
+            android:layout_below="@id/total"
+            android:enabled="false" />
+
+        <LinearLayout
+            android:id="@+id/row_buttons"
+            android:layout_below="@id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/remove_all"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto"
+                android:textColor="@color/black"
+                android:layout_marginLeft="7dp"
+                android:backgroundTint="@color/primary_variant"
+                android:text="@string/delete_all" />
+
+            <Button
+                android:id="@+id/edit_address"
+                android:layout_width="match_parent"
+                android:textSize="12sp"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="7dp"
+                android:fontFamily="@font/roboto"
+                android:backgroundTint="@color/primary_variant"
+                android:text="@string/edit_address" />
+
+            <Button
+                android:id="@+id/pay"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto"
+                android:layout_width="match_parent"
+                android:layout_marginRight="7dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:backgroundTint="@color/secondary"
+                android:text="@string/pay_btn" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</FrameLayout>
