@@ -71,9 +71,9 @@ class RegistrationFragment : Fragment() {
 
                 if (isValidRegInput(name, password, replyPassword, email)) {
                     val user = User(login=name, password=password, email=email, photoLink=photoLink)
-                    _UserViewModel.createUser(user)
-                    val u = _UserViewModel.getUserByName(name)
-                    Global.currentUser = _UserViewModel.getUserByName(name)!!
+                    val id = _UserViewModel.createUser(user)
+                    user.id = id
+                    Global.currentUser = user
                     findNavController().navigate(RegistrationFragmentDirections.actionRegistrationFragmentToNavigationFood())
                     activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
                 }

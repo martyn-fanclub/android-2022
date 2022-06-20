@@ -8,15 +8,15 @@ class UserRepository(private val userDao: UserDao) {
 
     val getAllUsers: Flow<List<User>> = userDao.getAllUsers()
 
-    suspend fun createUser(user: User) {
-        userDao.createUser(user)
+    fun createUser(user: User): Long {
+        return userDao.createUser(user)
     }
 
-    fun getUserByName(name: String): Flow<User> {
+    fun getUserByName(name: String): User? {
         return userDao.getUserByName(name)
     }
 
-    fun getUserByEmail(email: String): Flow<User> {
+    fun getUserByEmail(email: String): User? {
         return userDao.getUserByEmail(email)
     }
 

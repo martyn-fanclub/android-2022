@@ -25,24 +25,16 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
         getAllUsers = repository.getAllUsers
     }
 
-    fun createUser(user: User) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.createUser(user)
-        }
+    fun createUser(user: User): Long {
+        return repository.createUser(user)
     }
 
     fun getUserByName(name: String): User? {
-        viewModelScope.launch(Dispatchers.IO) {
-            getUserByName = repository.getUserByName(name).first()
-        }
-        return getUserByName
+        return repository.getUserByName(name)
     }
 
     fun getUserByEmail(email: String): User? {
-        viewModelScope.launch(Dispatchers.IO) {
-            getUserByEmail = repository.getUserByEmail(email).first()
-        }
-        return getUserByEmail
+        return repository.getUserByEmail(email)
     }
 
     fun updateUser(user: User) {

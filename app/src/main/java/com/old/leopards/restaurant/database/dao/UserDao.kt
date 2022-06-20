@@ -7,18 +7,18 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface UserDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun createUser(user: User)
+    @Insert
+    fun createUser(user: User): Long
 
     @Query("SELECT * FROM users ORDER BY id ASC")
     fun getAllUsers(): Flow<List<User>>
 
     @Query("SELECT * FROM users WHERE login = :name")
-    fun getUserByName(name: String): Flow<User>
+    fun getUserByName(name: String): User?
 
     @Query("SELECT * FROM users WHERE email = :email")
-    fun getUserByEmail(email: String): Flow<User>
+    fun getUserByEmail(email: String): User?
 
-    @Update(onConflict = OnConflictStrategy.IGNORE)
+    @Update
     suspend fun updateUser(user: User)
 }
