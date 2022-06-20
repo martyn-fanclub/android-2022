@@ -19,6 +19,7 @@ import com.old.leopards.restaurant.databinding.FragmentRegistrationBinding
 import com.old.leopards.restaurant.ui.Global
 import com.old.leopards.restaurant.ui.Global.Companion.showText
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.first
 
 
 /**

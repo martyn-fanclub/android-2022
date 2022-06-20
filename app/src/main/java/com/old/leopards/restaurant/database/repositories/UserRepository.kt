@@ -12,11 +12,11 @@ class UserRepository(private val userDao: UserDao) {
         userDao.createUser(user)
     }
 
-    fun getUserByName(name: String): User? {
+    fun getUserByName(name: String): Flow<User> {
         return userDao.getUserByName(name)
     }
 
-    fun getUserByEmail(email: String): User? {
+    fun getUserByEmail(email: String): Flow<User> {
         return userDao.getUserByEmail(email)
     }
 

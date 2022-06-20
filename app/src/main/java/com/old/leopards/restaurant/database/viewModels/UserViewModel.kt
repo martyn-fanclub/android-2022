@@ -8,11 +8,15 @@ import com.old.leopards.restaurant.database.entities.User
 import com.old.leopards.restaurant.database.repositories.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.count
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class UserViewModel(application: Application) : AndroidViewModel(application) {
 
     val getAllUsers: Flow<List<User>>
+    var getUserByName: User? = null
+    var getUserByEmail: User? = null
     private val repository: UserRepository
 
     init {
@@ -28,11 +32,17 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getUserByName(name: String): User? {
-        return repository.getUserByName(name)
+        viewModelScope.launch(Dispatchers.IO) {
+            getUserByName = repository.getUserByName(name).first()
+        }
+        return getUserByName
     }
 
     fun getUserByEmail(email: String): User? {
-        return repository.getUserByEmail(email)
+        viewModelScope.launch(Dispatchers.IO) {
+            getUserByEmail = repository.getUserByEmail(email).first()
+        }
+        return getUserByEmail
     }
 
     fun updateUser(user: User) {

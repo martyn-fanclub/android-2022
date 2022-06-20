@@ -14,10 +14,10 @@ interface UserDao {
     fun getAllUsers(): Flow<List<User>>
 
     @Query("SELECT * FROM users WHERE login = :name")
-    fun getUserByName(name: String): User?
+    fun getUserByName(name: String): Flow<User>
 
     @Query("SELECT * FROM users WHERE email = :email")
-    fun getUserByEmail(email: String): User?
+    fun getUserByEmail(email: String): Flow<User>
 
     @Update(onConflict = OnConflictStrategy.IGNORE)
     suspend fun updateUser(user: User)
