@@ -14,13 +14,11 @@
     <string name="very_short_password">Пароль слишком короткий!</string>
 
     <!-- Food recources -->
-    <!-- <string name="description_food">Это секция с едой!</string> -->
     <string name="total">Итого:</string>
     <string name="food_weight_template">%1s г</string>
     <string name="add_food_to_cart_template">%1$s добавлено в корзину\n%2$s шт.</string>
 
     <!-- Cart recources -->
-    <!-- <string name="description_cart">Это ваша корзина!</string> -->
     <string name="pay_btn">оплатить</string>
     <string name="edit_address">изменить адрес</string>
     <string name="delete_all">удалить все</string>
@@ -28,7 +26,6 @@
     <string name="on_empty_cart_toast">Корзина пуста</string>
 
     <!-- Profile resources -->
-    <!-- <string name="description_profile">Это ваш профиль!</string> -->
     <string name="profile_name">Абоба Абиба</string>
     <string name="profile_email">собака@яндекс.ру</string>
     <string name="profile_edit_btn">Изменить</string>
@@ -68,4 +65,5 @@
     <string name="edit_cvv_example">420</string>
     <string name="profile_cancel_payment">отмена</string>
     <string name="title_payment">оплата</string>
+    <string name="cur_password_length">%1$d/20 (минимальная длина - 4)</string>
 </resources>

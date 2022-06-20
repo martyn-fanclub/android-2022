@@ -1,7 +1,11 @@
 package com.old.leopards.restaurant.ui
 
 import android.content.Context
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
+import androidx.viewbinding.ViewBinding
+import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.database.entities.User
 
 class Global {

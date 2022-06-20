@@ -53,8 +53,6 @@ class CartFragment : Fragment() {
 
         val adapter = FoodAdapter()
 
-        //binding.address.addTextChangedListener(AddressInputValidator())
-
         adapter.setOnItemClickListener { rubles ->
             binding.price.text = getString(R.string.total_price_template, rubles)
             lifecycleScope.launchWhenStarted {
