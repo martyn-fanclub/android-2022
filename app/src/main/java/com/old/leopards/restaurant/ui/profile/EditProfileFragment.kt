@@ -87,7 +87,9 @@ class EditProfileFragment : Fragment() {
                     }
                 }
 
-                if (email.isNotBlank() && email != Global.currentUser.email  && Global.emailPattern.matches(email)) {
+                if (email.isNotBlank()
+                    && email != Global.currentUser.email
+                    && Global.emailPattern.matches(email)) {
                     val user = _UserViewModel.getUserByEmail(email)
                     if (user == null) {
                         newUser.email = email

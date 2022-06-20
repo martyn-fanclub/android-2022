@@ -11,18 +11,21 @@
     <string name="profile_signin">Войти</string>
     <string name="profile_signup">Зарегистрироваться</string>
     <string name="no_such_user">Нет такого пользователя!</string>
+    <string name="very_short_password">Пароль слишком короткий!</string>
 
     <!-- Food recources -->
     <!-- <string name="description_food">Это секция с едой!</string> -->
     <string name="total">Итого:</string>
     <string name="food_weight_template">%1s г</string>
+    <string name="add_food_to_cart_template">%1$s добавлено в корзину\n%2$s шт.</string>
 
     <!-- Cart recources -->
     <!-- <string name="description_cart">Это ваша корзина!</string> -->
     <string name="pay_btn">оплатить</string>
-    <string name="change_address">изменить адрес</string>
+    <string name="edit_address">изменить адрес</string>
     <string name="delete_all">удалить все</string>
     <string name="on_buy_toast_template">"Куплено на сумму: %1$s ₽</string>
+    <string name="on_empty_cart_toast">Корзина пуста</string>
 
     <!-- Profile resources -->
     <!-- <string name="description_profile">Это ваш профиль!</string> -->
@@ -54,4 +57,15 @@
     <string name="email_conflict">Пользователь с такой эл. почтой уже существует!</string>
     <string name="invalid_email">Некорректная эл. почта!</string>
     <string name="gram">г</string>
+    <string name="payment">оплата</string>
+    <string name="payment_card_name">номер карты</string>
+    <string name="payment_card_example">XXXX XXXX XXXX XXXX</string>
+    <string name="profile_card_holder_name">владелец карты</string>
+    <string name="card_holder_example">John Doe</string>
+    <string name="edit_expire_date">Дата окончания</string>
+    <string name="edit_expire_date_example">2024</string>
+    <string name="profile_edit_cvv">CVV</string>
+    <string name="edit_cvv_example">420</string>
+    <string name="profile_cancel_payment">отмена</string>
+    <string name="title_payment">оплата</string>
 </resources>

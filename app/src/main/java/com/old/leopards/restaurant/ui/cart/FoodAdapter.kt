@@ -44,6 +44,10 @@ class FoodAdapter :
         holder.itemView.tag = food
     }
 
+    fun isEmpty(): Boolean {
+        return Cart.isEmpty();
+    }
+
     fun clearCart() {
         Cart.clearCart()
         submitList(Cart.getCart())

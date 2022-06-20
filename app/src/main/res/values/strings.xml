@@ -10,25 +10,25 @@
     <string name="profile_signin">Sign in</string>
     <string name="profile_signup">Sign up</string>
     <string name="no_such_user">No such user!</string>
+    <string name="very_short_password">Very short password!</string>
 
     <!-- Food recources -->
-    <!-- <string name="description_food">This is a food section!</string> -->
     <string name="total">Total:</string>
     <string name="food_weight_template">%1$s g</string>
     <string name="price_sum_template" translatable="false"> %1$d * %2$s ₽</string>
     <string name="price_template" translatable="false">%1$s ₽</string>
+    <string name="add_food_to_cart_template">%1$s was added to your cart\n%2$s units</string>
 
     <!-- Cart recources -->
-    <!-- <string name="description_cart">This is a shopping cart!</string> -->
     <string name="pay_btn">pay</string>
     <string name="total_price_template" translatable="false">%1$s ₽</string>
     <string name="total_dollars_price_template" translatable="false">%1$s $</string>
-    <string name="on_buy_toast_template">"Bought for sum: %1$s ₽</string>
-    <string name="change_address">change\naddress</string>
+    <string name="on_buy_toast_template">Bought for sum: %1$s ₽</string>
+    <string name="on_empty_cart_toast">Empty cart</string>
+    <string name="edit_address">change\naddress</string>
     <string name="delete_all">remove\nall</string>
 
     <!-- Profile resources -->
-    <!-- <string name="description_profile">This is your profile!</string> -->
     <string name="profile_name">Aboba Abiba</string>
     <string name="profile_email">sobaka@yandex.ru</string>
     <string name="profile_edit_btn">Change</string>
@@ -58,4 +58,15 @@
     <string name="name_conflict">User with such username already exists!</string>
     <string name="email_conflict">User with such email already exists!</string>
     <string name="invalid_email">Invalid email!</string>
+    <string name="payment">payment</string>
+    <string name="payment_card_name">card number</string>
+    <string name="payment_card_example">XXXX XXXX XXXX XXXX</string>
+    <string name="profile_card_holder_name">card holder</string>
+    <string name="card_holder_example">John Doe</string>
+    <string name="edit_expire_date">Expires in</string>
+    <string name="edit_expire_date_example">2024</string>
+    <string name="profile_edit_cvv">CVV</string>
+    <string name="edit_cvv_example">420</string>
+    <string name="profile_cancel_payment">cancel</string>
+    <string name="title_payment">payment</string>
 </resources>
