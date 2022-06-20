@@ -164,8 +164,8 @@ class RegistrationFragment : Fragment() {
                 binding.regInputPassword.setBackgroundResource(R.drawable.btn_default)
                 binding.regInputPasswordAgain.setBackgroundResource(R.drawable.btn_default)
             }
-            binding.regInputPasswordLowPanel.text = getString(R.string.cur_password_length, binding.regInputPassword.text.length)
-            binding.regInputPasswordAgainLowPanel.text = getString(R.string.cur_password_length, binding.regInputPasswordAgain.text.length)
+            binding.regInputPasswordLowPanel?.text = getString(R.string.cur_password_length, binding.regInputPassword.text.length)
+            binding.regInputPasswordAgainLowPanel?.text = getString(R.string.cur_password_length, binding.regInputPasswordAgain.text.length)
         }
     }
 }
