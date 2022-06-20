@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -58,6 +60,9 @@ class EditProfileFragment : Fragment() {
         val appContext = this.context?.applicationContext
 
         binding.apply {
+            editPasswordInput.addTextChangedListener(PasswordEditValidator())
+            editPasswordAgainInput.addTextChangedListener(PasswordEditValidator())
+
             btnSaveProfile.setOnClickListener {
                 val name = binding.editNameInput.text.toString()
                 val password = binding.editPasswordInput.text.toString()
@@ -80,7 +85,12 @@ class EditProfileFragment : Fragment() {
                 if (password.isNotBlank()
                     && (password != Global.currentUser.password || replyPassword != Global.currentUser.password)) {
                     if (password == replyPassword) {
-                        newUser.password = password
+                        if (password.length >= 4) {
+                            newUser.password = password
+                        } else {
+                            showText(getString(R.string.very_short_password))
+                            return@setOnClickListener
+                        }
                     } else {
                         showText(getString(R.string.password_mismatch))
                         return@setOnClickListener
@@ -133,6 +143,33 @@ class EditProfileFragment : Fragment() {
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE) {
             Global.currentUser.photoLink = data?.data.toString()
             _UserViewModel.updateUser(Global.currentUser)
+        }
+    }
+
+    private inner class PasswordEditValidator : TextWatcher {
+
+        override fun afterTextChanged(s: Editable) {
+        }
+
+        override fun beforeTextChanged(
+            s: CharSequence, start: Int, count: Int,
+            after: Int
+        ) {}
+
+        override fun onTextChanged(
+            s: CharSequence, start: Int, before: Int,
+            count: Int
+        ) {
+            if (binding.editPasswordInput.text.toString() != binding.editPasswordAgainInput.text.toString()
+                || binding.editPasswordInput.text.length < 4) {
+                binding.editPasswordInput.setBackgroundResource(R.drawable.btn_default_warning)
+                binding.editPasswordAgainInput.setBackgroundResource(R.drawable.btn_default_warning)
+            } else {
+                binding.editPasswordInput.setBackgroundResource(R.drawable.btn_default)
+                binding.editPasswordAgainInput.setBackgroundResource(R.drawable.btn_default)
+            }
+            binding.editPasswordLowPanel.text = getString(R.string.cur_password_length, binding.editPasswordInput.text.length)
+            binding.editPasswordAgainLowPanel.text = getString(R.string.cur_password_length, binding.editPasswordAgainInput.text.length)
         }
     }
 }

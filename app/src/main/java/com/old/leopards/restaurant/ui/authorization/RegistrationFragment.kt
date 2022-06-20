@@ -87,40 +87,42 @@ class RegistrationFragment : Fragment() {
         replyPassword: String,
         email: String
     ): Boolean {
-        val user = _UserViewModel.getUserByName(name)
-        var isValidRegInput = false
-        if (user == null) {
-            if (name.isNotBlank()) {
-                if (password.isNotBlank()) {
-                    if (password.length >= 4) {
-                        if (password == replyPassword) {
-                            if (email.isNotBlank()
-                                && Global.emailPattern.matches(email)) {
-                                val user = _UserViewModel.getUserByEmail(email)
-                                if (user == null) {
-                                    isValidRegInput = true
-                                } else {
-                                    showText(getString(R.string.email_conflict))
-                                }
-                            } else {
-                                showText(getString(R.string.invalid_email))
-                            }
-                        } else {
-                            showText(getString(R.string.password_mismatch))
-                        }
-                    } else {
-                        showText(getString(R.string.very_short_password))
-                    }
-                } else {
-                    showText(getString(R.string.invalid_password))
-                }
-            } else {
-                showText(getString(R.string.invalid_name))
-            }
-        } else {
+        if (_UserViewModel.getUserByName(name) != null) {
             showText(getString(R.string.name_conflict))
+            return false
         }
-        return isValidRegInput
+
+        if (name.isBlank()) {
+            showText(getString(R.string.invalid_name))
+            return false
+        }
+
+        if (password.isBlank()) {
+            showText(getString(R.string.invalid_password))
+            return false
+        }
+
+        if (password.length < 4) {
+            showText(getString(R.string.very_short_password))
+            return false
+        }
+
+        if (password != replyPassword) {
+            showText(getString(R.string.password_mismatch))
+            return false
+        }
+
+        if (email.isBlank() || !Global.emailPattern.matches(email)) {
+            showText(getString(R.string.invalid_email))
+            return false
+        }
+
+        if (_UserViewModel.getUserByEmail(email) != null) {
+            showText(getString(R.string.email_conflict))
+            return false
+        }
+
+        return true
     }
 
     fun showText(text: String) {
@@ -162,6 +164,8 @@ class RegistrationFragment : Fragment() {
                 binding.regInputPassword.setBackgroundResource(R.drawable.btn_default)
                 binding.regInputPasswordAgain.setBackgroundResource(R.drawable.btn_default)
             }
+            binding.regInputPasswordLowPanel.text = getString(R.string.cur_password_length, binding.regInputPassword.text.length)
+            binding.regInputPasswordAgainLowPanel.text = getString(R.string.cur_password_length, binding.regInputPasswordAgain.text.length)
         }
     }
 }

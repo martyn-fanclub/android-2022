@@ -57,21 +57,20 @@ class LoginFragment : Fragment() {
 
     private fun isValidLoginInput(name: String, password: String): Boolean {
         val user = _UserViewModel.getUserByName(name)
-        var isValidLoginInput = false
-        if (user != null) {
-            if (name.isNotBlank()) {
-                if (user.password.isNotBlank() && user.password == password) {
-                    isValidLoginInput = true
-                } else {
-                    showText(getString(R.string.invalid_password))
-                }
-            } else {
-                showText(getString(R.string.invalid_name))
-            }
-        } else {
+
+        if (user == null) {
             showText(getString(R.string.no_such_user))
+            return false
         }
-        return isValidLoginInput
+        if (name.isBlank()) {
+            showText(getString(R.string.invalid_name))
+            return false
+        }
+        if (user.password.isBlank() || user.password != password) {
+            showText(getString(R.string.invalid_password))
+            return false
+        }
+        return true
     }
 
     fun showText(text: String) {

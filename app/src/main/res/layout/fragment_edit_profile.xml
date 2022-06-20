@@ -76,8 +76,18 @@
             style="@style/MainTextLight"
             android:textColor="@color/black"
             android:hint="@string/profile_input_password"
+            android:maxLength="20"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_password" />
+        <TextView
+            android:id="@+id/edit_password_low_panel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="16sp"
+            android:layout_gravity="end"
+            android:layout_marginBottom="-15dp" />
 
         <TextView
             android:id="@+id/edit_password_again"
@@ -102,7 +112,17 @@
             android:textColor="@color/black"
             android:hint="@string/profile_input_password_again"
             app:layout_constraintStart_toStartOf="parent"
+            android:maxLength="20"
             app:layout_constraintTop_toBottomOf="@+id/edit_password_again" />
+        <TextView
+            android:id="@+id/edit_password_again_low_panel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="16sp"
+            android:layout_gravity="end"
+            android:layout_marginBottom="-15dp" />
 
         <TextView
             android:id="@+id/edit_email"

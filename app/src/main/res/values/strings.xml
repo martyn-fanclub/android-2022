@@ -59,6 +59,7 @@
     <string name="email_conflict">User with such email already exists!</string>
     <string name="invalid_email">Invalid email!</string>
     <string name="payment">payment</string>
+    <string name="gram">g</string>
     <string name="payment_card_name">card number</string>
     <string name="payment_card_example">XXXX XXXX XXXX XXXX</string>
     <string name="profile_card_holder_name">card holder</string>
@@ -69,4 +70,5 @@
     <string name="edit_cvv_example">420</string>
     <string name="profile_cancel_payment">cancel</string>
     <string name="title_payment">payment</string>
+    <string name="cur_password_length">%1$d/20 (min length - 4)</string>
 </resources>
