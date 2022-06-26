@@ -65,5 +65,8 @@
     <string name="edit_cvv_example">420</string>
     <string name="profile_cancel_payment">отмена</string>
     <string name="title_payment">оплата</string>
+    <string name="orders_go_back">обратно</string>
+    <string name="order_list">заказы</string>
+    <string name="title_orders">заказы</string>
     <string name="cur_password_length">%1$d/20 (минимальная длина - 4)</string>
 </resources>
