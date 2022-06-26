@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,14 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingBottom="115dp"
         android:paddingTop="5dp"
+        android:layout_above="@id/cart_total"
         tools:listitem="@layout/cart_item" />
 
     <RelativeLayout
         android:id="@+id/cart_total"
         android:layout_width="match_parent"
         android:layout_height="140dp"
+        android:layout_alignParentBottom="true"
         android:elevation="30dp"
         android:layout_marginBottom="52dp"
         android:layout_gravity="bottom"
@@ -117,4 +118,4 @@
 
 
     </RelativeLayout>
-</FrameLayout>
+</RelativeLayout>
