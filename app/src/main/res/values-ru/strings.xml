@@ -68,4 +68,7 @@
     <string name="edit_cvv_example">420</string>
     <string name="profile_cancel_payment">отмена</string>
     <string name="title_payment">оплата</string>
+    <string name="orders_go_back">return</string>
+    <string name="order_list">orders</string>
+    <string name="title_orders">orders</string>
 </resources>

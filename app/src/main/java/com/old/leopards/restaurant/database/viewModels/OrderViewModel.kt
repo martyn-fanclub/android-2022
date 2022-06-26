@@ -6,18 +6,19 @@ import androidx.lifecycle.viewModelScope
 import com.old.leopards.restaurant.database.RestaurantDatabase
 import com.old.leopards.restaurant.database.entities.Order
 import com.old.leopards.restaurant.database.repositories.OrderRepository
+import com.old.leopards.restaurant.ui.Global
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class OrderViewModel(application: Application, user: Int) : AndroidViewModel(application) {
+class OrderViewModel(application: Application) : AndroidViewModel(application) {
 
     val getAllOrdersByUserId: Flow<List<Order>>
     private val repository: OrderRepository
 
     init {
         val orderDao = RestaurantDatabase.getDatabase(application).orderDao()
-        repository = OrderRepository(orderDao, user)
+        repository = OrderRepository(orderDao, Global.currentUser.id)
         getAllOrdersByUserId = repository.getAllOrdersByUser
     }
 
