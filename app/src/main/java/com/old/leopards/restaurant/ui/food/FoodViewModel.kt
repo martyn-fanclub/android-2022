@@ -28,9 +28,12 @@ class FoodViewModel(private val localizedFoodViewModel: LocalizedFoodViewModel) 
         viewModelScope.launch {
             var update = abs(_foodListState.value.first) + 1
             val list = _foodListState.value.second
-            if (list.drop((update + 1) * foodPerPage).take(foodPerPage).isEmpty()) {
+            if (list.drop(update * foodPerPage).isEmpty()) {
                 update = -update
             }
+//            if (list.take((update + 1) * foodPerPage).isEmpty()) {
+//                update = -update
+//            }
             _foodListState.emit(Pair(update, list))
         }
     }
@@ -59,7 +62,7 @@ class FoodViewModel(private val localizedFoodViewModel: LocalizedFoodViewModel) 
                         it.photoLink
                     )
                 }
-                foodListState.emit(Pair(0, food))
+                foodListState.emit(Pair(1, food))
             }
         }
     }

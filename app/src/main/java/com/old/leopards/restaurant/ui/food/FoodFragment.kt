@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.*
 import com.old.leopards.restaurant.R
 import com.old.leopards.restaurant.database.viewModels.LocalizedFoodViewModel
 import com.old.leopards.restaurant.databinding.FragmentFoodBinding
@@ -20,6 +21,12 @@ import kotlin.math.abs
 class FoodFragment : Fragment() {
 
     private var _binding: FragmentFoodBinding? = null
+
+    @Volatile
+    private var loading = false
+
+    @Volatile
+    private var end = false
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -61,34 +68,40 @@ class FoodFragment : Fragment() {
         val adapter = FoodAdapter()
         binding.rvFoodList.adapter = adapter
 
-        binding.btnNextFoodPage.setOnClickListener {
-            profileViewModel.nextPage()
-        }
+        val layoutManager = binding.rvFoodList.layoutManager as GridLayoutManager
+        binding.rvFoodList.addOnScrollListener(object : OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                Log.d("asd", newState.toString())
+                super.onScrollStateChanged(recyclerView, newState)
+                if (newState == SCROLL_STATE_IDLE && !end) {
+                    val totalItemCount = layoutManager.itemCount
+                    val lastVisibleItem = layoutManager.findLastCompletelyVisibleItemPosition()
+                    Log.d("asd", "$totalItemCount $lastVisibleItem")
+                    binding.progressbar.visibility = VISIBLE
+                    if (totalItemCount ==
+                        (lastVisibleItem + 1) && !loading
+                    ) {
+                        Log.d("asd", "asddd")
+                        loading = true
+                        profileViewModel.nextPage()
+                    }
+                }
+            }
+        })
 
-        binding.btnPrevFoodPage.setOnClickListener {
-            profileViewModel.prevPage()
-        }
 
         lifecycleScope.launchWhenStarted {
             profileViewModel.foodListState.collect {
-                Log.d("asd", it.first.toString())
-                var page = it.first
-                if (page == 0) {
-                    binding.btnPrevFoodPage.visibility = View.INVISIBLE
-                } else {
-                    binding.btnPrevFoodPage.visibility = View.VISIBLE
-                }
-
-                if (page < 0) {
-                    binding.btnNextFoodPage.visibility = View.INVISIBLE
-                    page = abs(page)
-                } else {
-                    binding.btnNextFoodPage.visibility = View.VISIBLE
-                }
+                Log.d("asd", "collect")
+                var page = abs(it.first)
                 val perPage = profileViewModel.foodPerPage
-                val food = it.second.drop(page * perPage).take(perPage)
-                Log.d("asd", food.size.toString())
+                val food = it.second.take(perPage * page)
                 adapter.submitList(food)
+                if (it.first < 0) {
+                    end = true
+                    binding.progressbar.visibility = INVISIBLE
+                }
+                loading = false
             }
         }
     }
