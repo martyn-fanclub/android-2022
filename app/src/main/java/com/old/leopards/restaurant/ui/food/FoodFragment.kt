@@ -58,6 +58,7 @@ class FoodFragment : Fragment() {
             columns = 3
         }
 
+
         binding.rvFoodList.layoutManager = GridLayoutManager(
             context,
             columns,
