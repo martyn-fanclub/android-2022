@@ -18,6 +18,7 @@ import com.old.leopards.restaurant.databinding.FragmentCartBinding
 import com.old.leopards.restaurant.ui.Global
 import com.old.leopards.restaurant.ui.Global.Companion.showText
 import kotlinx.coroutines.flow.collect
+import java.lang.Integer.max
 import java.math.BigDecimal
 
 
@@ -51,8 +52,6 @@ class CartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = FoodAdapter()
-
-        //binding.address.addTextChangedListener(AddressInputValidator())
 
         adapter.setOnItemClickListener { rubles ->
             binding.price.text = getString(R.string.total_price_template, rubles)
@@ -129,15 +128,16 @@ class CartFragment : Fragment() {
                 context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
             editAddress.setOnClickListener {
-                binding.address.isEnabled = !binding.address.isEnabled
-                if (binding.address.isEnabled) {
+                address.isEnabled = !address.isEnabled
+                if (address.isEnabled) {
+                    address.setSelection(Global.userAddress.length)
                     address.addTextChangedListener(AddressInputValidator())
-                    binding.address.requestFocus()
-                    imm.showSoftInput(binding.address, InputMethodManager.SHOW_FORCED)
+                    address.requestFocus()
+                    imm.showSoftInput(address, InputMethodManager.SHOW_FORCED)
                 } else {
-                    binding.address.clearFocus()
+                    address.clearFocus()
                     imm.hideSoftInputFromWindow(
-                        binding.address.windowToken,
+                        address.windowToken,
                         InputMethodManager.HIDE_NOT_ALWAYS
                     )
                 }
@@ -165,10 +165,7 @@ class CartFragment : Fragment() {
         override fun beforeTextChanged(
             s: CharSequence, start: Int, count: Int,
             after: Int
-        ) {
-            binding.address.setSelection(Global.userAddress.length)
-            binding.address.isCursorVisible = true
-        }
+        ) {}
 
         override fun afterTextChanged(s: Editable) {
             Global.userAddress = s.toString()

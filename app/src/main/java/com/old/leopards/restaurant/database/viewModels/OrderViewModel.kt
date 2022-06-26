@@ -18,7 +18,7 @@ class OrderViewModel(application: Application) : AndroidViewModel(application) {
 
     init {
         val orderDao = RestaurantDatabase.getDatabase(application).orderDao()
-        repository = OrderRepository(orderDao, Global.currentUser.id)
+        repository = OrderRepository(orderDao, Global.currentUser.id.toInt())
         getAllOrdersByUserId = repository.getAllOrdersByUser
     }
 

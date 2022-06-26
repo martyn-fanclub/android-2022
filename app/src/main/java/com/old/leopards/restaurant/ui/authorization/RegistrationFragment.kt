@@ -19,6 +19,7 @@ import com.old.leopards.restaurant.databinding.FragmentRegistrationBinding
 import com.old.leopards.restaurant.ui.Global
 import com.old.leopards.restaurant.ui.Global.Companion.showText
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.first
 
 
 /**
@@ -70,7 +71,8 @@ class RegistrationFragment : Fragment() {
 
                 if (isValidRegInput(name, password, replyPassword, email)) {
                     val user = User(login=name, password=password, email=email, photoLink=photoLink)
-                    _UserViewModel.createUser(user)
+                    val id = _UserViewModel.createUser(user)
+                    user.id = id
                     Global.currentUser = user
                     findNavController().navigate(RegistrationFragmentDirections.actionRegistrationFragmentToNavigationFood())
                     activity?.findViewById<View>(R.id.nav_view)?.visibility = View.VISIBLE
@@ -85,34 +87,42 @@ class RegistrationFragment : Fragment() {
         replyPassword: String,
         email: String
     ): Boolean {
-        val user = _UserViewModel.getUserByName(name)
-        var isValidRegInput = false
-        if (user == null) {
-            if (name.isNotBlank()) {
-                if (password.isNotBlank()) {
-                    if (password.length >= 4) {
-                        if (password == replyPassword) {
-                            if (email.isNotBlank() && Global.emailPattern.matches(email)) {
-                                isValidRegInput = true
-                            } else {
-                                showText(getString(R.string.invalid_email))
-                            }
-                        } else {
-                            showText(getString(R.string.password_mismatch))
-                        }
-                    } else {
-                        showText(getString(R.string.very_short_password))
-                    }
-                } else {
-                    showText(getString(R.string.invalid_password))
-                }
-            } else {
-                showText(getString(R.string.invalid_name))
-            }
-        } else {
+        if (_UserViewModel.getUserByName(name) != null) {
             showText(getString(R.string.name_conflict))
+            return false
         }
-        return isValidRegInput
+
+        if (name.isBlank()) {
+            showText(getString(R.string.invalid_name))
+            return false
+        }
+
+        if (password.isBlank()) {
+            showText(getString(R.string.invalid_password))
+            return false
+        }
+
+        if (password.length < 4) {
+            showText(getString(R.string.very_short_password))
+            return false
+        }
+
+        if (password != replyPassword) {
+            showText(getString(R.string.password_mismatch))
+            return false
+        }
+
+        if (email.isBlank() || !Global.emailPattern.matches(email)) {
+            showText(getString(R.string.invalid_email))
+            return false
+        }
+
+        if (_UserViewModel.getUserByEmail(email) != null) {
+            showText(getString(R.string.email_conflict))
+            return false
+        }
+
+        return true
     }
 
     fun showText(text: String) {
@@ -130,6 +140,11 @@ class RegistrationFragment : Fragment() {
         if (resultCode == Activity.RESULT_OK && requestCode == Global.REQUEST_CODE) {
             _avatarUri = data?.data.toString()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        activity?.findViewById<View>(R.id.nav_view)?.visibility = View.INVISIBLE
     }
 
     private inner class PasswordInputValidator : TextWatcher {
@@ -154,6 +169,8 @@ class RegistrationFragment : Fragment() {
                 binding.regInputPassword.setBackgroundResource(R.drawable.btn_default)
                 binding.regInputPasswordAgain.setBackgroundResource(R.drawable.btn_default)
             }
+            binding.regInputPasswordLowPanel?.text = getString(R.string.cur_password_length, binding.regInputPassword.text.length)
+            binding.regInputPasswordAgainLowPanel?.text = getString(R.string.cur_password_length, binding.regInputPasswordAgain.text.length)
         }
     }
 }

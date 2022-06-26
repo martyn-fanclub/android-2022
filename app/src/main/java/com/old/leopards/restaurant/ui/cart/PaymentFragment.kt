@@ -58,7 +58,7 @@ class PaymentFragment : Fragment() {
                 val adapter = FoodAdapter()
                 val order = Order(price = adapter.getTotal().intValueExact(),
                 orderDate = SimpleDateFormat("dd.MM.yyyy HH:mm").toString(),
-                userId = Global.currentUser.id)
+                userId = Global.currentUser.id.toInt())
                 _OrderViewModel.addOrder(order)
                 adapter.pay()
                 showText(context, getString(R.string.success))

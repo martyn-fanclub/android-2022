@@ -44,7 +44,7 @@ class ProfileFragment : Fragment() {
                 navController.navigate(R.id.action_navigation_profile_to_edit_profile_fragment)
             }
 
-            btnOrderList.setOnClickListener {
+            btnOrderList?.setOnClickListener {
                 navController.navigate(R.id.action_navigation_profile_to_order_list_fragment)
             }
 
