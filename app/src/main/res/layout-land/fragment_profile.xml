@@ -65,17 +65,26 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_edit_profile"
-            android:layout_width="230dp"
+            android:layout_width="180dp"
             android:layout_height="50dp"
             android:background="@drawable/btn_edit_profile"
             android:text="@string/profile_edit_btn"
             android:textColor="@color/black" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_exit"
-            android:layout_width="230dp"
+            android:id="@+id/btn_order_list"
+            android:layout_width="180dp"
             android:layout_height="50dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="60dp"
+            android:background="@drawable/btn_edit_profile"
+            android:text="@string/order_list"
+            android:textColor="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_exit"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="60dp"
             android:background="@drawable/btn_exit"
             android:text="@string/profile_exit_button"
             android:textColor="@color/secondary" />
